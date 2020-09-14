@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit {
         if(response.artists.artist[i].mbid !=""){
           this.topArtists.push(response.artists.artist[i]);
         }
+        // this.topArtists.push(response.artists.artist[i]);
 
         i++;
       }
@@ -71,7 +72,7 @@ export class HomeComponent implements OnInit {
 
   
   getArtistInfo = (mbid:string):any =>{
-    this.lastFm.getArtistInfo(mbid).subscribe((response)=>{
+    this.lastFm.getArtistInfoByMbid(mbid).subscribe((response)=>{
       console.log(response);
     })
   }

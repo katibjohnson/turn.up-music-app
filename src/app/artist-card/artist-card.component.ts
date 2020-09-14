@@ -20,7 +20,7 @@ export class ArtistCardComponent implements OnInit {
   }
 
   getArtistInfo = (mbid:string):any =>{
-    this.lastFm.getArtistInfo(mbid).subscribe((response)=>{
+    this.lastFm.getArtistInfoByMbid(mbid).subscribe((response)=>{
       console.log(response.artist);
       this.artistInfo = response.artist;
     })
