@@ -11,17 +11,57 @@ import {TurnUpService} from '../turn-up.service'
 export class HomeComponent implements OnInit {
 
   recentlyPlayed = [];
+  favoriteArtists = [];
+  topArtists = [];
 
   constructor(private lastFm: LastFmService, private youtube: YoutubeService, private turnup: TurnUpService) { }
 
   ngOnInit(): void {
 
-    this.searchForArtist('bladee');
-    this.getTopArtists();
-    this.getArtistInfo('cd689e77-dfdd-4f81-b50c-5e5a3f5e38a4');
-    this.getVideos('bladee');
+    // this.searchForArtist('bladee');
+    // this.getTopArtists();
+    // this.getArtistInfo('cd689e77-dfdd-4f81-b50c-5e5a3f5e38a4');
+    // this.getVideos('bladee');
+    // this.getRecent();
+    // this.getFavoriteArtists();
+
     this.getRecent();
+    this.getTopArtists();
+    this.getFavoriteArtists();
   }
+
+  getRecent = ():void =>{
+    this.turnup.getRecent().subscribe((response)=>{
+      console.log(response);
+       this.recentlyPlayed = response;
+    })
+  }
+
+  getFavoriteArtists = ():void =>{
+    this.turnup.getFavoriteArtists().subscribe((response)=>{
+      console.log(response);
+      this.favoriteArtists = response;
+    })
+  }
+
+  getTopArtists = ():void =>{
+    this.lastFm.getTopArtists().subscribe((response)=>{
+      
+      let i: number = 0;
+      while(this.topArtists.length <= 10){
+        if(response.artists.artist[i].mbid !=""){
+          this.topArtists.push(response.artists.artist[i]);
+        }
+
+        i++;
+      }
+      console.log(this.topArtists);
+    })
+  }
+
+
+
+
 
   searchForArtist = (searchTerm: string): any=>{
     this.lastFm.getArtists(searchTerm).subscribe((response)=>{
@@ -29,12 +69,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  getTopArtists = ():any =>{
-    this.lastFm.getTopArtists().subscribe((response)=>{
-      console.log(response.artists.artist);
-    })
-  }
-
+  
   getArtistInfo = (mbid:string):any =>{
     this.lastFm.getArtistInfo(mbid).subscribe((response)=>{
       console.log(response);
@@ -46,19 +81,5 @@ export class HomeComponent implements OnInit {
       console.log(response.items);
     })
   }
-
-  getRecent = ():any =>{
-    this.turnup.getRecent().subscribe((response)=>{
-      response.forEach((artist)=>{
-        console.log("Get recent working");
-        this.getArtistInfo(artist.mbid);
-      })
-    })
-  }
-
-  addArtistToRecent = ():any =>{
-    
-  }
-  
 
 }

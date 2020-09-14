@@ -11,4 +11,8 @@ export class TurnUpService {
   getRecent = (): any =>{
     return this.http.get(`${this.baseUrl}/recent`);
   }
+
+  getFavoriteArtists = (): any =>{
+    return this.http.get(`${this.baseUrl}/favorite-artists`);
+  }
 }

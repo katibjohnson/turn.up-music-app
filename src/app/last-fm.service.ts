@@ -22,8 +22,12 @@ export class LastFmService {
     return this.http.get(`${this.makeUrl(`chart.gettopartists`)}`);
   }
 
-  getArtistInfo = (mbid): any=>{
+  getArtistInfo = (mbid: string): any=>{
     return this.http.get(`${this.makeUrl(`artist.getinfo`)}&mbid=${mbid}`);
+  }
+
+  getArtistTopAlbums = (mbid: string): any=>{
+    return this.http.get(`${this.makeUrl(`artist.gettopalbums`)}&mbid=${mbid}`)
   }
 
 }

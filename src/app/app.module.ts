@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { ResultsComponent } from './results/results.component';
 import { ArtistComponent } from './artist/artist.component';
 import { HeaderComponent } from './header/header.component';
+import { ArtistListComponent } from './artist-list/artist-list.component';
+import { ArtistCardComponent } from './artist-card/artist-card.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { HeaderComponent } from './header/header.component';
     HomeComponent,
     ResultsComponent,
     ArtistComponent,
-    HeaderComponent
+    HeaderComponent,
+    ArtistListComponent,
+    ArtistCardComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
