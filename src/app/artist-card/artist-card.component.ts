@@ -21,13 +21,14 @@ export class ArtistCardComponent implements OnInit {
 
   getArtistInfo = (mbid:string):any =>{
     this.lastFm.getArtistInfoByMbid(mbid).subscribe((response)=>{
-      console.log(response.artist);
+      //console.log(response.artist);
       this.artistInfo = response.artist;
     })
   }
 
   getSampleImage = (mbid:string): any =>{
     this.lastFm.getArtistTopAlbums(mbid).subscribe((response)=>{
+      console.log(response);
       this.sampleImageUrl = response.topalbums.album[1].image[2]['#text'];
     })
   }
