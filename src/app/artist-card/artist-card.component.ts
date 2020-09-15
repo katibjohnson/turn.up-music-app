@@ -29,7 +29,14 @@ export class ArtistCardComponent implements OnInit {
   getSampleImage = (name:string): any =>{
     this.lastFm.getArtistTopAlbums(name).subscribe((response)=>{
       console.log(response);
-      this.sampleImageUrl = response.topalbums.album[1].image[2]['#text'];
+      if(response.topalbums){
+        if(response.topalbums.album){
+          this.sampleImageUrl = response.topalbums.album[0].image[2]['#text'];
+        }
+
+      }
+
+     
     })
   }
 }

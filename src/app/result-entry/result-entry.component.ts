@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { LastFmService } from '../last-fm.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { LastFmService } from '../last-fm.service';
 })
 export class ResultEntryComponent implements OnInit {
   @Input() artist: any;
-
+  @Output() artistClicked = new EventEmitter<string>();
+ 
   imgUrl: string;
 
   constructor(private lastFm: LastFmService) {}
@@ -20,9 +22,20 @@ export class ResultEntryComponent implements OnInit {
   getArtistImage = (artist: string) => {
     this.lastFm.getArtistTopAlbums(artist).subscribe((response) => {
       if (response.topalbums) {
-        this.imgUrl = response.topalbums.album[1].image[2]['#text'];
-        console.log(this.imgUrl);
+        if(response.topalbums.album[0]){
+          if(response.topalbums.album[0].image[2]){
+            this.imgUrl = response.topalbums.album[0].image[2]['#text'];
+            console.log(this.imgUrl);
+          }
+
+          
+        }
+
       }
     });
   };
+
+  goToArtist = (artist)=>{
+    this.artistClicked.emit(artist.name);
+  }
 }
