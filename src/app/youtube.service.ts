@@ -13,6 +13,6 @@ export class YoutubeService {
   }
 
   getVideos = (searchTerm:string): any=>{
-    return this.http.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCbSE1rJLqBA7ULy3L7LENrMNkZxeUwnlA&part=snippet&q=${searchTerm}`);
+    return this.http.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyD-6Nl2tHtsqnNnjcOueG2ZQnQtnHm1J6k&part=snippet&type=video&q=${searchTerm}`);
   }
 }

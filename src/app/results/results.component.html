@@ -1,1 +1,1 @@
-<p>results works!</p>
+<app-result-entry *ngFor="let item of searchResults" [artist]="item" (artistClicked)="goToArtist($event)"></app-result-entry>
