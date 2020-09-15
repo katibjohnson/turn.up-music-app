@@ -1,1 +1,18 @@
+
 <app-header></app-header>
+
+<h1>{{artistName}}</h1>
+<button (click)="getArtistVideos()">contact youtube api</button>
+<p>{{biography}}</p>
+
+<img src="{{imgUrl}}" alt="">
+
+<youtube-player 
+  videoId="ivCY3Ec4iaU" 
+  suggestedQuality="highres" 
+  [height]="250" 
+  [width]="500" ></youtube-player>
+
+<h2>Similar Artists</h2>
+<app-artist-list [list]="similar"></app-artist-list>
+

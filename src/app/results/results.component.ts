@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ArtistListComponent } from '../artist-list/artist-list.component';
+import { LastFmService } from '../last-fm.service';
 
 @Component({
   selector: 'app-results',
@@ -6,10 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
+  searchResults: any = [];
 
-  constructor() { }
+  constructor(private lastFm: LastFmService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getSearchResults();
   }
+
+  getSearchResults= ()=>{
+    this.route.queryParamMap.subscribe((params)=>{
+      this.lastFm.getArtists(params.get('artist')).subscribe((response)=>{
+        this.searchResults = response.results.artistmatches.artist;
+        console.log(this.searchResults);
+      })
+    })
+  }
+
+  goToArtist = (artist: string)=>{
+    this.router.navigate(['artist'],{
+      queryParams:{
+        name: artist
+      }
+    })
+  }
+
 
 }

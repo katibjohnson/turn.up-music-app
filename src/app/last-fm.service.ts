@@ -15,7 +15,7 @@ export class LastFmService {
   }
 
   getArtists=(searchTerm): any=>{
-    return this.http.get(`${this.makeUrl(`artist.search`)}&artist=${searchTerm}`);
+    return this.http.get(`${this.makeUrl(`artist.search`)}`, {params: {artist: searchTerm}});
   }
 
   getTopArtists = (): any=>{
