@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { ArtistListComponent } from './artist-list/artist-list.component';
 import { ArtistCardComponent } from './artist-card/artist-card.component';
 import { SearchComponent } from './search/search.component';
+import { ResultListComponent } from './result-list/result-list.component';
+import { ResultEntryComponent } from './result-entry/result-entry.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SearchComponent } from './search/search.component';
     HeaderComponent,
     ArtistListComponent,
     ArtistCardComponent,
-    SearchComponent
+    SearchComponent,
+    ResultListComponent,
+    ResultEntryComponent
   ],
   imports: [
     BrowserModule,
