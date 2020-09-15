@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+body,
+header {
+  margin: 0;
+  padding: 0;
+}
+body,
+button,
+input {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-image: url(assets/black_corners.jpg);
+  background-size: cover;
+}

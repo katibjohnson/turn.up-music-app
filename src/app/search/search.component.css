@@ -1,0 +1,31 @@
+/* MOBILE VIEW --------------------- */
+.search-bar {
+  border-radius: 15px;
+  background-color: white;
+  border: black solid 0.2px;
+  display: flex;
+  justify-content: space-between;
+  padding: 2vw;
+}
+
+.search-input,
+.search-input:focus {
+  border: none;
+  outline: none;
+  font-size: 4vw;
+  flex-grow: 9;
+  padding: 0;
+  margin: 0;
+}
+
+.search-button {
+  background-color: transparent;
+  border: none;
+  flex-grow: 1;
+  padding: 0;
+  margin-left: 1vw;
+}
+
+.fa-search {
+  font-size: 5vw;
+}

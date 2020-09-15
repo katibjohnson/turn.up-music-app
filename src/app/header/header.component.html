@@ -1,1 +1,31 @@
-<p>header works!</p>
+<header class="header">
+  <div class="logo-box">
+    <img
+      routerLink="/home"
+      routerLinkActive="logo-large"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="logo"
+      src="assets/turnip_logo.png"
+      alt="turn.up logo"
+    />
+  </div>
+  <div class="right-header">
+    <app-search class="search-box" *ngIf="router.url != '/home'"></app-search>
+
+    <div class="nav-box">
+      <ul class="nav-list">
+        <li class="home-link">
+          <a
+            routerLink="/home"
+            routerLinkActive="hidden"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="fav-link">
+          <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
