@@ -30,8 +30,8 @@ export class LastFmService {
     return this.http.get(`${this.makeUrl(`artist.getinfo`)}&artist=${name}`);
   }
 
-  getArtistTopAlbums = (mbid: string): any=>{
-    return this.http.get(`${this.makeUrl(`artist.gettopalbums`)}&mbid=${mbid}`)
+  getArtistTopAlbums = (name: string): any=>{
+    return this.http.get(`${this.makeUrl(`artist.gettopalbums`)}&artist=${name}`)
   }
 
 }

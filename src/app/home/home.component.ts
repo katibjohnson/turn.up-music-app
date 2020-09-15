@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LastFmService} from '../last-fm.service';
 import {YoutubeService} from '../youtube.service';
 import {TurnUpService} from '../turn-up.service'
+import { fromEventPattern } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -46,15 +47,9 @@ export class HomeComponent implements OnInit {
 
   getTopArtists = ():void =>{
     this.lastFm.getTopArtists().subscribe((response)=>{
-      
-      let i: number = 0;
-      while(this.topArtists.length <= 10){
-        if(response.artists.artist[i].mbid !=""){
-          this.topArtists.push(response.artists.artist[i]);
-        }
-        // this.topArtists.push(response.artists.artist[i]);
 
-        i++;
+      for(let i = 0; i<10; i++){
+        this.topArtists.push(response.artists.artist[i]);
       }
       console.log(this.topArtists);
     })
