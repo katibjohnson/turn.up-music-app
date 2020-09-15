@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "musicapp-group-project"
+    }
+  },
+  "defaultProject": "musicapp-group-project",
+  "cli": {
+    "analytics": "bafb4e9e-7630-464c-9876-afabcbb17c88"
+  }
 }
