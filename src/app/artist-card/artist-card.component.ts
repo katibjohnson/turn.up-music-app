@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LastFmService } from '../last-fm.service';
 import {ImagePreloadDirective} from '../image-preload.directive';
+import { TurnUpService } from '../turn-up.service';
 
 @Component({
   selector: 'app-artist-card',
@@ -9,13 +10,16 @@ import {ImagePreloadDirective} from '../image-preload.directive';
 })
 export class ArtistCardComponent implements OnInit {
   @Input() name: string;
+  @Output() artistClicked = new EventEmitter<string>();
   artistInfo: any = {};
   sampleImageUrl: string;
-  constructor(private lastFm: LastFmService) {}
+  favoritesId: number;
+  constructor(private lastFm: LastFmService, private turnup: TurnUpService) {}
 
   ngOnInit(): void {
     this.getArtistInfo(this.name);
     this.getSampleImage(this.name);
+    this.setInFavorites();
   }
 
   getArtistInfo = (name: string): any => {
@@ -35,4 +39,46 @@ export class ArtistCardComponent implements OnInit {
       }
     });
   };
+
+  goToArtist = ()=>{
+    console.log(this.name);
+    this.artistClicked.emit(this.name);
+  }
+
+  setInFavorites=()=>{
+    let favoriteArtists: any = [];
+    this.favoritesId = 0;
+    this.turnup.getFavoriteArtists().subscribe((response)=>{
+      favoriteArtists = response;
+      favoriteArtists.forEach((item)=>{
+        if(item.name === this.name)
+        {
+          this.favoritesId = item.id;
+        }
+      })
+     
+    })
+  }
+
+  toggleFavorites = ()=>{
+    console.log(this.favoritesId);
+    if(this.favoritesId)
+    {
+      this.turnup.deleteFromFavoriteArtists(this.favoritesId).subscribe((response)=>{
+        this.favoritesId = 0;
+      })
+    }
+    else{
+      let artistEntry = {name: this.name};
+      this.turnup.addToFavoriteArtists(artistEntry).subscribe((response)=>{
+
+        this.setInFavorites();
+      })
+    }
+
+  }
+
+
+
 }
+

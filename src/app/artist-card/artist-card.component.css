@@ -30,6 +30,19 @@ button:focus {
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
   border-radius: 50%;
 }
+
+.fa-minus-circle {
+  color: white;
+  position: absolute;
+  bottom: 10vw;
+  right: 2vw;
+  opacity: 0.8;
+  -webkit-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  border-radius: 50%;
+}
+
 .fa-plus-circle:active {
   color: #00ff48;
 }
