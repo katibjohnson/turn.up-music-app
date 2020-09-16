@@ -81,17 +81,15 @@ export class ArtistComponent implements OnInit {
   toggleFavorites = ()=>{
     
 
-    if(this.favoritesId)
-    {
-      this.turnup.deleteFromFavoriteArtists(this.favoritesId).subscribe((response)=>{
-        this.favoritesId = 0;
-      })
-    }
-    else{
-      let artistEntry = {name: this.artistName};
-      this.turnup.addToFavoriteArtists(artistEntry).subscribe((response)=>{
-
-
+    if (this.favoritesId) {
+      this.turnup
+        .deleteFromFavoriteArtists(this.favoritesId)
+        .subscribe((response) => {
+          this.favoritesId = 0;
+        });
+    } else {
+      let artistEntry = { name: this.artistName };
+      this.turnup.addToFavoriteArtists(artistEntry).subscribe((response) => {
         this.setInFavorites();
       });
     }
@@ -100,13 +98,11 @@ export class ArtistComponent implements OnInit {
   setInFavorites = () => {
     let favoriteArtists: any = [];
     this.favoritesId = 0;
-    this.turnup.getFavoriteArtists().subscribe((response)=>{
-
+    this.turnup.getFavoriteArtists().subscribe((response) => {
       favoriteArtists = response;
       favoriteArtists.forEach((item) => {
         if (item.name === this.artistName) {
           this.favoritesId = item.id;
-
         }
       });
     });

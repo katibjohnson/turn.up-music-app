@@ -31,14 +31,13 @@ a:hover {
 /* MOBILE VIEW --------------------------------------*/
 
 .logo {
-  width: 22vw;
+  width: 35vw;
 }
 .logo-large {
   width: 40vw;
 }
 .logo-box {
   flex-grow: 1;
-  /* width: 25vw; */
 }
 .right-header {
   display: flex;

@@ -1,15 +1,27 @@
-
 <app-header></app-header>
-<img src="{{imgUrl}}" default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png" height ="174" width ="174" class = "img" alt="">
-<h1>{{artistName}}</h1>
 
-<button><i [ngClass]="favoritesId ?'fas fa-minus-circle': 'fas fa-plus-circle'" (click)="toggleFavorites()"></i></button>
+<div class="artist-headline">
+  <img
+    class="artist-img"
+    src="{{ imgUrl }}"
+    default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png"
+  />
+  <button>
+    <i
+      [ngClass]="favoritesId ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
+      (click)="toggleFavorites()"
+    ></i>
+  </button>
+  <h1 class="artist-name">{{ artistName }}</h1>
+</div>
 
-<p>{{biography}}</p>
+<p>{{ biography }}</p>
+
+
 
 
 <app-video-player [artistName] = "artistName"></app-video-player>
 
+
 <h2>Similar Artists</h2>
 <app-artist-list [list]="similar"></app-artist-list>
-

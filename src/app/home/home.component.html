@@ -1,17 +1,15 @@
-<main>
-  <app-header></app-header>
-  <div class="home-search"><app-search class="search-bar"></app-search></div>
-  <div class="artists-box">
-    <h1 class="headline">top artists</h1>
-    <app-artist-list class="artists" [list]="topArtists"></app-artist-list>
-  </div>
-  <div class="artists-box">
-    <h1 class="headline">recently played</h1>
-    <app-artist-list class="artists" [list]="recentlyPlayed"></app-artist-list>
-  </div>
-  <div class="artists-box">
-    <h1 class="headline">favorite artists</h1>
-    <app-artist-list class="artists" [list]="favoriteArtists"></app-artist-list>
-  </div>
-  <app-footer></app-footer>
-</main>
+<app-header></app-header>
+<div class="home-search"><app-search class="search-bar"></app-search></div>
+<div class="artists-box">
+  <h1 class="headline">top artists</h1>
+  <app-artist-list class="artists" [list]="topArtists"></app-artist-list>
+</div>
+<div class="artists-box">
+  <h1 class="headline">recently played</h1>
+  <app-artist-list class="artists" [list]="recentlyPlayed"></app-artist-list>
+</div>
+<div class="artists-box favs">
+  <h1 class="headline">favorite artists</h1>
+  <app-artist-list class="artists" [list]="favoriteArtists"></app-artist-list>
+</div>
+<app-footer class="footer"></app-footer>
