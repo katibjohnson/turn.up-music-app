@@ -4,19 +4,11 @@
 <h1>{{artistName}}</h1>
 
 <button><i [ngClass]="favoritesId ?'fas fa-minus-circle': 'fas fa-plus-circle'" (click)="toggleFavorites()"></i></button>
-<button (click)="getArtistVideos()">contact youtube api</button>
+
 <p>{{biography}}</p>
 
 
-
-<div>
-  <youtube-player 
-  videoId="ivCY3Ec4iaU" 
-  suggestedQuality="highres" 
-  [height]="250" 
-  [width]="500"></youtube-player>
-</div>
-
+<app-video-player [artistName] = "artistName"></app-video-player>
 
 <h2>Similar Artists</h2>
 <app-artist-list [list]="similar"></app-artist-list>

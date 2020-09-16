@@ -19,6 +19,9 @@ import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { ImagePreloadDirective } from './image-preload.directive';
+import { VideoPlayerComponent } from './video-player/video-player.component';
+import { VideoCardComponent } from './video-card/video-card.component';
+import { VideoListComponent } from './video-list/video-list.component';
 
 
 
@@ -38,7 +41,13 @@ import { ImagePreloadDirective } from './image-preload.directive';
     AboutComponent,
     FooterComponent,
 
-    ImagePreloadDirective
+    ImagePreloadDirective,
+
+    VideoPlayerComponent,
+
+    VideoCardComponent,
+
+    VideoListComponent
 
 
   ],
