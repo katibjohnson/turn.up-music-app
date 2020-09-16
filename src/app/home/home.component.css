@@ -40,7 +40,8 @@ main {
 }
 
 .footer {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 /* tablet view _____________________________ */
 
