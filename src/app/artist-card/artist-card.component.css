@@ -1,0 +1,63 @@
+.artist-img {
+  border-radius: 50%;
+  -webkit-box-shadow: 2px 2px 19px 9px rgba(255, 255, 255, 0.49);
+  -moz-box-shadow: 2px 2px 19px 9px rgba(255, 255, 255, 0.49);
+  box-shadow: 2px 2px 19px 9px rgba(255, 255, 255, 0.49);
+  max-width: 100%;
+}
+
+button,
+button:focus {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+.artist-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.fa-plus-circle {
+  color: white;
+  position: absolute;
+  bottom: 10vw;
+  right: 2vw;
+  opacity: 0.8;
+  -webkit-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  border-radius: 50%;
+}
+.fa-plus-circle:active {
+  color: #00ff48;
+}
+
+.artist-name {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
+}
+
+/* mobile view ____________________ */
+
+.artist-card {
+  width: 25vw;
+}
+.artist-name {
+  font-size: 3.5vw;
+  margin: 2vw 0;
+}
+
+.fa-plus-circle {
+  font-size: 6vw;
+}
+/* tablet view ____________________ */
+
+/* desktop view ____________________ */
+
+/* .fa-plus-circle:hover {
+  opacity: 1;
+} */

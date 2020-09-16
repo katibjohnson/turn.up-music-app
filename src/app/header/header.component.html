@@ -14,16 +14,18 @@
 
     <div class="nav-box">
       <ul class="nav-list">
-        <li class="home-link">
+        <li [ngClass]="{ 'home-link': router.url != '/home' }">
           <a
             routerLink="/home"
             routerLinkActive="hidden"
             [routerLinkActiveOptions]="{ exact: true }"
-            >Home</a
+            >home</a
           >
         </li>
         <li class="fav-link">
-          <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
+          <a routerLink="/favorites" routerLinkActive="active"
+            >favorites<span><i class="fas fa-heart"></i></span
+          ></a>
         </li>
       </ul>
     </div>
