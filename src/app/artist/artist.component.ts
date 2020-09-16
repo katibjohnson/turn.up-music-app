@@ -2,26 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LastFmService } from '../last-fm.service';
 import { YoutubeService } from '../youtube.service';
-import {ImagePreloadDirective} from '../image-preload.directive';
-import {TurnUpService} from '../turn-up.service';
-  import { from } from 'rxjs';
+import { ImagePreloadDirective } from '../image-preload.directive';
+import { TurnUpService } from '../turn-up.service';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
-  styleUrls: ['./artist.component.css']
+  styleUrls: ['./artist.component.css'],
 })
 export class ArtistComponent implements OnInit {
-
   artistName: string;
   biography: string;
   imgUrl: string;
   similar: any = [];
   favoritesId: number;
-  videoIdArray: string[] = ['2KkMyDSrBVI','ivCY3Ec4iaU','pok8H_KF1FA', 'pcJo0tIWybY', '4aeETEoNfOg'];
-  constructor(private route: ActivatedRoute, private lastFm: LastFmService, private youtube: YoutubeService, private turnup: TurnUpService) { }
+
+  favoriteButtonText: string;
+  videoIdArray: string[] = [
+    '2KkMyDSrBVI',
+    'ivCY3Ec4iaU',
+    'pok8H_KF1FA',
+    'pcJo0tIWybY',
+    '4aeETEoNfOg',
+  ];
+  constructor(
+    private route: ActivatedRoute,
+    private lastFm: LastFmService,
+    private youtube: YoutubeService,
+    private turnup: TurnUpService
+  ) {}
 
   ngOnInit(): void {
     this.getArtistInfo();
+
   }
 
   getArtistInfo = (): any=>{
@@ -46,7 +59,7 @@ export class ArtistComponent implements OnInit {
         }
       }
     });
-  }
+  };
 
   addToRecent = ()=>{
     let artistEntry = {name: this.artistName};
@@ -67,6 +80,7 @@ export class ArtistComponent implements OnInit {
 
   toggleFavorites = ()=>{
     
+
     if(this.favoritesId)
     {
       this.turnup.deleteFromFavoriteArtists(this.favoritesId).subscribe((response)=>{
@@ -77,27 +91,24 @@ export class ArtistComponent implements OnInit {
       let artistEntry = {name: this.artistName};
       this.turnup.addToFavoriteArtists(artistEntry).subscribe((response)=>{
 
+
         this.setInFavorites();
-      })
+      });
     }
+  };
 
-  }
-
-  setInFavorites=()=>{
+  setInFavorites = () => {
     let favoriteArtists: any = [];
     this.favoritesId = 0;
     this.turnup.getFavoriteArtists().subscribe((response)=>{
+
       favoriteArtists = response;
-      favoriteArtists.forEach((item)=>{
-        if(item.name === this.artistName)
-        {
+      favoriteArtists.forEach((item) => {
+        if (item.name === this.artistName) {
           this.favoritesId = item.id;
+
         }
-      })
-     
-    })
-
-
-
-  }
+      });
+    });
+  };
 }
