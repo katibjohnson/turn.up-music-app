@@ -1,23 +1,28 @@
-
 <app-header></app-header>
-<img src="{{imgUrl}}" default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png" height ="174" width ="174" class = "img" alt="">
-<h1>{{artistName}}</h1>
-
-<button><i [ngClass]="favoritesId ?'fas fa-minus-circle': 'fas fa-plus-circle'" (click)="toggleFavorites()"></i></button>
-<button (click)="getArtistVideos()">contact youtube api</button>
-<p>{{biography}}</p>
-
-
-
-<div>
-  <youtube-player 
-  videoId="ivCY3Ec4iaU" 
-  suggestedQuality="highres" 
-  [height]="250" 
-  [width]="500"></youtube-player>
+<div class="artist-headline">
+  <img
+    class="artist-img"
+    src="{{ imgUrl }}"
+    default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png"
+  />
+  <button>
+    <i
+      [ngClass]="favoritesId ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
+      (click)="toggleFavorites()"
+    ></i>
+  </button>
+  <h1 class="artist-name">{{ artistName }}</h1>
 </div>
-
+<div class="video-box">
+  <youtube-player
+    videoId="ivCY3Ec4iaU"
+    suggestedQuality="highres"
+    [height]="250"
+    [width]="500"
+  ></youtube-player>
+</div>
+<button (click)="getArtistVideos()">contact youtube api</button>
+<p>{{ biography }}</p>
 
 <h2>Similar Artists</h2>
 <app-artist-list [list]="similar"></app-artist-list>
-

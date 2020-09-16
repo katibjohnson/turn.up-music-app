@@ -1,0 +1,68 @@
+.artist-img {
+  border-radius: 50%;
+  -webkit-box-shadow: 2px 2px 19px 9px rgba(255, 255, 255, 0.49);
+  -moz-box-shadow: 2px 2px 19px 9px rgba(255, 255, 255, 0.49);
+  box-shadow: 2px 2px 19px 9px rgba(255, 255, 255, 0.49);
+}
+
+button,
+button:focus {
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+.fa-plus-circle,
+.fa-minus-circle {
+  color: white;
+  position: absolute;
+
+  opacity: 0.8;
+  -webkit-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
+  border-radius: 50%;
+}
+
+.fa-plus-circle:active,
+.fa-minus-circle:active {
+  color: #00ff48;
+}
+
+/* mobile view ____________________________ */
+.artist-headline {
+  display: flex;
+  justify-content: center;
+  margin: 2vw 2vw 2vw 5vw;
+  position: relative;
+}
+.fa-plus-circle,
+.fa-minus-circle {
+  font-size: 6vw;
+  flex-grow: 0;
+  top: 10vh;
+  left: 20vw;
+}
+.artist-img {
+  max-width: 25vw;
+  margin-right: 5vw;
+  flex-grow: 1;
+}
+
+.artist-name {
+  font-variant: small-caps;
+  font-size: 8vw;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  flex-grow: 2;
+}
+
+.video-box {
+  width: 100vw;
+  margin: 5vw;
+}
+
+/* tablet view ____________________________ */
+
+/* desktop view ____________________________ */

@@ -35,6 +35,13 @@ main {
   width: 100%;
   overflow: scroll;
 }
+.favs {
+  margin-bottom: 2vw;
+}
+
+.footer {
+  margin: 0 auto;
+}
 /* tablet view _____________________________ */
 
 /* desktop view _____________________________ */
