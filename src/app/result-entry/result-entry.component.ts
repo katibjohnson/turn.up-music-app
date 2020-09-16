@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LastFmService } from '../last-fm.service';
+import {ImagePreloadDirective} from '../image-preload.directive';
 
 @Component({
   selector: 'app-result-entry',
