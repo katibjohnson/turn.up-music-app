@@ -1,1 +1,4 @@
 <app-header></app-header>
+<h1>Favorite Artists</h1>
+<app-artist-card *ngFor = "let item of favoritesList" [name]= "item.name"></app-artist-card>
+<h2>Favorite Videos</h2>
