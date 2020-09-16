@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LastFmService } from '../last-fm.service';
+import {ImagePreloadDirective} from '../image-preload.directive';
 
 @Component({
   selector: 'app-artist-card',

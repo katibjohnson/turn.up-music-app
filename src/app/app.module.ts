@@ -14,6 +14,7 @@ import { ArtistCardComponent } from './artist-card/artist-card.component';
 import { SearchComponent } from './search/search.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ResultEntryComponent } from './result-entry/result-entry.component';
+import { ImagePreloadDirective } from './image-preload.directive';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ResultEntryComponent } from './result-entry/result-entry.component';
     ArtistCardComponent,
     SearchComponent,
     FavoritesComponent,
-    ResultEntryComponent
+    ResultEntryComponent,
+    ImagePreloadDirective
 
   ],
   imports: [
