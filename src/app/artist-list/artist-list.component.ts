@@ -15,7 +15,6 @@ export class ArtistListComponent implements OnInit {
   }
 
   goToArtist = (artist: string)=>{
-    console.log("artist list component")
     this.router.navigate(['artist'], {
       queryParams:{
         name:artist
