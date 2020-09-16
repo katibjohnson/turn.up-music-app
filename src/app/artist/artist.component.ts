@@ -35,54 +35,51 @@ export class ArtistComponent implements OnInit {
   ngOnInit(): void {
     this.getArtistInfo();
 
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.body.appendChild(tag);
   }
 
-  getArtistInfo = (): any => {
-    this.route.queryParamMap.subscribe((params) => {
-      this.lastFm
-        .getArtistInfoByName(params.get('name'))
-        .subscribe((response) => {
-          this.artistName = response.artist.name;
-          this.biography = response.artist.bio.summary;
-          this.similar = response.artist.similar.artist;
-          this.getArtistImage();
-          this.addToRecent();
-          this.setInFavorites();
-        });
-    });
-  };
+  getArtistInfo = (): any=>{
+    this.route.queryParamMap.subscribe((params)=>{
+      this.lastFm.getArtistInfoByName(params.get('name')).subscribe((response)=>{
+        this.artistName = response.artist.name;
+        this.biography = response.artist.bio.summary;
+        this.similar = response.artist.similar.artist;
+        console.log(this.similar);
+        this.getArtistImage();
+        this.addToRecent();
+        this.setInFavorites();
+      })
+    })
+  }
 
-  getArtistImage = () => {
-    this.lastFm
-      .getArtistTopAlbums(`${this.artistName}`)
-      .subscribe((response) => {
-        console.log(response);
-        if (response.topalbums) {
+  getArtistImage = ()=>{
+    this.lastFm.getArtistTopAlbums(`${this.artistName}`).subscribe((response) => {
+      if (response.topalbums) {
+        if(response.topalbums.album[0]){
           this.imgUrl = response.topalbums.album[0].image[2]['#text'];
-          console.log(this.imgUrl);
         }
-      });
-  };
-
-  getArtistVideos = () => {
-    this.youtube.getVideos(this.artistName).subscribe((response) => {
-      console.log(response);
+      }
     });
   };
 
-  addToRecent = () => {
-    let artistEntry = { name: this.artistName };
+  addToRecent = ()=>{
+    let artistEntry = {name: this.artistName};
     console.log(artistEntry);
-    this.turnup.addToRecent(artistEntry).subscribe((response) => {
-      console.log(response);
-    });
-  };
+    let recent = [];
+    this.turnup.getRecent().subscribe((response)=>{
+      recent = response;
+      if(!recent.some((item)=>{
+        return item.name ===this.artistName;
+      })){
+        this.turnup.addToRecent(artistEntry).subscribe((response)=>{
+          console.log(response);
+        });
+      }
+    })
 
-  toggleFavorites = () => {
-    console.log(this.favoritesId);
+  }
+
+  toggleFavorites = ()=>{
+    
 
     if (this.favoritesId) {
       this.turnup

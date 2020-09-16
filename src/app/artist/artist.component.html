@@ -1,4 +1,5 @@
 <app-header></app-header>
+
 <div class="artist-headline">
   <img
     class="artist-img"
@@ -13,16 +14,14 @@
   </button>
   <h1 class="artist-name">{{ artistName }}</h1>
 </div>
-<div class="video-box">
-  <youtube-player
-    videoId="ivCY3Ec4iaU"
-    suggestedQuality="highres"
-    [height]="250"
-    [width]="500"
-  ></youtube-player>
-</div>
-<button (click)="getArtistVideos()">contact youtube api</button>
+
 <p>{{ biography }}</p>
+
+
+
+
+<app-video-player [artistName] = "artistName"></app-video-player>
+
 
 <h2>Similar Artists</h2>
 <app-artist-list [list]="similar"></app-artist-list>

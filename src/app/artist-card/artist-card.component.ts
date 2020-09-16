@@ -31,9 +31,8 @@ export class ArtistCardComponent implements OnInit {
 
   getSampleImage = (name: string): any => {
     this.lastFm.getArtistTopAlbums(name).subscribe((response) => {
-      console.log(response);
       if (response.topalbums) {
-        if (response.topalbums.album) {
+        if (response.topalbums.album[0]) {
           this.sampleImageUrl = response.topalbums.album[0].image[2]['#text'];
         }
       }
@@ -41,7 +40,6 @@ export class ArtistCardComponent implements OnInit {
   };
 
   goToArtist = ()=>{
-    console.log(this.name);
     this.artistClicked.emit(this.name);
   }
 
@@ -61,7 +59,6 @@ export class ArtistCardComponent implements OnInit {
   }
 
   toggleFavorites = ()=>{
-    console.log(this.favoritesId);
     if(this.favoritesId)
     {
       this.turnup.deleteFromFavoriteArtists(this.favoritesId).subscribe((response)=>{
