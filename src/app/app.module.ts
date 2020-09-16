@@ -36,7 +36,7 @@ import { ImagePreloadDirective } from './image-preload.directive';
     ResultEntryComponent,
 
     AboutComponent,
-    FooterComponent
+    FooterComponent,
 
     ImagePreloadDirective
 
