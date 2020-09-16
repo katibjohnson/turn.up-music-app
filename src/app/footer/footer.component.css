@@ -4,6 +4,7 @@ a:active {
   text-decoration: none;
   color: white;
   position: absolute;
+  bottom: 1vw;
   left: 50%;
   transform: translate(-50%);
 }
