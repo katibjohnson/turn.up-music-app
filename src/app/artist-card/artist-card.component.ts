@@ -4,39 +4,34 @@ import { LastFmService } from '../last-fm.service';
 @Component({
   selector: 'app-artist-card',
   templateUrl: './artist-card.component.html',
-  styleUrls: ['./artist-card.component.css']
+  styleUrls: ['./artist-card.component.css'],
 })
 export class ArtistCardComponent implements OnInit {
   @Input() name: string;
-  artistInfo: any ={};
+  artistInfo: any = {};
   sampleImageUrl: string;
-  constructor(private lastFm: LastFmService) { }
+  constructor(private lastFm: LastFmService) {}
 
   ngOnInit(): void {
-
     this.getArtistInfo(this.name);
     this.getSampleImage(this.name);
-
   }
 
-  getArtistInfo = (name:string):any =>{
-    this.lastFm.getArtistInfoByName(name).subscribe((response)=>{
+  getArtistInfo = (name: string): any => {
+    this.lastFm.getArtistInfoByName(name).subscribe((response) => {
       //console.log(response.artist);
       this.artistInfo = response.artist;
-    })
-  }
+    });
+  };
 
-  getSampleImage = (name:string): any =>{
-    this.lastFm.getArtistTopAlbums(name).subscribe((response)=>{
+  getSampleImage = (name: string): any => {
+    this.lastFm.getArtistTopAlbums(name).subscribe((response) => {
       console.log(response);
-      if(response.topalbums){
-        if(response.topalbums.album){
+      if (response.topalbums) {
+        if (response.topalbums.album) {
           this.sampleImageUrl = response.topalbums.album[0].image[2]['#text'];
         }
-
       }
-
-     
-    })
-  }
+    });
+  };
 }

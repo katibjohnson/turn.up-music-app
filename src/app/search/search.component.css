@@ -5,7 +5,7 @@
   border: black solid 0.2px;
   display: flex;
   justify-content: space-between;
-  padding: 2vw;
+  padding: 1vw 0 1vw 2vw;
 }
 
 .search-input,
@@ -23,9 +23,9 @@
   border: none;
   flex-grow: 1;
   padding: 0;
-  margin-left: 1vw;
+  margin-left: 2vw;
 }
 
 .fa-search {
-  font-size: 5vw;
+  font-size: 4vw;
 }

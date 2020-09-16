@@ -31,14 +31,14 @@ a:hover {
 /* MOBILE VIEW --------------------------------------*/
 
 .logo {
-  width: 25vw;
+  width: 22vw;
 }
 .logo-large {
-  width: 50vw;
+  width: 40vw;
 }
 .logo-box {
   flex-grow: 1;
-  width: 25vw;
+  /* width: 25vw; */
 }
 .right-header {
   display: flex;
@@ -51,14 +51,21 @@ a:hover {
 .nav-box {
   display: flex;
   justify-content: flex-end;
-  margin: 2vw 0;
+  margin: 3vw 0;
+  font-size: 6vw;
+  font-variant: small-caps;
 }
 li {
   padding: 0 3vw;
 }
 
-li:not(:last-child) {
-  border-right: solid 1px rgb(0, 0, 0);
+.home-link:not(:last-child) {
+  border-right: solid 1px white;
+}
+
+.fa-heart {
+  margin-left: 1vw;
+  font-size: 4vw;
 }
 
 /* TABLET VIEW --------------------------------------*/

@@ -2,17 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TurnUpService {
-  baseUrl: string = `http://localhost:3000`
-  constructor(private http: HttpClient) { }
+  baseUrl: string = `http://localhost:3000`;
+  constructor(private http: HttpClient) {}
 
-  getRecent = (): any =>{
+  getRecent = (): any => {
     return this.http.get(`${this.baseUrl}/recent`);
-  }
+  };
 
-  getFavoriteArtists = (): any =>{
+  getFavoriteArtists = (): any => {
     return this.http.get(`${this.baseUrl}/favorite-artists`);
-  }
+  };
 }

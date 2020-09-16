@@ -1,2 +1,7 @@
-<app-artist-card *ngFor = "let item of list.slice(0,3)" [name]= "item.name"></app-artist-card>
-
+<div class="artists">
+  <app-artist-card
+    class="artist-card"
+    *ngFor="let item of list.slice(0, 10)"
+    [name]="item.name"
+  ></app-artist-card>
+</div>

@@ -1,0 +1,40 @@
+h1 {
+  margin: 0;
+}
+main {
+  width: 100vw;
+  height: 100vh;
+}
+/* mobile view _____________________________ */
+.home-search {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  margin-top: 3vw;
+  left: 25vw;
+  top: 18vw;
+}
+.search-bar {
+  width: 65vw;
+}
+
+.artists-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+.headline {
+  font-size: 6vw;
+  font-weight: 600;
+  font-variant: small-caps;
+}
+
+.artists {
+  width: 100%;
+  overflow: scroll;
+}
+/* tablet view _____________________________ */
+
+/* desktop view _____________________________ */
