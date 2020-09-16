@@ -17,7 +17,6 @@ export class ArtistComponent implements OnInit {
   imgUrl: string;
   similar: any = [];
   favoritesId: number;
-  favoriteButtonText: string;
   videoIdArray: string[] = ['2KkMyDSrBVI','ivCY3Ec4iaU','pok8H_KF1FA', 'pcJo0tIWybY', '4aeETEoNfOg'];
   constructor(private route: ActivatedRoute, private lastFm: LastFmService, private youtube: YoutubeService, private turnup: TurnUpService) { }
 
@@ -72,7 +71,6 @@ export class ArtistComponent implements OnInit {
     {
       this.turnup.deleteFromFavoriteArtists(this.favoritesId).subscribe((response)=>{
         this.favoritesId = 0;
-        this.favoriteButtonText = "Add to Favorites";
       })
     }
     else{
@@ -88,14 +86,12 @@ export class ArtistComponent implements OnInit {
   setInFavorites=()=>{
     let favoriteArtists: any = [];
     this.favoritesId = 0;
-    this.favoriteButtonText = "Add to Favorites";
     this.turnup.getFavoriteArtists().subscribe((response)=>{
       favoriteArtists = response;
       favoriteArtists.forEach((item)=>{
         if(item.name === this.artistName)
         {
           this.favoritesId = item.id;
-          this.favoriteButtonText = "Remove from Favorites";
         }
       })
      
