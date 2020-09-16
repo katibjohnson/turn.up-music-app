@@ -6,10 +6,11 @@ header {
 body,
 button,
 input {
-  font-family: "Roboto", sans-serif;
+  font-family: "Saira Semi Condensed", sans-serif;
 }
 
 body {
   background-image: url(assets/black_corners.jpg);
   background-size: cover;
+  color: white;
 }
