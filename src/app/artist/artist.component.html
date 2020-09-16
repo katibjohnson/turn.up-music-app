@@ -1,17 +1,21 @@
 
 <app-header></app-header>
-
+<img src="{{imgUrl}}" default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png" height ="174" width ="174" class = "img" alt="">
 <h1>{{artistName}}</h1>
+<button (click)="toggleFavorites()">{{favoriteButtonText}}</button>
 <button (click)="getArtistVideos()">contact youtube api</button>
 <p>{{biography}}</p>
 
-<img src="{{imgUrl}}" alt="">
 
-<youtube-player 
+
+<div>
+  <youtube-player 
   videoId="ivCY3Ec4iaU" 
   suggestedQuality="highres" 
   [height]="250" 
-  [width]="500" ></youtube-player>
+  [width]="500"></youtube-player>
+</div>
+
 
 <h2>Similar Artists</h2>
 <app-artist-list [list]="similar"></app-artist-list>
