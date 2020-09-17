@@ -13,18 +13,14 @@ a:visited {
   color: white;
 }
 
-a:hover {
-  color: #eeeeee;
-}
-
-ul.nav {
+/* ul.nav {
   text-align: center;
 }
 ul.nav li a i {
   display: inline-block;
   text-align: center;
-  /* line-height: 10px; */
-}
+  line-height: 10px;
+} */
 
 .header {
   display: flex;
@@ -43,6 +39,9 @@ ul.nav li a i {
 
 /* MOBILE VIEW --------------------------------------*/
 
+.desktop-header {
+  display: none;
+}
 .logo {
   width: 35vw;
 }
@@ -68,18 +67,17 @@ ul.nav li a i {
   font-size: 6vw;
   font-variant: small-caps;
 }
+
 li {
-  padding-left: 3vw;
-  line-height: 10px;
+  padding-left: 2vw;
+  line-height: 5vw;
+}
+.home-link {
+  padding-right: 2vw;
 }
 
 .home-link:not(:last-child) {
   border-right: solid 1px white;
-}
-
-.heart {
-  font-size: 4vw;
-  padding: 0;
 }
 
 /* tablet view _____________________________ */
@@ -87,11 +85,17 @@ li {
 }
 /* desktop view _____________________________ */
 @media screen and (min-width: 1025px) {
+  .desktop-header {
+    display: inline;
+  }
+  .mobile-header {
+    display: none;
+  }
   .logo {
     width: 20vw;
   }
   .logo-large {
-    width: 55vw;
+    width: 50vw;
   }
   .logo-box {
     flex-grow: 1;

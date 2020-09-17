@@ -49,7 +49,7 @@ button:focus {
 /* mobile view ____________________ */
 
 .artist-card {
-  width: 26vw;
+  width: 29vw;
 }
 .artist-name {
   font-size: 3.5vw;
@@ -59,7 +59,7 @@ button:focus {
 .fa-plus-circle,
 .fa-minus-circle {
   font-size: 6vw;
-  top: 20vw;
+  top: 22vw;
   right: 1vw;
 }
 /* tablet view ____________________ */
