@@ -26,7 +26,6 @@ export class ResultEntryComponent implements OnInit {
         if(response.topalbums.album[0]){
           if(response.topalbums.album[0].image[2]){
             this.imgUrl = response.topalbums.album[0].image[2]['#text'];
-            console.log(this.imgUrl);
           }
 
           
