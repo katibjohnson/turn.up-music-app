@@ -5,6 +5,7 @@ import { YoutubeService } from '../youtube.service';
 import { ImagePreloadDirective } from '../image-preload.directive';
 import { TurnUpService } from '../turn-up.service';
 import { from } from 'rxjs';
+import { stringify } from '@angular/compiler/src/util';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
@@ -37,11 +38,21 @@ export class ArtistComponent implements OnInit {
 
   }
 
+  sliceBio = (bio: string)=>{
+    for(let i = 0; i<bio.length; i++){
+      if(bio[i] === '<'){
+       return bio.slice(0, i);
+      }
+    }
+    return bio;
+  }
+
   getArtistInfo = (): any=>{
     this.route.queryParamMap.subscribe((params)=>{
       this.lastFm.getArtistInfoByName(params.get('name')).subscribe((response)=>{
+        console.log(response)
         this.artistName = response.artist.name;
-        this.biography = response.artist.bio.summary;
+        this.biography = this.sliceBio(response.artist.bio.content);
         this.similar = response.artist.similar.artist;
         console.log(this.similar);
         this.getArtistImage();
