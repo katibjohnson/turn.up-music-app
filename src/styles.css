@@ -14,3 +14,11 @@ body {
   background-size: cover;
   color: white;
 }
+
+/* mobile view _____________________________ */
+/* tablet view _____________________________ */
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+/* desktop view _____________________________ */
+@media screen and (min-width: 1025px) {
+}

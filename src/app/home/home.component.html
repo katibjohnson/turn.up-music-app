@@ -1,17 +1,40 @@
-<app-header></app-header>
-<div class="home-search"><app-search class="search-bar"></app-search></div>
-<div class="artists-box">
-  <h1 class="headline">top artists</h1>
-  <app-artist-list class="artists" [list]="topArtists"></app-artist-list>
-</div>
-<div class="artists-box">
-  <h1 class="headline">recently played</h1>
-  <app-artist-list class="artists" [list]="recentlyPlayed"></app-artist-list>
-</div>
-<div class="artists-box favs">
-  <h1 class="headline">favorite artists</h1>
-  <app-artist-list class="artists" [list]="favoriteArtists"></app-artist-list>
-</div>
-<div class="footer">
-  <app-footer></app-footer>
-</div>
+<section class="mobile-section">
+  <header class="mobile-header">
+    <app-header></app-header>
+
+    <div class="home-search-m">
+      <app-search class="search-bar-m"></app-search>
+    </div>
+  </header>
+  <div class="artists-box">
+    <h1 class="headline">top artists</h1>
+    <app-artist-list class="artists" [list]="topArtists"></app-artist-list>
+  </div>
+  <div class="artists-box">
+    <h1 class="headline">recently played</h1>
+    <app-artist-list class="artists" [list]="recentlyPlayed"></app-artist-list>
+  </div>
+  <div class="artists-box favs">
+    <h1 class="headline">favorite artists</h1>
+    <app-artist-list class="artists" [list]="favoriteArtists"></app-artist-list>
+  </div>
+  <div class="footer">
+    <app-footer></app-footer>
+  </div>
+</section>
+<section class="desktop-section">
+  <header class="desktop-header">
+    <app-header></app-header>
+    <div class="tagline-box">
+      <p class="tagline">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio
+        suscipit in vero dolorum repellat laudantium hic aliquid. Doloremque
+        optio earum blanditiis officia perferendis dolores nobis alias facilis
+        consequuntur aperiam!
+      </p>
+    </div>
+    <div class="home-search-d">
+      <app-search class="search-bar-d"></app-search>
+    </div>
+  </header>
+</section>

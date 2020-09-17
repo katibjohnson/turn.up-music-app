@@ -1,3 +1,7 @@
+i {
+  margin: 0;
+  padding: 0;
+}
 ul {
   list-style: none;
   display: flex;
@@ -11,6 +15,15 @@ a:visited {
 
 a:hover {
   color: #eeeeee;
+}
+
+ul.nav {
+  text-align: center;
+}
+ul.nav li a i {
+  display: inline-block;
+  text-align: center;
+  /* line-height: 10px; */
 }
 
 .header {
@@ -38,6 +51,7 @@ a:hover {
 }
 .logo-box {
   flex-grow: 1;
+  margin-top: 2vw;
 }
 .right-header {
   display: flex;
@@ -55,18 +69,62 @@ a:hover {
   font-variant: small-caps;
 }
 li {
-  padding: 0 3vw;
+  padding-left: 3vw;
+  line-height: 10px;
 }
 
 .home-link:not(:last-child) {
   border-right: solid 1px white;
 }
 
-.fa-heart {
-  margin-left: 1vw;
+.heart {
   font-size: 4vw;
+  padding: 0;
 }
 
-/* TABLET VIEW --------------------------------------*/
+/* tablet view _____________________________ */
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+/* desktop view _____________________________ */
+@media screen and (min-width: 1025px) {
+  .logo {
+    width: 20vw;
+  }
+  .logo-large {
+    width: 55vw;
+  }
+  .logo-box {
+    flex-grow: 1;
+    margin-top: 1vw;
+  }
+  .right-header {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 10;
+  }
+  .search-box {
+    order: 2;
+  }
+  .nav-box {
+    display: flex;
+    margin: 1vw 0;
+    font-size: 2.5vw;
+    font-variant: small-caps;
+  }
 
-/* DESKTOP VIEW --------------------------------------*/
+  li {
+    padding: 0 1vw;
+    line-height: 10px;
+  }
+  /* .home {
+    font-size: 2vw;
+  } */
+  .home-link:not(:last-child) {
+    border-right: solid 1px white;
+  }
+
+  .fa-heart {
+    margin-left: 1vw;
+    font-size: 2vw;
+  }
+}

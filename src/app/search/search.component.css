@@ -1,8 +1,6 @@
-/* MOBILE VIEW --------------------- */
 .search-bar {
   border-radius: 15px;
   background-color: white;
-  border: black solid 0.2px;
   display: flex;
   justify-content: space-between;
   padding: 1vw 0 1vw 2vw;
@@ -28,4 +26,42 @@
 
 .fa-search {
   font-size: 4vw;
+}
+
+/* mobile view _____________________________ */
+/* tablet view _____________________________ */
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+/* desktop view _____________________________ */
+@media screen and (min-width: 1025px) {
+  .search-bar {
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 1vw 0 1vw 2vw;
+    width: 60vw;
+  }
+
+  .search-input,
+  .search-input:focus {
+    border: none;
+    outline: none;
+    font-size: 4vw;
+    flex-grow: 9;
+    padding: 0;
+    margin: 0;
+  }
+
+  .search-button {
+    background-color: transparent;
+    border: none;
+    flex-grow: 1;
+    padding: 0;
+    margin-left: 2vw;
+  }
+
+  .fa-search {
+    font-size: 4vw;
+  }
 }

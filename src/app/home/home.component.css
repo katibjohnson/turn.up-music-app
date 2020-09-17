@@ -6,16 +6,27 @@ main {
   height: 100vh;
 }
 /* mobile view _____________________________ */
-.home-search {
+.desktop-section {
+  display: none;
+}
+.mobile-header {
+  margin-bottom: 2vw;
+  position: relative;
+  margin-bottom: 2vw;
+  height: 15vh;
+}
+.home-search-m {
   position: absolute;
   display: flex;
   justify-content: center;
-  margin-top: 3vw;
+  margin-top: 2vw;
   left: 25vw;
   top: 18vw;
 }
-.search-bar {
-  width: 65vw;
+.search-bar-m {
+  width: 70vw;
+  border: none;
+  outline: none;
 }
 
 .artists-box {
@@ -24,16 +35,19 @@ main {
   align-items: center;
   width: 100%;
   margin: 0;
+  position: relative;
 }
 .headline {
   font-size: 6vw;
   font-weight: 600;
   font-variant: small-caps;
+  position: absolute;
 }
 
 .artists {
   width: 100%;
   overflow: scroll;
+  margin-top: 4vh;
 }
 .favs {
   margin-bottom: 2vw;
@@ -44,5 +58,35 @@ main {
   justify-content: center;
 }
 /* tablet view _____________________________ */
-
+@media (min-width: 481px) and (max-width: 1024px) {
+}
 /* desktop view _____________________________ */
+@media screen and (min-width: 1025px) {
+  .mobile-section {
+    display: none;
+  }
+  .desktop-section {
+    display: inline;
+  }
+
+  .home-search-d {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-top: 2vw;
+    left: 25vw;
+    top: 18vw;
+  }
+  .search-bar-d {
+    width: 40vw;
+    border: none;
+    outline: none;
+  }
+  .tagline-box {
+    position: relative;
+  }
+  .tagline {
+    position: absolute;
+    width: 30vw;
+  }
+}

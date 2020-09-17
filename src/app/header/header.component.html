@@ -5,17 +5,18 @@
       routerLinkActive="logo-large"
       [routerLinkActiveOptions]="{ exact: true }"
       class="logo"
-      src="assets/turnip_logo.png"
+      src="assets/turnup_white.png"
       alt="turn.up logo"
     />
   </div>
   <div class="right-header">
     <app-search class="search-box" *ngIf="router.url != '/home'"></app-search>
 
-    <div class="nav-box">
+    <nav class="nav-box">
       <ul class="nav-list">
         <li [ngClass]="{ 'home-link': router.url != '/home' }">
           <a
+            class="home"
             routerLink="/home"
             routerLinkActive="hidden"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -23,11 +24,16 @@
           >
         </li>
         <li class="fav-link">
-          <a routerLink="/favorites" routerLinkActive="active"
-            >favorites<span><i class="fas fa-heart"></i></span
-          ></a>
+          <a routerLink="/favorites" routerLinkActive="active">favorites</a>
+        </li>
+        <li class="heart">
+          <i
+            routerLink="/favorites"
+            routerLinkActive="active"
+            class="fas fa-heart"
+          ></i>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
 </header>
