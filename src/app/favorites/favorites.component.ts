@@ -10,14 +10,23 @@ import { TurnUpService } from '../turn-up.service';
 })
 export class FavoritesComponent implements OnInit {
   constructor(public router: Router, private lastFm: LastFmService, private turnup: TurnUpService) {}
-
+  favoriteArtistsList: any = [];
+  favoriteVideosList: any =[];
   ngOnInit(): void {
     this.getFavoriteArtists();
+    this.getFavoriteVideos();
   }
-  favoritesList: any = [];
+  
   getFavoriteArtists = ()=>{
     this.turnup.getFavoriteArtists().subscribe((response)=>{
-      this.favoritesList = response;
+      this.favoriteArtistsList = response;
+    })
+  }
+
+  getFavoriteVideos = ()=>{
+    this.turnup.getFavoriteVideos().subscribe((response)=>{
+      this.favoriteVideosList = response;
+      console.log(response);
     })
   }
 }
