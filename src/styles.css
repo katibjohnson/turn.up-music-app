@@ -17,8 +17,8 @@ body {
 
 /* mobile view _____________________________ */
 /* tablet view _____________________________ */
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (min-width: 481px) and (max-width: 899px) {
 }
 /* desktop view _____________________________ */
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 900px) {
 }

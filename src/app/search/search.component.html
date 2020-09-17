@@ -1,4 +1,10 @@
-<form #searchForm="ngForm" (submit)="searchForArtist(searchForm)">
+<form
+  #searchForm="ngForm"
+  (submit)="searchForArtist(searchForm)"
+  [class.home-search-m]="router.url === '/home'"
+  [class.not-home-search-m]="router.url != '/home'"
+  class="mobile-search"
+>
   <div class="search-bar">
     <input
       class="search-input"
@@ -9,4 +15,21 @@
     />
     <button class="search-button"><i class="fas fa-search"></i></button>
   </div>
+</form>
+<form
+  #searchForm="ngForm"
+  (submit)="searchForArtist(searchForm)"
+  [class.home-search-d]="router.url === '/home'"
+  [class.not-home-search-d]="router.url != '/home'"
+  class="desktop-search"
+>
+  <input
+    [class.home-input-d]="router.url === '/home'"
+    [class.not-home-input-d]="router.url != '/home'"
+    type="text"
+    name="artist"
+    placeholder="Search for Artist"
+    ngModel
+  />
+  <button class="search-button"><i class="fas fa-search"></i></button>
 </form>

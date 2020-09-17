@@ -33,21 +33,28 @@
   </header>
 </section>
 <section class="desktop-header">
-  <header class="header">
-    <div class="logo-box">
-      <img
-        routerLink="/home"
-        routerLinkActive="logo-large"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="logo"
-        src="assets/turnup_white.png"
-        alt="turn.up logo"
-      />
-    </div>
-    <div class="right-header">
-      <app-search class="search-box" *ngIf="router.url != '/home'"></app-search>
-
-      <nav class="nav-box">
+  <header
+    [class.home-header-d]="router.url === '/home'"
+    [class.not-home-header-d]="router.url != '/home'"
+  >
+    <div class="top-header-box">
+      <div
+        [class.home-logo-box-d]="router.url === '/home'"
+        [class.not-home-logo-box-d]="router.url != '/home'"
+      >
+        <img
+          routerLink="/home"
+          routerLinkActive="logo-large"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="logo"
+          src="assets/turnup_white.png"
+          alt="turn.up logo"
+        />
+      </div>
+      <nav
+        [class.home-nav-box-d]="router.url === '/home'"
+        [class.not-home-nav-box-d]="router.url != '/home'"
+      >
         <ul class="nav-list">
           <li [ngClass]="{ 'home-link': router.url != '/home' }">
             <a
@@ -71,6 +78,9 @@
         optio earum blanditiis officia perferendis dolores nobis alias facilis
         consequuntur aperiam!
       </p>
+    </div>
+    <div class="search-box">
+      <app-search></app-search>
     </div>
   </header>
 </section>
