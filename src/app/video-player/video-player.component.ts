@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TurnUpService } from '../turn-up.service';
 import { YoutubeService } from '../youtube.service';
@@ -9,20 +9,40 @@ import { YoutubeService } from '../youtube.service';
   styleUrls: ['./video-player.component.css']
 })
 export class VideoPlayerComponent implements OnInit {
+  @ViewChild('wrapper') wrapper: ElementRef<HTMLDivElement>;
   @Input() artistName;
   @Output() updateVideosEvent = new EventEmitter<void>() ;
   currentVideoIdIndex: number;
   currentVideoId: string;
   videoIdArray: string[] = ['2KkMyDSrBVI','ivCY3Ec4iaU','pok8H_KF1FA', 'pcJo0tIWybY', '4aeETEoNfOg'];
-  constructor(private youtube: YoutubeService, private turnup: TurnUpService, private route: ActivatedRoute) { }
+  videoWidth: number | undefined;
+  videoHeight: number | undefined;
+ 
+
+  constructor(private _changeDetectorRef: ChangeDetectorRef, private youtube: YoutubeService, private turnup: TurnUpService, private route: ActivatedRoute) { }
+  
+ 
 
   ngOnInit(): void {
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
     this.setVideo();
+    console.log(this.wrapper);
     this.currentVideoIdIndex = 0;
     this.currentVideoId = this.videoIdArray[this.currentVideoIdIndex];
+  }
+
+  ngAfterViewInit(): void{
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+  }
+
+  onResize = (): void => {
+    // Automatically expand the video to fit the page up to 1200px x 720px
+    this.videoWidth = Math.min(this.wrapper.nativeElement.clientWidth, 1000);
+    this.videoHeight = this.videoWidth * 0.6;
+    this._changeDetectorRef.detectChanges();
   }
 
   setVideo = ()=>{
