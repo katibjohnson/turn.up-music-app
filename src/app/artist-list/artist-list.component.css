@@ -11,3 +11,19 @@
 
 /* tablet view _______________________ */
 /* desktop view _______________________ */
+/* desktop view _____________________________ */
+@media screen and (min-width: 1025px) {
+  .artists {
+    display: flex;
+    /* justify-content: space-evenly; */
+    max-width: 100%;
+  }
+
+  .artist-card {
+    margin: 3vw 2vw 0 2vw;
+  }
+
+  .artist-card:nth-child(2) {
+    background: red;
+  }
+}

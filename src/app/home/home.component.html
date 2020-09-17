@@ -1,30 +1,41 @@
 <section class="mobile-section">
-  <header class="mobile-header">
-    <app-header></app-header>
+  <div class="not-footer">
+    <header class="mobile-header">
+      <app-header></app-header>
 
-    <div class="home-search-m">
-      <app-search class="search-bar-m"></app-search>
+      <div class="home-search-m">
+        <app-search class="search-bar-m"></app-search>
+      </div>
+    </header>
+    <div class="artists-box">
+      <h1 class="headline">top artists</h1>
+      <app-artist-list class="artists" [list]="topArtists"></app-artist-list>
     </div>
-  </header>
-  <div class="artists-box">
-    <h1 class="headline">top artists</h1>
-    <app-artist-list class="artists" [list]="topArtists"></app-artist-list>
+    <div class="artists-box">
+      <h1 class="headline">recently played</h1>
+      <app-artist-list
+        class="artists"
+        [list]="recentlyPlayed"
+      ></app-artist-list>
+    </div>
+    <div class="artists-box favs">
+      <h1 class="headline">favorite artists</h1>
+      <app-artist-list
+        class="artists"
+        [list]="favoriteArtists"
+      ></app-artist-list>
+    </div>
   </div>
-  <div class="artists-box">
-    <h1 class="headline">recently played</h1>
-    <app-artist-list class="artists" [list]="recentlyPlayed"></app-artist-list>
-  </div>
-  <div class="artists-box favs">
-    <h1 class="headline">favorite artists</h1>
-    <app-artist-list class="artists" [list]="favoriteArtists"></app-artist-list>
-  </div>
-  <div class="footer">
-    <app-footer></app-footer>
+  <div class="footer-m">
+    <a routerLink="/about">About the Developers</a>
   </div>
 </section>
 <section class="desktop-section">
-  <header class="desktop-header">
-    <app-header></app-header>
+  <app-header></app-header>
+  <!-- <header class="desktop-header">
+    <div class="header-comp">
+      
+    </div>
     <div class="tagline-box">
       <p class="tagline">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio
@@ -34,7 +45,20 @@
       </p>
     </div>
     <div class="home-search-d">
-      <app-search class="search-bar-d"></app-search>
+      <form
+        class="search-bar-d"
+        #searchForm="ngForm"
+        (submit)="searchForArtist(searchForm)"
+      >
+        <input
+          class="search-input-d"
+          type="text"
+          name="artist"
+          placeholder="Search for Artist"
+          ngModel
+        />
+        <button class="search-button-d"><i class="fas fa-search"></i></button>
+      </form>
     </div>
-  </header>
+  </header> -->
 </section>

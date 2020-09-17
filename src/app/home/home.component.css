@@ -5,9 +5,19 @@ main {
   width: 100vw;
   height: 100vh;
 }
+
+a,
+a:visited {
+  text-decoration: none;
+  color: white;
+}
 /* mobile view _____________________________ */
 .desktop-section {
   display: none;
+}
+.mobile-section {
+  position: relative;
+  min-height: 100vh;
 }
 .mobile-header {
   margin-bottom: 2vw;
@@ -50,12 +60,20 @@ main {
   margin-top: 4vh;
 }
 .favs {
-  margin-bottom: 2vw;
+  margin-bottom: 8vw;
 }
 
-.footer {
+.footer-m {
   display: flex;
   justify-content: center;
+  position: absolute;
+  width: 100vw;
+  bottom: 1vw;
+  height: 5vw;
+}
+
+.not-footer {
+  padding-bottom: 5vw;
 }
 /* tablet view _____________________________ */
 @media (min-width: 481px) and (max-width: 1024px) {
@@ -67,26 +85,83 @@ main {
   }
   .desktop-section {
     display: inline;
+    position: relative;
+    min-width: 100vh;
+  }
+
+  .desktop-header {
+    margin-bottom: 2vw;
+    /* position: relative; */
+    display: block;
+
+    min-height: 50vh;
+  }
+
+  .header-comp {
+    max-height: 27vh;
+    position: -webkit-sticky;
+    position: sticky;
+    margin-bottom: 2vw;
+  }
+
+  .tagline-box {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 32vw;
+    top: 29vh;
+    /* top: 29vh; */
+    margin: 1vw 0;
+    /* display: block; */
+    width: 40vw;
+  }
+  .tagline {
+    width: 40vw;
+    font: 2vw;
+    display: block;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 32vw;
   }
 
   .home-search-d {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    margin-top: 2vw;
-    left: 25vw;
-    top: 18vw;
+    position: -webkit-sticky;
+    position: sticky;
+    /* width: 100vw; */
+    height: 5vw;
+    left: 20vw;
+    top: 45vh;
   }
   .search-bar-d {
-    width: 40vw;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2vw;
+
+    /* height: 5vw; */
+    width: 50vw;
+  }
+
+  .search-input-d,
+  .search-input-d:focus {
     border: none;
     outline: none;
+    font-size: 2vw;
+    flex-grow: 9;
+    padding: 0;
+    margin: 0;
+    /* height: 5vw; */
   }
-  .tagline-box {
-    position: relative;
+
+  .search-button-d {
+    background-color: transparent;
+    border: none;
+    flex-grow: 1;
+    padding: 0;
+    margin-left: 2vw;
   }
-  .tagline {
-    position: absolute;
-    width: 30vw;
+
+  .fa-search {
+    font-size: 2vw;
   }
 }
