@@ -16,6 +16,10 @@ export class TurnUpService {
     return this.http.get(`${this.baseUrl}/favorite-artists`);
   };
 
+  getFavoriteVideos = (): any =>{
+    return this.http.get(`${this.baseUrl}/favorite-videos`)
+  }
+
   addToRecent = (artist: any): any => {
     return this.http.post(`${this.baseUrl}/recent`, artist);
   };
@@ -27,4 +31,8 @@ export class TurnUpService {
   deleteFromFavoriteArtists = (id: number): any => {
     return this.http.delete(`${this.baseUrl}/favorite-artists/${id}`);
   };
+
+  addToFavoriteVideos = (video: any): any=>{
+    return this.http.post(`${this.baseUrl}/favorite-videos`, video);
+  }
 }
