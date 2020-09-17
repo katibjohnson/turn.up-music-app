@@ -63,6 +63,13 @@ button:focus {
   margin: 5vw;
 }
 
+.bio {
+  height: 15vh;
+  width: 100vw;
+  overflow: scroll;
+  margin-bottom: 2vh;
+}
+
 /* tablet view ____________________________ */
 
 /* desktop view ____________________________ */
