@@ -1,9 +1,14 @@
 <div>
-    <youtube-player 
-    videoId="{{currentVideoId}}" 
-    suggestedQuality="highres" 
-    [height]="250" 
-    [width]="500"></youtube-player>
+<div #wrapper class="demo-youtube-player">
+  <youtube-player
+
+  videoId="{{currentVideoId}}" 
+  [width]="videoWidth" 
+  [height]="videoHeight"
+  suggestedQuality="highres" ></youtube-player>
+</div>
+
+
   <button (click)="nextVideo()">Next Video</button>
   <button (click)="previousVideo()">Previous Video</button>
   <button (click)="getArtistVideos()">contact youtube api</button>
