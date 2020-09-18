@@ -24,6 +24,10 @@ export class TurnUpService {
     return this.http.post(`${this.baseUrl}/recent`, artist);
   };
 
+  deleteFromRecent = (id: number): any=>{
+    return this.http.delete(`${this.baseUrl}/recent/${id}`)
+  }
+
   addToFavoriteArtists = (artist: any): any => {
     return this.http.post(`${this.baseUrl}/favorite-artists`, artist);
   };
