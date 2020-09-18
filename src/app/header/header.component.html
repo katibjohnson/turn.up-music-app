@@ -51,6 +51,9 @@
           alt="turn.up logo"
         />
       </div>
+      <div class="not-home-search-box-d" *ngIf="router.url != '/home'">
+        <app-search></app-search>
+      </div>
       <nav
         [class.home-nav-box-d]="router.url === '/home'"
         [class.not-home-nav-box-d]="router.url != '/home'"
@@ -79,7 +82,7 @@
         consequuntur aperiam!
       </p>
     </div>
-    <div class="search-box">
+    <div class="home-search-box-d" *ngIf="router.url === '/home'">
       <app-search></app-search>
     </div>
   </header>
