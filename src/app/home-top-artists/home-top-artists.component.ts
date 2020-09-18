@@ -9,6 +9,7 @@ import { TurnUpService } from '../turn-up.service';
   styleUrls: ['./home-top-artists.component.css'],
 })
 export class HomeTopArtistsComponent implements OnInit {
+  @Input() list: any[];
   constructor(public router: Router) {}
 
   ngOnInit(): void {}

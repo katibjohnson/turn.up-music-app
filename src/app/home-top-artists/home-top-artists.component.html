@@ -7,28 +7,11 @@
   ></app-artist-card>
 </div> -->
 
-<!-- <div class="artists" *ngIf="router.url === '/home'">
+<div class="artists">
   <app-artist-card
     (artistClicked)="goToArtist($event)"
     class="artist-card"
     *ngFor="let item of list.slice(0, 6)"
     [name]="item.name"
   ></app-artist-card>
-</div> -->
-<div class="artist-card" *ngFor="let item of topArtists; index as i">
-  <div (click)="goToArtist()">
-    <img
-      class="artist-img"
-      src="{{ sampleImageUrl }}"
-      default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png"
-    />
-  </div>
-  <button>
-    <i
-      [ngClass]="favoritesId ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
-      (click)="toggleFavorites()"
-    ></i>
-  </button>
-
-  <p (click)="goToArtist()" class="artist-name">{{ topArtists[index].name }}</p>
 </div>
