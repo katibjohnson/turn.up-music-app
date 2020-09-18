@@ -26,7 +26,6 @@ export class FavoritesComponent implements OnInit {
   getFavoriteVideos = ()=>{
     this.turnup.getFavoriteVideos().subscribe((response)=>{
       this.favoriteVideosList = response;
-      console.log(response);
     })
   }
 }

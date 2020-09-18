@@ -1,4 +1,4 @@
 <div>
-    <app-video-card *ngFor="let item of list" [videoInfo]= "item">
+    <app-video-card *ngFor="let item of list" [videoInfo]= "item" (videoClicked)="goToArtist($event)">
     </app-video-card>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-video-card',
@@ -7,9 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class VideoCardComponent implements OnInit {
   @Input() videoInfo: any;
+  @Output() videoClicked = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  goToArtist = ()=>{
+    this.videoClicked.emit(this.videoInfo);
   }
 
 }

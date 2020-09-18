@@ -28,9 +28,7 @@ export class VideoPlayerComponent implements OnInit {
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
     this.setVideo();
-    console.log(this.wrapper);
-    this.currentVideoIdIndex = 0;
-    this.currentVideoId = this.videoIdArray[this.currentVideoIdIndex];
+
   }
 
   ngAfterViewInit(): void{
@@ -48,8 +46,19 @@ export class VideoPlayerComponent implements OnInit {
   setVideo = ()=>{
     this.route.queryParamMap.subscribe((params)=>{
       if(params.get('videoId')){
-        console.log(params.get('videoId'));
+        let index = this.videoIdArray.findIndex(item=>item ===params.get('videoId'));
+        if(index = -1){
+          this.videoIdArray.push(params.get('videoId'));
+          this.currentVideoIdIndex = this.videoIdArray.length-1;
+        }
+        else{
+          this.currentVideoIdIndex = index;
+        }
       }
+      else{
+        this.currentVideoIdIndex = 0;
+      }
+      this.currentVideoId = this.videoIdArray[this.currentVideoIdIndex];
     })
   }
 
@@ -80,7 +89,6 @@ export class VideoPlayerComponent implements OnInit {
       response.items.forEach((item)=>{
         this.videoIdArray.push(item.id.videoId);
       })
-      console.log(this.videoIdArray);
       this.currentVideoIdIndex = 0;
       this.currentVideoId= this.videoIdArray[this.currentVideoIdIndex];
     })
@@ -89,9 +97,7 @@ export class VideoPlayerComponent implements OnInit {
   addVideoToFavorites = ()=>{
     // let artist = {title: "bladee & ECCO2K - Obedient", thumbnail: "https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg", artist:"Bladee", videoId: "2KkMyDSrBVI"};
     this.youtube.getVideoById(this.currentVideoId).subscribe((response)=>{
-      console.log(response.items[0]);
       let artist ={title: response.items[0].snippet.title, thumbnail: response.items[0].snippet.thumbnails.default.url, artist: this.artistName, videoId: this.currentVideoId};
-      console.log(artist);
       this.turnup.addToFavoriteVideos(artist).subscribe();
     })
 
