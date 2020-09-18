@@ -104,13 +104,14 @@ li {
   .top-header-box {
     display: flex;
     width: 100vw;
+    justify-content: space-between;
   }
   .logo {
     height: 15vh;
     width: auto;
   }
   .logo-large {
-    height: 40vh;
+    height: 38vh;
     width: auto;
   }
   .home-logo-box-d {
@@ -152,8 +153,8 @@ li {
   }
 
   .tagline-box {
-    height: 5vh;
-    margin-bottom: 5vh;
+    height: 2vh;
+    margin-bottom: 1vh;
   }
   .tagline {
     width: 50vw;

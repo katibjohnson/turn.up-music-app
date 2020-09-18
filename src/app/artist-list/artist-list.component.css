@@ -9,10 +9,18 @@
   margin: 3vw 2vw 0 2vw;
 }
 
+.artists-home-view {
+  display: none;
+}
+
 /* tablet view _______________________ */
-/* desktop view _______________________ */
+
 /* desktop view _____________________________ */
 @media screen and (min-width: 900px) {
+  .artists-home-view {
+    display: inline;
+  }
+
   .artists {
     display: flex;
     /* justify-content: space-evenly; */
