@@ -11,7 +11,6 @@ export class ArtistListComponent implements OnInit {
   @Input() list:any[];
   @Output() favoriteEvent = new EventEmitter<void>();
   
-  constructor(private router: Router) { }
 
 
   constructor(public router: Router) {}
