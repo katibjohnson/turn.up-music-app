@@ -74,14 +74,14 @@
         </ul>
       </nav>
     </div>
-    <div class="tagline-box" *ngIf="router.url === '/home'">
-      <p class="tagline">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio
-        suscipit in vero dolorum repellat laudantium hic aliquid. Doloremque
-        optio earum blanditiis officia perferendis dolores nobis alias facilis
-        consequuntur aperiam!
-      </p>
-    </div>
+
+    <p class="tagline" *ngIf="router.url === '/home'">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio
+      suscipit in vero dolorum repellat laudantium hic aliquid. Doloremque optio
+      earum blanditiis officia perferendis dolores nobis alias facilis
+      consequuntur aperiam!
+    </p>
+
     <div class="home-search-box-d" *ngIf="router.url === '/home'">
       <app-search></app-search>
     </div>

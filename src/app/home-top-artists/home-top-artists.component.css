@@ -23,6 +23,6 @@
 }
 .artist-card:nth-child(6) {
   position: relative;
-  left: 15vw;
-  top: 25vh;
+  /* left: 15vw;
+  top: 25vh; */
 }

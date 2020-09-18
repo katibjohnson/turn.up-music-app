@@ -1,7 +1,5 @@
-/* mobile view _______________________ */
 .artists {
   display: flex;
-  /* justify-content: space-evenly; */
   max-width: 100%;
 }
 
@@ -13,10 +11,11 @@
   display: none;
 }
 
-/* tablet view _______________________ */
-
+/* tablet view _____________________________ */
+@media only screen and (min-width: 768px) {
+}
 /* desktop view _____________________________ */
-@media screen and (min-width: 900px) {
+@media only screen and (min-width: 992px) {
   .artists-home-view {
     display: inline;
   }
