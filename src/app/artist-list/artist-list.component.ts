@@ -4,21 +4,20 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.css']
+  styleUrls: ['./artist-list.component.css'],
 })
 export class ArtistListComponent implements OnInit {
-  @Input() list:any[];
-  
-  constructor(private router: Router) { }
+  @Input() list: any[];
 
-  ngOnInit(): void {
-  }
+  constructor(public router: Router) {}
 
-  goToArtist = (artist: string)=>{
+  ngOnInit(): void {}
+
+  goToArtist = (artist: string) => {
     this.router.navigate(['artist'], {
-      queryParams:{
-        name:artist
-      }
-    })
-  }
+      queryParams: {
+        name: artist,
+      },
+    });
+  };
 }
