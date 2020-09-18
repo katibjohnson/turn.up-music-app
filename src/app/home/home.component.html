@@ -9,12 +9,13 @@
     </header>
     <div class="artists-box">
       <h1 class="headline">top artists</h1>
-      <app-artist-list class="artists" [list]="topArtists"></app-artist-list>
+      <app-artist-list class="artists" (favoriteEvent) = "getFavoriteArtists()" [list]="topArtists"></app-artist-list>
     </div>
     <div class="artists-box">
       <h1 class="headline">recently played</h1>
       <app-artist-list
         class="artists"
+        (favoriteEvent) = "getFavoriteArtists()"
         [list]="recentlyPlayed"
       ></app-artist-list>
     </div>
@@ -22,6 +23,7 @@
       <h1 class="headline">favorite artists</h1>
       <app-artist-list
         class="artists"
+        (favoriteEvent) = "updatePage()"
         [list]="favoriteArtists"
       ></app-artist-list>
     </div>

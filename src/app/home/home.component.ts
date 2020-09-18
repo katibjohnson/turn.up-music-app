@@ -28,6 +28,10 @@ export class HomeComponent implements OnInit {
     // this.getRecent();
     // this.getFavoriteArtists();
 
+  this.updatePage();
+  }
+
+  updatePage = ()=>{
     this.getRecent();
     this.getTopArtists();
     this.getFavoriteArtists();
@@ -35,42 +39,33 @@ export class HomeComponent implements OnInit {
 
   getRecent = (): void => {
     this.turnup.getRecent().subscribe((response) => {
-      console.log(response);
       this.recentlyPlayed = response;
     });
   };
 
   getFavoriteArtists = (): void => {
     this.turnup.getFavoriteArtists().subscribe((response) => {
-      console.log(response);
       this.favoriteArtists = response;
     });
   };
 
   getTopArtists = (): void => {
     this.lastFm.getTopArtists().subscribe((response) => {
-      for (let i = 0; i < 10; i++) {
-        this.topArtists.push(response.artists.artist[i]);
-      }
-      console.log(this.topArtists);
+
+      this.topArtists = response.artists.artist.slice(0, 10);
+
     });
   };
 
   searchForArtist = (searchTerm: string): any => {
-    this.lastFm.getArtists(searchTerm).subscribe((response) => {
-      console.log(response.results.artistmatches.artist);
-    });
+    this.lastFm.getArtists(searchTerm).subscribe();
   };
 
   getArtistInfo = (mbid: string): any => {
-    this.lastFm.getArtistInfoByMbid(mbid).subscribe((response) => {
-      console.log(response);
-    });
+    this.lastFm.getArtistInfoByMbid(mbid).subscribe();
   };
 
   getVideos = (searchTerm: string): any => {
-    this.youtube.getVideos(searchTerm).subscribe((response) => {
-      console.log(response.items);
-    });
+    this.youtube.getVideos(searchTerm).subscribe();
   };
 }

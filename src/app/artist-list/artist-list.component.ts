@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ArtistListComponent implements OnInit {
   @Input() list:any[];
+  @Output() favoriteEvent = new EventEmitter<void>();
   
   constructor(private router: Router) { }
 
@@ -20,5 +21,9 @@ export class ArtistListComponent implements OnInit {
         name:artist
       }
     })
+  }
+
+  updateFavorites =()=>{
+    this.favoriteEvent.emit();
   }
 }

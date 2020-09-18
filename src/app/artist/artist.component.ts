@@ -50,7 +50,6 @@ export class ArtistComponent implements OnInit {
   getArtistInfo = (): any=>{
     this.route.queryParamMap.subscribe((params)=>{
       this.lastFm.getArtistInfoByName(params.get('name')).subscribe((response)=>{
-        console.log(response)
         this.artistName = response.artist.name;
         this.biography = this.sliceBio(response.artist.bio.content);
         this.similar = response.artist.similar.artist;
