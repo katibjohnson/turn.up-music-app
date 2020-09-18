@@ -1,6 +1,6 @@
 <form
-  #searchForm="ngForm"
-  (submit)="searchForArtist(searchForm)"
+  #mobileSearchForm="ngForm"
+  (submit)="searchForArtist(mobileSearchForm)"
   [class.home-search-m]="router.url === '/home'"
   [class.not-home-search-m]="router.url != '/home'"
   class="mobile-search"
@@ -17,8 +17,8 @@
   </div>
 </form>
 <form
-  #searchForm="ngForm"
-  (submit)="searchForArtist(searchForm)"
+  #desktopSearchForm="ngForm"
+  (submit)="searchForArtist(desktopSearchForm)"
   [class.home-search-d]="router.url === '/home'"
   [class.not-home-search-d]="router.url != '/home'"
   class="desktop-search"

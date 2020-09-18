@@ -98,10 +98,12 @@ li {
   }
   .not-home-header-d {
     display: flex;
+    align-content: stretch;
   }
 
   .top-header-box {
     display: flex;
+    width: 100vw;
   }
   .logo {
     height: 15vh;
@@ -118,6 +120,7 @@ li {
   .not-home-logo-box-d {
     margin: 1vw 0;
     /* height: 38vh; */
+    flex-grow: 3;
   }
 
   .home-nav-box-d {
@@ -128,10 +131,11 @@ li {
   }
   .not-home-nav-box-d {
     display: flex;
-    margin: 1vw 0;
+    justify-content: flex-end;
+    margin: 2vh 0;
     font-size: 2.5vw;
     font-variant: small-caps;
-    position: relative;
+    flex-grow: 3;
   }
 
   li {
@@ -140,7 +144,7 @@ li {
   }
 
   .home-link {
-    height: 3vh;
+    height: 2vh;
   }
 
   .home-link:not(:last-child) {
@@ -158,8 +162,15 @@ li {
     bottom: 8vh;
     line-height: 20px;
   }
-  .search-box {
+  .home-search-box-d {
     display: flex;
     justify-content: center;
+  }
+
+  .not-home-search-box-d {
+    display: flex;
+    justify-content: center;
+    margin: 2vh 0 0 15vw;
+    flex-grow: 5;
   }
 }
