@@ -1,0 +1,28 @@
+.artists {
+  display: flex;
+  max-width: 95vw;
+  flex-wrap: wrap;
+  padding-top: 3vh;
+}
+
+.artist-card:nth-child(1) {
+  position: relative;
+  left: 2vw;
+}
+.artist-card:nth-child(2) {
+  position: relative;
+}
+.artist-card:nth-child(3) {
+  position: relative;
+}
+.artist-card:nth-child(4) {
+  position: relative;
+}
+.artist-card:nth-child(5) {
+  position: relative;
+}
+.artist-card:nth-child(6) {
+  position: relative;
+  left: 15vw;
+  top: 25vh;
+}
