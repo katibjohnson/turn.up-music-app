@@ -77,13 +77,18 @@ export class ArtistComponent implements OnInit {
     let recent = [];
     this.turnup.getRecent().subscribe((response)=>{
       recent = response;
-      if(!recent.some((item)=>{
-        return item.name ===this.artistName;
-      })){
-        this.turnup.addToRecent(artistEntry).subscribe((response)=>{
-          console.log(response);
-        });
+
+      recent.forEach(((item)=>{
+
+        if(item.name===this.artistName){
+          this.turnup.deleteFromRecent(item.id).subscribe();
+        }
+      }))
+      if(recent.length>10){
+        this.turnup.deleteFromRecent(recent[recent.length-1].id).subscribe();
       }
+
+      this.turnup.addToRecent(artistEntry).subscribe();
     })
 
   }

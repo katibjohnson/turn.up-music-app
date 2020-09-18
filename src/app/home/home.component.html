@@ -11,7 +11,7 @@
       <h1 class="headline">top artists</h1>
       <app-artist-list
         class="artists"
-        (favoriteEvent)="getFavoriteArtists()"
+        (favoriteEvent)="updatePage()"
         [list]="topArtists"
       ></app-artist-list>
     </div>
@@ -19,7 +19,7 @@
       <h1 class="headline">recently played</h1>
       <app-artist-list
         class="artists"
-        (favoriteEvent)="getFavoriteArtists()"
+        (favoriteEvent)="updatePage()"
         [list]="recentlyPlayed"
       ></app-artist-list>
     </div>
