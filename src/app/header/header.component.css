@@ -37,8 +37,6 @@ ul.nav li a i {
   display: none;
 }
 
-/* MOBILE VIEW --------------------------------------*/
-
 .desktop-header {
   display: none;
 }
@@ -81,10 +79,10 @@ li {
 }
 
 /* tablet view _____________________________ */
-@media (min-width: 481px) and (max-width: 899px) {
+@media only screen and (min-width: 768px) {
 }
 /* desktop view _____________________________ */
-@media screen and (min-width: 900px) {
+@media only screen and (min-width: 992px) {
   .desktop-header {
     display: inline;
   }
@@ -95,6 +93,7 @@ li {
   .home-header-d {
     display: flex;
     flex-direction: column;
+    max-width: 100vw;
   }
   .not-home-header-d {
     display: flex;
@@ -103,7 +102,7 @@ li {
 
   .top-header-box {
     display: flex;
-    width: 100vw;
+    max-width: 100vw;
     justify-content: space-between;
   }
   .logo {
@@ -140,8 +139,8 @@ li {
   }
 
   li {
-    padding: 0 1vw;
     line-height: 10px;
+    padding: 0 1vw;
   }
 
   .home-link {
@@ -152,16 +151,14 @@ li {
     border-right: solid 1px white;
   }
 
-  .tagline-box {
-    height: 2vh;
-    margin-bottom: 1vh;
-  }
   .tagline {
-    width: 50vw;
     position: relative;
     left: 25vw;
     bottom: 8vh;
     line-height: 20px;
+    margin: 0;
+    height: 2vh;
+    width: 50vw;
   }
   .home-search-box-d {
     display: flex;

@@ -11,7 +11,7 @@ a:visited {
   text-decoration: none;
   color: white;
 }
-/* mobile view _____________________________ */
+
 .desktop-section {
   display: none;
 }
@@ -75,11 +75,12 @@ a:visited {
 .not-footer {
   padding-bottom: 5vw;
 }
+
 /* tablet view _____________________________ */
-@media (min-width: 481px) and (max-width: 899px) {
+@media only screen and (min-width: 768px) {
 }
 /* desktop view _____________________________ */
-@media screen and (min-width: 900px) {
+@media only screen and (min-width: 992px) {
   .mobile-section {
     display: none;
   }

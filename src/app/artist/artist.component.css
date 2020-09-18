@@ -29,7 +29,6 @@ button:focus {
   color: #00ff48;
 }
 
-/* mobile view ____________________________ */
 .artist-headline {
   display: flex;
   justify-content: center;
@@ -70,6 +69,9 @@ button:focus {
   margin-bottom: 2vh;
 }
 
-/* tablet view ____________________________ */
-
-/* desktop view ____________________________ */
+/* tablet view _____________________________ */
+@media only screen and (min-width: 768px) {
+}
+/* desktop view _____________________________ */
+@media only screen and (min-width: 992px) {
+}

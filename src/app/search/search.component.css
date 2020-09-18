@@ -1,3 +1,11 @@
+button,
+button:focus {
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
 .desktop-search {
   display: none;
 }
@@ -31,13 +39,11 @@
   font-size: 4vw;
 }
 
-/* mobile view _____________________________ */
-
 /* tablet view _____________________________ */
-@media (min-width: 481px) and (max-width: 899px) {
+@media only screen and (min-width: 768px) {
 }
 /* desktop view _____________________________ */
-@media screen and (min-width: 900px) {
+@media only screen and (min-width: 992px) {
   .desktop-search {
     display: inline;
   }

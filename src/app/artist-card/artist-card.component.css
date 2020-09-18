@@ -6,31 +6,36 @@
   max-width: 100%;
 }
 
-button,
-button:focus {
+.button,
+.button:focus {
   outline: none;
   border: none;
   background: transparent;
   padding: 0;
   margin: 0;
+  height: 0;
+  width: 0;
 }
 .artist-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  width: 29vw;
 }
 
 .fa-plus-circle,
 .fa-minus-circle {
   color: white;
-  position: absolute;
-
+  font-size: 6.5vw;
+  position: relative;
+  bottom: 4vh;
+  left: 8vw;
   opacity: 0.8;
+  border-radius: 50%;
   -webkit-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.75);
-  border-radius: 50%;
 }
 
 .fa-plus-circle:active,
@@ -44,28 +49,22 @@ button:focus {
   hyphens: auto;
   text-align: center;
   line-height: 12px;
-}
-
-/* mobile view ____________________ */
-
-.artist-card {
-  width: 29vw;
-}
-.artist-name {
   font-size: 3.5vw;
   margin: 2vw 0;
 }
 
-.fa-plus-circle,
-.fa-minus-circle {
-  font-size: 6vw;
-  top: 22vw;
-  right: 1vw;
+/* tablet view _____________________________ */
+@media only screen and (min-width: 768px) {
 }
-/* tablet view ____________________ */
+/* desktop view _____________________________ */
+@media only screen and (min-width: 992px) {
+  .artist-name {
+    font-size: 2vw;
+    margin: 2vw 0;
+  }
 
-/* desktop view ____________________ */
-
-/* .fa-plus-circle:hover {
-  opacity: 1;
-} */
+  .fa-plus-circle,
+  .fa-minus-circle {
+    font-size: 2.5vw;
+  }
+}
