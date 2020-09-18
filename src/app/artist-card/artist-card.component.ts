@@ -11,6 +11,7 @@ import { TurnUpService } from '../turn-up.service';
 export class ArtistCardComponent implements OnInit {
   @Input() name: string;
   @Output() artistClicked = new EventEmitter<string>();
+  @Output() favoriteEvent = new EventEmitter<void>();
   artistInfo: any = {};
   sampleImageUrl: string;
   favoritesId: number;
@@ -24,7 +25,6 @@ export class ArtistCardComponent implements OnInit {
 
   getArtistInfo = (name: string): any => {
     this.lastFm.getArtistInfoByName(name).subscribe((response) => {
-      //console.log(response.artist);
       this.artistInfo = response.artist;
     });
   };
@@ -72,6 +72,7 @@ export class ArtistCardComponent implements OnInit {
         this.setInFavorites();
       })
     }
+    this.favoriteEvent.emit();
 
   }
 

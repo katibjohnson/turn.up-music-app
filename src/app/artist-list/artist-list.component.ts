@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./artist-list.component.css'],
 })
 export class ArtistListComponent implements OnInit {
-  @Input() list: any[];
+
+  @Input() list:any[];
+  @Output() favoriteEvent = new EventEmitter<void>();
+  
+  constructor(private router: Router) { }
+
 
   constructor(public router: Router) {}
 
@@ -15,9 +20,14 @@ export class ArtistListComponent implements OnInit {
 
   goToArtist = (artist: string) => {
     this.router.navigate(['artist'], {
-      queryParams: {
-        name: artist,
-      },
-    });
-  };
+      queryParams:{
+        name:artist
+      }
+    })
+  }
+
+  updateFavorites =()=>{
+    this.favoriteEvent.emit();
+  }
+
 }

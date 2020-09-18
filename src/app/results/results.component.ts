@@ -21,7 +21,6 @@ export class ResultsComponent implements OnInit {
     this.route.queryParamMap.subscribe((params)=>{
       this.lastFm.getArtists(params.get('artist')).subscribe((response)=>{
         this.searchResults = response.results.artistmatches.artist;
-        console.log(this.searchResults);
       })
     })
   }
