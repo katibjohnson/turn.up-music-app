@@ -3,15 +3,7 @@
     (artistClicked)="goToArtist($event)"
     (favoriteEvent)="updateFavorites()"
     class="artist-card"
-    *ngFor="let item of list.slice(0, 10)"
+    *ngFor="let item of list | slice: 0:10"
     [name]="item.name"
   ></app-artist-card>
 </div>
-<!-- <div class="artists-home-view" *ngIf="router.url === '/home'">
-  <app-artist-card
-    (artistClicked)="goToArtist($event)"
-    class="artist-card"
-    *ngFor="let item of list.slice(0, 10)"
-    [name]="item.name"
-  ></app-artist-card>
-</div> -->

@@ -1,8 +1,9 @@
-<div class="artists">
+<div class="large-card">
   <app-artist-card
     (artistClicked)="goToArtist($event)"
     class="artist-card"
-    *ngFor="let item of list.slice(0, 6)"
+    *ngFor="let item of list.slice(0, 9)"
     [name]="item.name"
+    cdkDrag
   ></app-artist-card>
 </div>

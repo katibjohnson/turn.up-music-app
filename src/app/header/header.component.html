@@ -1,6 +1,45 @@
-<section class="mobile-header">
-  <header class="header">
-    <div class="logo-box">
+<header class="mobile-header">
+  <div class="logo-box">
+    <img
+      routerLink="/home"
+      routerLinkActive="logo-large"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="logo"
+      src="assets/turnup_white.png"
+      alt="turn.up logo"
+    />
+  </div>
+  <div class="right-header">
+    <app-search class="search-box" *ngIf="router.url != '/home'"></app-search>
+
+    <nav class="nav-box">
+      <ul class="nav-list">
+        <li [ngClass]="{ 'home-link': router.url != '/home' }">
+          <a
+            class="home"
+            routerLink="/home"
+            routerLinkActive="hidden"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >home</a
+          >
+        </li>
+        <li class="fav-link">
+          <a routerLink="/favorites" routerLinkActive="active">favorites</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<header
+  [class.home-header-d]="router.url === '/home'"
+  [class.not-home-header-d]="router.url != '/home'"
+>
+  <div class="top-header-box">
+    <div
+      [class.home-logo-box-d]="router.url === '/home'"
+      [class.not-home-logo-box-d]="router.url != '/home'"
+    >
       <img
         routerLink="/home"
         routerLinkActive="logo-large"
@@ -10,80 +49,38 @@
         alt="turn.up logo"
       />
     </div>
-    <div class="right-header">
-      <app-search class="search-box" *ngIf="router.url != '/home'"></app-search>
-
-      <nav class="nav-box">
-        <ul class="nav-list">
-          <li [ngClass]="{ 'home-link': router.url != '/home' }">
-            <a
-              class="home"
-              routerLink="/home"
-              routerLinkActive="hidden"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >home</a
-            >
-          </li>
-          <li class="fav-link">
-            <a routerLink="/favorites" routerLinkActive="active">favorites</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-</section>
-<section class="desktop-header">
-  <header
-    [class.home-header-d]="router.url === '/home'"
-    [class.not-home-header-d]="router.url != '/home'"
-  >
-    <div class="top-header-box">
-      <div
-        [class.home-logo-box-d]="router.url === '/home'"
-        [class.not-home-logo-box-d]="router.url != '/home'"
-      >
-        <img
-          routerLink="/home"
-          routerLinkActive="logo-large"
-          [routerLinkActiveOptions]="{ exact: true }"
-          class="logo"
-          src="assets/turnup_white.png"
-          alt="turn.up logo"
-        />
-      </div>
-      <div class="not-home-search-box-d" *ngIf="router.url != '/home'">
-        <app-search></app-search>
-      </div>
-      <nav
-        [class.home-nav-box-d]="router.url === '/home'"
-        [class.not-home-nav-box-d]="router.url != '/home'"
-      >
-        <ul class="nav-list">
-          <li [ngClass]="{ 'home-link': router.url != '/home' }">
-            <a
-              class="home"
-              routerLink="/home"
-              routerLinkActive="hidden"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >home</a
-            >
-          </li>
-          <li class="fav-link">
-            <a routerLink="/favorites" routerLinkActive="active">favorites</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-    <p class="tagline" *ngIf="router.url === '/home'">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio
-      suscipit in vero dolorum repellat laudantium hic aliquid. Doloremque optio
-      earum blanditiis officia perferendis dolores nobis alias facilis
-      consequuntur aperiam!
-    </p>
-
-    <div class="home-search-box-d" *ngIf="router.url === '/home'">
+    <div class="not-home-search-box-d" *ngIf="router.url != '/home'">
       <app-search></app-search>
     </div>
-  </header>
-</section>
+    <nav
+      [class.home-nav-box-d]="router.url === '/home'"
+      [class.not-home-nav-box-d]="router.url != '/home'"
+    >
+      <ul class="nav-list">
+        <li [ngClass]="{ 'home-link': router.url != '/home' }">
+          <a
+            class="home"
+            routerLink="/home"
+            routerLinkActive="hidden"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >home</a
+          >
+        </li>
+        <li class="fav-link">
+          <a routerLink="/favorites" routerLinkActive="active">favorites</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <p class="tagline" *ngIf="router.url === '/home'">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio
+    suscipit in vero dolorum repellat laudantium hic aliquid. Doloremque optio
+    earum blanditiis officia perferendis dolores nobis alias facilis
+    consequuntur aperiam!
+  </p>
+
+  <div class="home-search-box-d" *ngIf="router.url === '/home'">
+    <app-search></app-search>
+  </div>
+</header>

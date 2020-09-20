@@ -5,13 +5,20 @@ import { Router } from '@angular/router';
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
   styleUrls: ['./artist-list.component.css'],
+  styles: [
+    `
+      :host-context(.vertical) .artists {
+        flex-direction: column;
+        align-items: center;
+        height: 43vh;
+        width: 12vw;
+      }
+    `,
+  ],
 })
 export class ArtistListComponent implements OnInit {
-
-  @Input() list:any[];
+  @Input() list: any[];
   @Output() favoriteEvent = new EventEmitter<void>();
-  
-
 
   constructor(public router: Router) {}
 
@@ -19,14 +26,13 @@ export class ArtistListComponent implements OnInit {
 
   goToArtist = (artist: string) => {
     this.router.navigate(['artist'], {
-      queryParams:{
-        name:artist
-      }
-    })
-  }
+      queryParams: {
+        name: artist,
+      },
+    });
+  };
 
-  updateFavorites =()=>{
+  updateFavorites = () => {
     this.favoriteEvent.emit();
-  }
-
+  };
 }
