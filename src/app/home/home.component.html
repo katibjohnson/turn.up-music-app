@@ -1,43 +1,51 @@
 <section class="mobile-section">
-  <div class="not-footer">
-    <header class="mobile-header">
-      <app-header></app-header>
-
-      <div class="home-search-m">
-        <app-search class="search-bar-m"></app-search>
-      </div>
-    </header>
-    <div class="artists-box">
-      <h1 class="headline">top artists</h1>
-      <app-artist-list
-        class="artists"
-        (favoriteEvent)="updatePage()"
-        [list]="topArtists"
-      ></app-artist-list>
-    </div>
-    <div class="artists-box">
-      <h1 class="headline">recently played</h1>
-      <app-artist-list
-        class="artists"
-        (favoriteEvent)="updatePage()"
-        [list]="recentlyPlayed"
-      ></app-artist-list>
-    </div>
-    <div class="artists-box favs">
-      <h1 class="headline">favorite artists</h1>
-      <app-artist-list
-        class="artists"
-        (favoriteEvent)="updatePage()"
-        [list]="favoriteArtists"
-      ></app-artist-list>
-    </div>
+  <app-header></app-header>
+  <div class="home-search-m">
+    <app-search class="search-bar-m"></app-search>
   </div>
+
+  <div class="artists-box">
+    <h1 class="headline">top artists</h1>
+    <app-artist-list
+      class="artists"
+      (favoriteEvent)="updatePage()"
+      [list]="topArtists"
+    ></app-artist-list>
+  </div>
+  <div class="artists-box">
+    <h1 class="headline">recently played</h1>
+    <app-artist-list
+      class="artists"
+      (favoriteEvent)="updatePage()"
+      [list]="recentlyPlayed"
+    ></app-artist-list>
+  </div>
+  <div class="artists-box">
+    <h1 class="headline">favorite artists</h1>
+    <app-artist-list
+      class="artists"
+      (favoriteEvent)="updatePage()"
+      [list]="favoriteArtists"
+    ></app-artist-list>
+  </div>
+
   <div class="footer-m">
     <a routerLink="/about">About the Developers</a>
   </div>
 </section>
 <section class="desktop-section">
   <app-header></app-header>
+  <div class="vertical favs-box">
+    <app-artist-list [list]="favoriteArtists"></app-artist-list>
+  </div>
 
-  <app-home-top-artists [list]="topArtists"></app-home-top-artists>
+  <p class="recently-viewed">RECENTLY VIEWED</p>
+  <div class="vertical recent-box">
+    <app-artist-list [list]="recentlyPlayed"></app-artist-list>
+  </div>
+
+  <app-home-top-artists
+    class="top-artists-d"
+    [list]="topArtists"
+  ></app-home-top-artists>
 </section>

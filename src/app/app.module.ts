@@ -6,7 +6,6 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-
 import { ResultsComponent } from './results/results.component';
 import { ArtistComponent } from './artist/artist.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,8 +16,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { ResultEntryComponent } from './result-entry/result-entry.component';
 import { HomeTopArtistsComponent } from './home-top-artists/home-top-artists.component';
 import { AboutComponent } from './about/about.component';
-import { FooterComponent } from './footer/footer.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ImagePreloadDirective } from './image-preload.directive';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoCardComponent } from './video-card/video-card.component';
@@ -38,8 +36,6 @@ import { VideoListComponent } from './video-list/video-list.component';
     ResultEntryComponent,
     HomeTopArtistsComponent,
     AboutComponent,
-    FooterComponent,
-
     ImagePreloadDirective,
 
     VideoPlayerComponent,
@@ -49,6 +45,7 @@ import { VideoListComponent } from './video-list/video-list.component';
     VideoListComponent,
   ],
   imports: [
+    DragDropModule,
     BrowserModule,
     HttpClientModule,
     YouTubePlayerModule,

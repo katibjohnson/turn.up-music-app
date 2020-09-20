@@ -1,28 +1,50 @@
-.artists {
+.large-card {
   display: flex;
   max-width: 95vw;
   flex-wrap: wrap;
-  padding-top: 3vh;
 }
 
 .artist-card:nth-child(1) {
   position: relative;
-  left: 2vw;
+  bottom: 6vh;
+  left: 12vw;
 }
 .artist-card:nth-child(2) {
   position: relative;
+  top: 13vh;
+  right: 10vw;
 }
 .artist-card:nth-child(3) {
   position: relative;
+  top: 27vh;
+  right: 8vw;
 }
 .artist-card:nth-child(4) {
   position: relative;
+  top: 15vh;
+  right: 6vw;
 }
 .artist-card:nth-child(5) {
   position: relative;
+  top: 28vh;
 }
 .artist-card:nth-child(6) {
   position: relative;
-  /* left: 15vw;
-  top: 25vh; */
+  top: 2vh;
+  right: 16vw;
+}
+.artist-card:nth-child(7) {
+  position: relative;
+  top: 7vh;
+  right: 12vw;
+}
+.artist-card:nth-child(8) {
+  position: relative;
+  top: 25vh;
+  right: 10vw;
+}
+.artist-card:nth-child(9) {
+  position: relative;
+  bottom: 19vh;
+  left: 70vw;
 }

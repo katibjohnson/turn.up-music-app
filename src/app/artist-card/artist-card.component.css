@@ -57,14 +57,20 @@
 @media only screen and (min-width: 768px) {
 }
 /* desktop view _____________________________ */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1025px) {
+  .artist-card {
+    width: 8vw;
+  }
+
   .artist-name {
-    font-size: 2vw;
-    margin: 2vw 0;
+    font-size: 1.3vw;
+    margin: 0;
   }
 
   .fa-plus-circle,
   .fa-minus-circle {
-    font-size: 2.5vw;
+    font-size: 2vw;
+    bottom: 3vh;
+    left: 2vw;
   }
 }

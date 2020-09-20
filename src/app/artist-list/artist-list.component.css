@@ -1,6 +1,7 @@
 .artists {
   display: flex;
   max-width: 100%;
+  flex-direction: row;
 }
 
 .artist-card {
@@ -15,22 +16,8 @@
 @media only screen and (min-width: 768px) {
 }
 /* desktop view _____________________________ */
-@media only screen and (min-width: 992px) {
-  .artists-home-view {
-    display: inline;
-  }
-
-  .artists {
-    display: flex;
-    /* justify-content: space-evenly; */
-    max-width: 100%;
-  }
-
+@media only screen and (min-width: 1025px) {
   .artist-card {
-    margin: 3vw 2vw 0 2vw;
-  }
-
-  .artist-card:nth-child(2) {
-    background: red;
+    margin: 1vh;
   }
 }

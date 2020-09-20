@@ -1,12 +1,33 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LastFmService } from '../last-fm.service';
-import {ImagePreloadDirective} from '../image-preload.directive';
+import { ImagePreloadDirective } from '../image-preload.directive';
 import { TurnUpService } from '../turn-up.service';
 
 @Component({
   selector: 'app-artist-card',
   templateUrl: './artist-card.component.html',
   styleUrls: ['./artist-card.component.css'],
+  styles: [
+    `
+      :host-context(.large-card) .artist-card {
+        width: 11vw;
+      }
+      :host-context(.large-card) .fa-plus-circle {
+        font-size: 2vw;
+        bottom: 5vh;
+        left: 4vw;
+      }
+      :host-context(.large-card) .fa-minus-circle {
+        font-size: 2vw;
+        bottom: 5vh;
+        left: 4vw;
+      }
+      :host-context(.large-card) .artist-name {
+        font-size: 1.5vw;
+        margin: 1vh 0;
+      }
+    `,
+  ],
 })
 export class ArtistCardComponent implements OnInit {
   @Input() name: string;
@@ -39,44 +60,36 @@ export class ArtistCardComponent implements OnInit {
     });
   };
 
-  goToArtist = ()=>{
+  goToArtist = () => {
     this.artistClicked.emit(this.name);
-  }
+  };
 
-  setInFavorites=()=>{
+  setInFavorites = () => {
     let favoriteArtists: any = [];
     this.favoritesId = 0;
-    this.turnup.getFavoriteArtists().subscribe((response)=>{
+    this.turnup.getFavoriteArtists().subscribe((response) => {
       favoriteArtists = response;
-      favoriteArtists.forEach((item)=>{
-        if(item.name === this.name)
-        {
+      favoriteArtists.forEach((item) => {
+        if (item.name === this.name) {
           this.favoritesId = item.id;
         }
-      })
-     
-    })
-  }
+      });
+    });
+  };
 
-  toggleFavorites = ()=>{
-    if(this.favoritesId)
-    {
-      this.turnup.deleteFromFavoriteArtists(this.favoritesId).subscribe((response)=>{
-        this.favoritesId = 0;
-      })
-    }
-    else{
-      let artistEntry = {name: this.name};
-      this.turnup.addToFavoriteArtists(artistEntry).subscribe((response)=>{
-
+  toggleFavorites = () => {
+    if (this.favoritesId) {
+      this.turnup
+        .deleteFromFavoriteArtists(this.favoritesId)
+        .subscribe((response) => {
+          this.favoritesId = 0;
+        });
+    } else {
+      let artistEntry = { name: this.name };
+      this.turnup.addToFavoriteArtists(artistEntry).subscribe((response) => {
         this.setInFavorites();
-      })
+      });
     }
     this.favoriteEvent.emit();
-
-  }
-
-
-
+  };
 }
-
