@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { TurnUpService } from '../turn-up.service';
 
 @Component({
   selector: 'app-video-list',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class VideoListComponent implements OnInit {
   @Input() list:any[];
-  constructor(private router: Router) { }
+  @Output() favoriteVideoEvent = new EventEmitter<void>();
+  constructor(private router: Router, private turnup: TurnUpService) { }
 
   ngOnInit(): void {
   }
@@ -22,4 +24,8 @@ export class VideoListComponent implements OnInit {
     })
   }
 
+  
+  updateFavorites = ()=>{
+    this.favoriteVideoEvent.emit();
+  }
 }
