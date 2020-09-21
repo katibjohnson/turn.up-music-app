@@ -21,6 +21,7 @@ export class ArtistComponent implements OnInit {
   favoriteButtonText: string;
   videoArray = [{title: "bladee & ECCO2K - Obedient", thumbnail: "https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg", artist:"Bladee", videoId: "2KkMyDSrBVI"}];
   currentVideoIndex: number;
+  currentVideoId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +32,7 @@ export class ArtistComponent implements OnInit {
 
   ngOnInit(): void {
     this.getArtistInfo();
+    this.setVideo();
   }
 
   sliceBio = (bio: string) => {
@@ -126,5 +128,51 @@ export class ArtistComponent implements OnInit {
     }
   };
 
+  setVideo = ()=>{
+    this.route.queryParamMap.subscribe((params)=>{
+      if(params.get('videoId')){
+        let index = this.videoArray.findIndex(item=>item.videoId===params.get('videoId'));
+        if(index === -1)
+        {
+          let favoriteVideos = [];
+          this.turnup.getFavoriteVideos().subscribe((response)=>{
+            favoriteVideos = response;
+            let video = favoriteVideos.find((item)=>{
+              return item.videoid === params.get('videoId');
+            })
+            this.videoArray.push({videoId: video.videoid, title: video.title, thumbnail: video.thumbnail, artist: video.artist});
+            this.currentVideoIndex = this.videoArray.length-1;
+            this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+          })
+        }
+        else{
+          this.currentVideoIndex = index;
+          this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+        }
+      }
+      else{
+        this.currentVideoIndex = 0;
+        this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+      }
+
+    })
+  }
+
+  getArtistVideos = ()=>{
+    this.youtube.getVideos(this.artistName).subscribe((response)=>{
+      this.videoArray = [];
+      response.items.forEach((item)=>{
+        this.videoArray.push({title: item.snippet.title, artist:this.artistName, videoId: item.id.videoId, thumbnail: item.snippet.thumbnails.default.url});
+      })
+      this.currentVideoIndex = 0;
+      this.currentVideoId= this.videoArray[this.currentVideoIndex].videoId;
+
+    
+    })
+  }
+
+  addVideoToFavorites = ()=>{
+    this.turnup.addToFavoriteVideos(this.videoArray[this.currentVideoIndex]).subscribe();
+  }
 
 }
