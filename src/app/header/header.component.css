@@ -9,9 +9,7 @@ a:visited {
 }
 .mobile-header {
   display: flex;
-  margin: 0 2vw;
-  align-items: flex-start;
-  height: 15vh;
+  padding: 0 2vw;
 }
 
 .nav-list {

@@ -12,9 +12,13 @@ export class VideoPlayerComponent implements OnInit {
   @ViewChild('wrapper') wrapper: ElementRef<HTMLDivElement>;
   @Input() artistName;
   @Output() updateVideosEvent = new EventEmitter<void>() ;
-  currentVideoIdIndex: number;
+  currentVideoIndex: number;
+  previousVideoIndex: number;
+  nextVideoIndex: number;
+  previousVideoThumbnail: string;
+  nextVideoThumbnail: string;
   currentVideoId: string;
-  videoIdArray: string[] = ['2KkMyDSrBVI','ivCY3Ec4iaU','pok8H_KF1FA', 'pcJo0tIWybY', '4aeETEoNfOg'];
+  videoArray = [{title: "bladee & ECCO2K - Obedient", thumbnail: "https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg", artist:"Bladee", videoId: "2KkMyDSrBVI"}];
   videoWidth: number | undefined;
   videoHeight: number | undefined;
  
@@ -43,63 +47,105 @@ export class VideoPlayerComponent implements OnInit {
     this._changeDetectorRef.detectChanges();
   }
 
+  nextAndPrevSetter = ()=>{
+    this.nextVideoIndex = this.currentVideoIndex;
+    this.previousVideoIndex = this.currentVideoIndex;
+    if(this.nextVideoIndex < this.videoArray.length-1){
+      this.nextVideoIndex++;
+    }
+    else{
+      this.nextVideoIndex = 0;
+    }
+    if(this.previousVideoIndex > 0){
+      this.previousVideoIndex--;
+    }
+    else{
+      this.previousVideoIndex = this.videoArray.length-1;
+    }
+    console.log(this.currentVideoIndex);
+  
+    console.log(this.previousVideoIndex);
+    console.log(this.nextVideoIndex);
+    this.previousVideoThumbnail = this.videoArray[this.previousVideoIndex].thumbnail;
+    this.nextVideoThumbnail = this.videoArray[this.nextVideoIndex].thumbnail;
+
+
+  }
+
   setVideo = ()=>{
     this.route.queryParamMap.subscribe((params)=>{
       if(params.get('videoId')){
-        let index = this.videoIdArray.findIndex(item=>item ===params.get('videoId'));
-        if(index = -1){
-          this.videoIdArray.push(params.get('videoId'));
-          this.currentVideoIdIndex = this.videoIdArray.length-1;
+        let index = this.videoArray.findIndex(item=>item.videoId ===params.get('videoId'));
+        if(index === -1){
+          let favoriteVideos = [];
+          this.turnup.getFavoriteVideos().subscribe((response)=>{
+            favoriteVideos= response;
+            let video = favoriteVideos.find((item)=>{
+              return item.videoid === params.get('videoId');
+            });
+            this.videoArray.push({videoId: video.videoid, title: video.title, thumbnail: video.thumbnail, artist: video.artist});
+            this.currentVideoIndex = this.videoArray.length-1;
+            this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+            this.nextAndPrevSetter();
+          })
+
         }
         else{
-          this.currentVideoIdIndex = index;
+          this.currentVideoIndex = index;
+          this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+          this.nextAndPrevSetter();
         }
       }
       else{
-        this.currentVideoIdIndex = 0;
+        this.currentVideoIndex = 0;
+        this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+        this.nextAndPrevSetter();
       }
-      this.currentVideoId = this.videoIdArray[this.currentVideoIdIndex];
+
     })
   }
 
   nextVideo = ()=>{
-    if(this.currentVideoIdIndex<this.videoIdArray.length-1){
-      this.currentVideoIdIndex++;
+    if(this.currentVideoIndex<this.videoArray.length-1){
+      this.currentVideoIndex++;
     }
     else{
-      this.currentVideoIdIndex = 0;
+      this.currentVideoIndex = 0;
     }
-    this.currentVideoId= this.videoIdArray[this.currentVideoIdIndex];
+    this.nextAndPrevSetter();
+    this.currentVideoId= this.videoArray[this.currentVideoIndex].videoId;
   }
 
   previousVideo = ()=>{
-    if(this.currentVideoIdIndex>0){
-      this.currentVideoIdIndex--;
+    if(this.currentVideoIndex>0){
+      this.currentVideoIndex--;
     }
     else{
-      this.currentVideoIdIndex = this.videoIdArray.length-1;
+      this.currentVideoIndex = this.videoArray.length-1;
     }
-    this.currentVideoId= this.videoIdArray[this.currentVideoIdIndex];
+    this.nextAndPrevSetter();
+    this.currentVideoId= this.videoArray[this.currentVideoIndex].videoId;
 
   }
 
   getArtistVideos = ()=>{
     this.youtube.getVideos(this.artistName).subscribe((response)=>{
-      this.videoIdArray = [];
+      this.videoArray = [];
       response.items.forEach((item)=>{
-        this.videoIdArray.push(item.id.videoId);
+        this.videoArray.push({title: item.snippet.title, artist:this.artistName, videoId: item.id.videoId, thumbnail: item.snippet.thumbnails.default.url});
       })
-      this.currentVideoIdIndex = 0;
-      this.currentVideoId= this.videoIdArray[this.currentVideoIdIndex];
+      console.log(this.videoArray);
+      this.currentVideoIndex = 0;
+      this.currentVideoId= this.videoArray[this.currentVideoIndex].videoId;
+      this.nextAndPrevSetter();
+
+    
     })
   }
 
   addVideoToFavorites = ()=>{
-    // let artist = {title: "bladee & ECCO2K - Obedient", thumbnail: "https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg", artist:"Bladee", videoId: "2KkMyDSrBVI"};
-    this.youtube.getVideoById(this.currentVideoId).subscribe((response)=>{
-      let artist ={title: response.items[0].snippet.title, thumbnail: response.items[0].snippet.thumbnails.default.url, artist: this.artistName, videoId: this.currentVideoId};
-      this.turnup.addToFavoriteVideos(artist).subscribe();
-    })
+
+    this.turnup.addToFavoriteVideos(this.videoArray[this.currentVideoIndex]).subscribe();
 
   }
 

@@ -1,3 +1,19 @@
+.artists {
+    display: flex;
+    max-width: 100%;
+    flex-direction: row;
+  }
+  
+  .artist-card {
+    margin: 3vw 2vw 0 2vw;
+  }
+  
+  .artists-home-view {
+    display: none;
+  }
+  
+
+
 /* tablet view _____________________________ */
 @media only screen and (min-width: 768px) {
 }

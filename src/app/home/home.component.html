@@ -4,7 +4,7 @@
     <app-search class="search-bar-m"></app-search>
   </div>
 
-  <div class="artists-box">
+  <div class="artists-box top">
     <h1 class="headline">top artists</h1>
     <app-artist-list
       class="artists"
@@ -48,4 +48,7 @@
     class="top-artists-d"
     [list]="topArtists"
   ></app-home-top-artists>
+  <div class="footer-d">
+    <a routerLink="/about">About the Developers</a>
+  </div>
 </section>
