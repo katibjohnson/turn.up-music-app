@@ -11,13 +11,13 @@ export class YoutubeService {
 
   getVideos = (searchTerm: string): any => {
     return this.http.get(
-      `https://www.googleapis.com/youtube/v3/search?key=****&part=snippet&type=video&q=${searchTerm}`
+      `https://www.googleapis.com/youtube/v3/search?key=AIzaSyAd_BLIxcKm3bXhSGBJ47vS-XEVUYgtrk8&part=snippet&type=video&q=${searchTerm}`
     );
   };
 
   getVideoById = (videoId: string): any => {
     return this.http.get(
-      `https://www.googleapis.com/youtube/v3/videos?key=****&part=snippet&id=${videoId}`
+      `https://www.googleapis.com/youtube/v3/videos?key=AIzaSyAd_BLIxcKm3bXhSGBJ47vS-XEVUYgtrk8&part=snippet&id=${videoId}`
     );
   };
 }

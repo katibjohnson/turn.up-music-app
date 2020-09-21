@@ -1,23 +1,23 @@
 <app-header></app-header>
-  <div class="artist-headline">
-    <img
-      class="artist-img"
-      src="{{ imgUrl }}"
-      default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png"
-    />
-    <button class="icon">
-      <i
-        [ngClass]="favoritesId ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
-        (click)="toggleFavorites()"
-      ></i>
-    </button>
-    <h1 class="artist-name">{{ artistName }}</h1>
-    <button class="bio-btn" (click)="toggleBio()">
-      ARTIST BIO<i
-        [ngClass]="bioExpand ? 'fas fa-minus-square' : 'fas fa-expand'"
-      ></i>
-    </button>
-  </div>
+<div class="artist-headline">
+  <img
+    class="artist-img"
+    src="{{ imgUrl }}"
+    default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png"
+  />
+  <button class="icon">
+    <i
+      [ngClass]="favoritesId ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
+      (click)="toggleFavorites()"
+    ></i>
+  </button>
+  <h1 class="artist-name">{{ artistName }}</h1>
+  <button class="bio-btn icon" (click)="toggleBio()">
+    ARTIST BIO<i
+      [ngClass]="bioExpand ? 'fas fa-minus-square' : 'fas fa-expand'"
+    ></i>
+  </button>
+</div>
 <app-video-player [currentVideoId]="currentVideoId"></app-video-player>
 <div class="bio-box" [ngClass]="{ transform: bioExpand }">
   <p class="bio-p" [ngClass]="{ transform: bioExpand }">{{ biography }}</p>
@@ -25,10 +25,10 @@
 <button (click)="getArtistVideos()">contact youtube api</button>
 <button (click)="addVideoToFavorites()">favorite</button>
 <app-video-list [list]="videoArray"></app-video-list>
-  <div class="artists-box">
-    <h2>Similar Artists</h2>
-    <app-artist-list class="artists" [list]="similar"></app-artist-list>
-  </div>
-  <div class="footer-m" [ngClass]="{ hidden: bioExpand }">
-    <a routerLink="/about">About the Developers</a>
-  </div>
+<div class="artists-box">
+  <h2>Similar Artists</h2>
+  <app-artist-list class="artists" [list]="similar"></app-artist-list>
+</div>
+<div class="footer-m" [ngClass]="{ hidden: bioExpand }">
+  <a routerLink="/about">About the Developers</a>
+</div>

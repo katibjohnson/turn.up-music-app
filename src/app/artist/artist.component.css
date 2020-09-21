@@ -16,8 +16,8 @@ a:visited {
   box-shadow: 2px 2px 19px 9px rgba(255, 255, 255, 0.49);
 }
 
-button,
-button:focus {
+.icon,
+.icon:focus {
   outline: none;
   border: none;
   background: transparent;
