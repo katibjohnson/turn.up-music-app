@@ -14,10 +14,13 @@
   <h1 class="artist-name">{{ artistName }}</h1>
   <button class="bio-btn" (click)="toggleBio()">Bio+</button>
 </div>
-<app-video-player [artistName]="artistName"></app-video-player>
+<app-video-player [currentVideoId]="currentVideoId"></app-video-player>
 <div class="bio-box" [ngClass]="{ transform: bioExpand }">
   <p class="bio-p" [ngClass]="{ transform: bioExpand }">{{ biography }}</p>
 </div>
+<button (click)="getArtistVideos()">contact youtube api</button>
+<button (click)="addVideoToFavorites()">favorite</button>
+<app-video-list [list]="videoArray"></app-video-list>
 <div class="artists-box">
   <h2>Similar Artists</h2>
   <app-artist-list class="artists" [list]="similar"></app-artist-list>
