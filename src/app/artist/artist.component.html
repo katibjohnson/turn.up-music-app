@@ -1,5 +1,4 @@
-<div>
-  <app-header></app-header>
+<app-header></app-header>
   <div class="artist-headline">
     <img
       class="artist-img"
@@ -19,10 +18,13 @@
       ></i>
     </button>
   </div>
-  <app-video-player [artistName]="artistName"></app-video-player>
-  <div class="bio-box" [ngClass]="{ transform: bioExpand }">
-    <p class="bio-p" [ngClass]="{ transform: bioExpand }">{{ biography }}</p>
-  </div>
+<app-video-player [currentVideoId]="currentVideoId"></app-video-player>
+<div class="bio-box" [ngClass]="{ transform: bioExpand }">
+  <p class="bio-p" [ngClass]="{ transform: bioExpand }">{{ biography }}</p>
+</div>
+<button (click)="getArtistVideos()">contact youtube api</button>
+<button (click)="addVideoToFavorites()">favorite</button>
+<app-video-list [list]="videoArray"></app-video-list>
   <div class="artists-box">
     <h2>Similar Artists</h2>
     <app-artist-list class="artists" [list]="similar"></app-artist-list>
@@ -30,4 +32,3 @@
   <div class="footer-m" [ngClass]="{ hidden: bioExpand }">
     <a routerLink="/about">About the Developers</a>
   </div>
-</div>
