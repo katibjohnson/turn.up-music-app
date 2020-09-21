@@ -39,4 +39,8 @@ export class TurnUpService {
   addToFavoriteVideos = (video: any): any=>{
     return this.http.post(`${this.baseUrl}/favorite-videos`, video);
   }
+
+  deleteFromFavoriteVideos = (id: number): any=>{
+    return this.http.delete(`${this.baseUrl}/favorite-videos/${id}`);
+  }
 }

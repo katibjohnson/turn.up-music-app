@@ -1,9 +1,23 @@
 <app-header></app-header>
-<h1>Favorite Artists</h1>
-<app-artist-list
+<section class="mobile-section">
+
+  <div class = "artists-box">
+    <h1 class = "headline">favorite videos</h1>
+    <app-video-list class="videos"
+    (favoriteVideoEvent)="getFavoriteVideos()"
+    [list]="favoriteVideosList"></app-video-list>
+  </div>
+
+
+<div class = "artists-box">
+  <h1 class = "headline">favorite artists</h1>
+  <app-artist-list
   class="artists"
   [list]="favoriteArtistsList"
   (favoriteEvent)="getFavoriteArtists()"
 ></app-artist-list>
-<h2>Favorite Videos</h2>
-<app-video-list [list]="favoriteVideosList"></app-video-list>
+</div>
+
+
+
+</section>
