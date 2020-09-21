@@ -7,10 +7,13 @@
   [height]="videoHeight"
   suggestedQuality="highres" ></youtube-player>
 </div>
+<button (click)="getArtistVideos()">contact youtube api</button>
+<button (click)="addVideoToFavorites()">favorite</button>
+
+<div class="video-selector">
+  <div (click)="nextVideo()"><img src="{{nextVideoThumbnail}}" alt=""><p>Next</p></div>
+  <div (click)="previousVideo()"><img src="{{previousVideoThumbnail}}" alt=""><p>Previous</p></div>
+</div>
 
 
-  <button (click)="nextVideo()">Next Video</button>
-  <button (click)="previousVideo()">Previous Video</button>
-  <button (click)="getArtistVideos()">contact youtube api</button>
-  <button (click)="addVideoToFavorites()">favorite</button>
 </div>
