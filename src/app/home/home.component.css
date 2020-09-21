@@ -129,6 +129,6 @@ a:visited {
     position: relative;
     bottom: 90vh;
     height: 50vh;
-    z-index: -1;
+    width: 80vw;
   }
 }

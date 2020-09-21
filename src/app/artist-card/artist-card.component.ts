@@ -11,6 +11,7 @@ import { TurnUpService } from '../turn-up.service';
     `
       :host-context(.large-card) .artist-card {
         width: 11vw;
+        z-index: 1;
       }
       :host-context(.large-card) .fa-plus-circle {
         font-size: 2vw;

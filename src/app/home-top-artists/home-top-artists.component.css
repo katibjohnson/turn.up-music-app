@@ -1,8 +1,12 @@
 .large-card {
   display: flex;
-  width: 90vw;
+  width: 85vw;
+  margin: 0;
   flex-wrap: wrap;
-  z-index: -1;
+}
+
+.artist-card {
+  z-index: 1;
 }
 
 .artist-card:nth-child(1) {
@@ -39,11 +43,10 @@
 }
 .artist-card:nth-child(8) {
   position: relative;
-  top: 20vh;
-  right: 10vw;
+  left: 65vw;
 }
 .artist-card:nth-child(9) {
   position: relative;
-  bottom: 30vh;
-  left: 72vw;
+  bottom: 27vh;
+  left: 60vw;
 }
