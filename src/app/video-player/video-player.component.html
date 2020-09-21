@@ -1,19 +1,9 @@
-<div>
 <div #wrapper class="demo-youtube-player">
-  <youtube-player
-
-  videoId="{{currentVideoId}}" 
-  [width]="videoWidth" 
-  [height]="videoHeight"
-  suggestedQuality="highres" ></youtube-player>
-</div>
-<!-- <button (click)="getArtistVideos()">contact youtube api</button>
-<button (click)="addVideoToFavorites()">favorite</button> -->
-
-<!-- <div class="video-selector">
-  <div (click)="nextVideo()"><img src="{{nextVideoThumbnail}}" alt=""><p>Next</p></div>
-  <div (click)="previousVideo()"><img src="{{previousVideoThumbnail}}" alt=""><p>Previous</p></div>
-</div> -->
-
-
-<!-- </div> -->
+    <youtube-player
+      videoId="{{ currentVideoId }}"
+      [width]="videoWidth"
+      [height]="videoHeight"
+      suggestedQuality="highres"
+    ></youtube-player>
+  </div>
+  

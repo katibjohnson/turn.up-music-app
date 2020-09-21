@@ -1,4 +1,13 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TurnUpService } from '../turn-up.service';
 import { YoutubeService } from '../youtube.service';
@@ -6,7 +15,7 @@ import { YoutubeService } from '../youtube.service';
 @Component({
   selector: 'app-video-player',
   templateUrl: './video-player.component.html',
-  styleUrls: ['./video-player.component.css']
+  styleUrls: ['./video-player.component.css'],
 })
 export class VideoPlayerComponent implements OnInit {
   @ViewChild('wrapper') wrapper: ElementRef<HTMLDivElement>;
@@ -20,11 +29,13 @@ export class VideoPlayerComponent implements OnInit {
   // videoArray = [{title: "bladee & ECCO2K - Obedient", thumbnail: "https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg", artist:"Bladee", videoId: "2KkMyDSrBVI"}];
   videoWidth: number | undefined;
   videoHeight: number | undefined;
- 
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef, private youtube: YoutubeService, private turnup: TurnUpService, private route: ActivatedRoute) { }
-  
- 
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private youtube: YoutubeService,
+    private turnup: TurnUpService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     const tag = document.createElement('script');
@@ -33,7 +44,7 @@ export class VideoPlayerComponent implements OnInit {
 
   }
 
-  ngAfterViewInit(): void{
+  ngAfterViewInit(): void {
     this.onResize();
     window.addEventListener('resize', this.onResize);
   }
@@ -43,7 +54,7 @@ export class VideoPlayerComponent implements OnInit {
     this.videoWidth = Math.min(this.wrapper.nativeElement.clientWidth, 1000);
     this.videoHeight = this.videoWidth * 0.6;
     this._changeDetectorRef.detectChanges();
-  }
+  };
 
   // nextAndPrevSetter = ()=>{
   //   this.nextVideoIndex = this.currentVideoIndex;
@@ -142,6 +153,5 @@ export class VideoPlayerComponent implements OnInit {
   //   this.turnup.addToFavoriteVideos(this.videoArray[this.currentVideoIndex]).subscribe();
 
   // }
-
 
 }
