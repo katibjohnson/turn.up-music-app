@@ -1,50 +1,49 @@
 .large-card {
   display: flex;
-  max-width: 95vw;
+  width: 90vw;
   flex-wrap: wrap;
+  z-index: -1;
 }
 
 .artist-card:nth-child(1) {
   position: relative;
-  bottom: 6vh;
+  bottom: 8vh;
   left: 12vw;
 }
 .artist-card:nth-child(2) {
   position: relative;
-  top: 13vh;
+  top: 1vh;
   right: 10vw;
 }
 .artist-card:nth-child(3) {
   position: relative;
-  top: 27vh;
+  top: 20vh;
   right: 8vw;
 }
 .artist-card:nth-child(4) {
   position: relative;
-  top: 15vh;
+  top: 13vh;
   right: 6vw;
 }
 .artist-card:nth-child(5) {
   position: relative;
-  top: 28vh;
+  top: 23vh;
 }
 .artist-card:nth-child(6) {
   position: relative;
-  top: 2vh;
   right: 16vw;
 }
 .artist-card:nth-child(7) {
   position: relative;
-  top: 7vh;
   right: 12vw;
 }
 .artist-card:nth-child(8) {
   position: relative;
-  top: 25vh;
+  top: 20vh;
   right: 10vw;
 }
 .artist-card:nth-child(9) {
   position: relative;
-  bottom: 19vh;
-  left: 70vw;
+  bottom: 30vh;
+  left: 72vw;
 }
