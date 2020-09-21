@@ -21,6 +21,7 @@ import { ImagePreloadDirective } from './image-preload.directive';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoCardComponent } from './video-card/video-card.component';
 import { VideoListComponent } from './video-list/video-list.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,8 @@ import { VideoListComponent } from './video-list/video-list.component';
     VideoCardComponent,
 
     VideoListComponent,
+
+    VideoComponent,
   ],
   imports: [
     DragDropModule,

@@ -19,13 +19,9 @@ export class ArtistComponent implements OnInit {
   favoritesId: number;
   bioExpand: boolean = false;
   favoriteButtonText: string;
-  videoIdArray: string[] = [
-    '2KkMyDSrBVI',
-    'ivCY3Ec4iaU',
-    'pok8H_KF1FA',
-    'pcJo0tIWybY',
-    '4aeETEoNfOg',
-  ];
+  videoArray = [{title: "bladee & ECCO2K - Obedient", thumbnail: "https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg", artist:"Bladee", videoId: "2KkMyDSrBVI"}];
+  currentVideoIndex: number;
+
   constructor(
     private route: ActivatedRoute,
     private lastFm: LastFmService,
@@ -129,4 +125,6 @@ export class ArtistComponent implements OnInit {
       this.bioExpand = true;
     }
   };
+
+
 }
