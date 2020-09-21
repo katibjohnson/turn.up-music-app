@@ -7,6 +7,7 @@ import { TurnUpService } from '../turn-up.service';
 import { from } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { VideoPlayerComponent } from '../video-player/video-player.component';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
@@ -172,4 +173,8 @@ export class ArtistComponent implements OnInit {
     this.turnup.addToFavoriteVideos(this.videoArray[this.currentVideoIndex]).subscribe();
   }
 
+  setApiKey = (form: NgForm)=>{
+    console.log(form.value);
+    this.youtube.setYoutubeApiKey(form.value.apiKey);
+  }
 }

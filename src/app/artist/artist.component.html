@@ -19,9 +19,12 @@
   </button>
 </div>
 <app-video-player [currentVideoId]="currentVideoId"></app-video-player>
+
 <div class="bio-box" [ngClass]="{ transform: bioExpand }">
   <p class="bio-p" [ngClass]="{ transform: bioExpand }">{{ biography }}</p>
 </div>
+
+
 <button (click)="getArtistVideos()">contact youtube api</button>
 <button (click)="addVideoToFavorites()">favorite</button>
 <app-video-list [list]="videoArray"></app-video-list>
@@ -29,6 +32,12 @@
   <h2>Similar Artists</h2>
   <app-artist-list class="artists" [list]="similar"></app-artist-list>
 </div>
+
+<form #apiKeyForm="ngForm" (submit)="setApiKey(apiKeyForm)">
+  <input type="text" name="apiKey" ngModel>
+  <button>set api key</button>
+</form>
+
 <div class="footer-m" [ngClass]="{ hidden: bioExpand }">
   <a routerLink="/about">About the Developers</a>
 </div>
