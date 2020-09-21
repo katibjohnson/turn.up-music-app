@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LastFmService } from '../last-fm.service';
 import { YoutubeService } from '../youtube.service';
@@ -6,6 +6,7 @@ import { ImagePreloadDirective } from '../image-preload.directive';
 import { TurnUpService } from '../turn-up.service';
 import { from } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
+import { VideoPlayerComponent } from '../video-player/video-player.component';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
@@ -123,10 +124,6 @@ export class ArtistComponent implements OnInit {
   };
 
   toggleBio = () => {
-    if (this.bioExpand) {
-      this.bioExpand = false;
-    } else {
-      this.bioExpand = true;
-    }
+    this.bioExpand = !this.bioExpand;
   };
 }
