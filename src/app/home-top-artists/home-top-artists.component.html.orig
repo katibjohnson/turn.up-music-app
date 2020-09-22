@@ -1,0 +1,13 @@
+<div class="large-card">
+  <app-artist-card
+    (artistClicked)="goToArtist($event)"
+    (favoriteEvent)="updateFavorites($event)"
+    class="artist-card"
+<<<<<<< HEAD
+    *ngFor="let item of list.slice(0, 8)"
+=======
+    *ngFor="let item of list.slice(0, 9)"
+>>>>>>> d843a08238e6d815fd386e30e9a7ccf5f5dcfea2
+    [artist]="item"
+  ></app-artist-card>
+</div>
