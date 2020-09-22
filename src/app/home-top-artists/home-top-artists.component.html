@@ -3,7 +3,7 @@
     (artistClicked)="goToArtist($event)"
     (favoriteEvent)="updateFavorites($event)"
     class="artist-card"
-    *ngFor="let item of list.slice(0, 8)"
-    [name]="item.name"
+    *ngFor="let item of list.slice(0, 9)"
+    [artist]="item"
   ></app-artist-card>
 </div>

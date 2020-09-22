@@ -1,54 +1,43 @@
-<main>
-  <app-header></app-header>
-  <div class="artist-headline">
-    <div class="img-box">
-      <img
-        class="artist-img"
-        src="{{ imgUrl }}"
-        default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png"
-      />
-
-      <i
-        [ngClass]="favoritesId ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
-        (click)="toggleFavorites()"
-      ></i>
-    </div>
-    <div class="name-box">
-      <h1 class="artist-name">{{ artistName }}</h1>
-    </div>
-    <button class="bio-btn icon" (click)="toggleBio()">
-      ARTIST BIO<i
-        [ngClass]="bioExpand ? 'fas fa-minus-square bio' : 'fas fa-expand'"
-      ></i>
-    </button>
-  </div>
-  <div class="vid-box">
-    <app-video-player [currentVideoId]="currentVideoId"></app-video-player>
-
-    <!-- <button (click)="getArtistVideos()">contact youtube api</button> -->
+<app-header></app-header>
+<div class="artist-headline">
+  <img
+    class="artist-img"
+    src="{{ imgUrl }}"
+    default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png"
+  />
+  <button class="icon">
     <i
-      [ngClass]="favoritesId ? 'fas fa-minus-square' : 'fas fa-plus-square'"
+      [ngClass]="favoritesId ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
       (click)="toggleFavorites()"
     ></i>
-  </div>
-  <div class="bio-box" [ngClass]="{ transform: bioExpand }">
-    <p class="bio-p" [ngClass]="{ transform: bioExpand }">{{ biography }}</p>
-  </div>
-  <app-video-list
-    (changeVideoEvent)="changeVideo($event)"
-    [list]="videoArray"
-  ></app-video-list>
-  <div class="artists-box">
-    <h2>Similar Artists</h2>
-    <app-artist-list class="artists" [list]="similar"></app-artist-list>
-  </div>
+  </button>
+  <h1 class="artist-name">{{ artistName }}</h1>
+  <button class="bio-btn icon" (click)="toggleBio()">
+    ARTIST BIO<i
+      [ngClass]="bioExpand ? 'fas fa-minus-square' : 'fas fa-expand'"
+    ></i>
+  </button>
+</div>
+<app-video-player [currentVideoId]="currentVideoId"></app-video-player>
 
-  <form #apiKeyForm="ngForm" (submit)="setApiKey(apiKeyForm)">
-    <input type="text" name="apiKey" ngModel />
-    <button>set api key</button>
-  </form>
+<div class="bio-box" [ngClass]="{ transform: bioExpand }">
+  <p class="bio-p" [ngClass]="{ transform: bioExpand }">{{ biography }}</p>
+</div>
 
-  <div class="footer-m" [ngClass]="{ hidden: bioExpand }">
-    <a routerLink="/about">About the Developers</a>
-  </div>
-</main>
+
+<button (click)="getArtistVideos()">contact youtube api</button>
+<button (click)="addVideoToFavorites()">favorite</button>
+<app-video-list (changeVideoEvent)="changeVideo($event)" [list]="videoArray"></app-video-list>
+<div class="artists-box">
+  <h2>Similar Artists</h2>
+  <app-artist-list class="artists" [list]="similar"></app-artist-list>
+</div>
+
+<form #apiKeyForm="ngForm" (submit)="setApiKey(apiKeyForm)">
+  <input type="text" name="apiKey" ngModel>
+  <button>set api key</button>
+</form>
+
+<div class="footer-m" [ngClass]="{ hidden: bioExpand }">
+  <a routerLink="/about">About the Developers</a>
+</div>
