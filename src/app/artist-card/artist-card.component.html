@@ -1,17 +1,16 @@
 <div class="artist-card">
-  <div (click)="goToArtist()">
+  <div class="img-box">
     <img
       class="artist-img"
       src="{{ sampleImageUrl }}"
       default="assets/default.png"
+      (click)="goToArtist()"
     />
-  </div>
-  <button class="button">
     <i
       [ngClass]="artist.favorited ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
       (click)="toggleFavorites()"
     ></i>
-  </button>
+  </div>
 
   <p (click)="goToArtist()" class="artist-name">{{ artist.name }}</p>
 </div>
