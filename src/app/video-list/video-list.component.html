@@ -4,6 +4,6 @@
     *ngFor="let item of list" 
     [videoInfo]= "item" 
     (videoClicked)="goToArtist($event)" 
-    (videoFavorited)="updateFavorites()">
+    (videoFavorited)="updateFavorites($event)">
     </app-video-card>
 </div>
