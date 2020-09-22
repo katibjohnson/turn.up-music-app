@@ -10,18 +10,18 @@ import { TurnUpService } from '../turn-up.service';
   styles: [
     `
       :host-context(.large-card) .artist-card {
-        width: 11vw;
+        width: 10vw;
         z-index: 1;
       }
       :host-context(.large-card) .fa-plus-circle {
         font-size: 2vw;
-        bottom: 5vh;
-        left: 4vw;
+
+        right: 0.5vw;
       }
       :host-context(.large-card) .fa-minus-circle {
         font-size: 2vw;
-        bottom: 5vh;
-        left: 4vw;
+
+        right: 0.5vw;
       }
       :host-context(.large-card) .artist-name {
         font-size: 1.5vw;

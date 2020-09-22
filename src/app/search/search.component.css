@@ -55,9 +55,8 @@ button:focus {
     border-radius: 20px;
     background-color: white;
     display: flex;
-    justify-content: space-between;
     padding-left: 2vw;
-    width: 40vw;
+    width: 32vw;
   }
   .not-home-search-d {
     border-radius: 20px;
@@ -74,7 +73,7 @@ button:focus {
   .not-home-input-d:focus {
     border: none;
     outline: none;
-    font-size: 2vw;
+    font-size: 1.7vw;
     flex-grow: 9;
     padding: 0;
     margin: 0;
