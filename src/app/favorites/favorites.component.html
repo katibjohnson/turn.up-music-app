@@ -4,7 +4,7 @@
   <div class = "artists-box">
     <h1 class = "headline">favorite videos</h1>
     <app-video-list class="videos"
-    (favoriteVideoEvent)="getFavoriteVideos()"
+    (favoriteVideoEvent)="updateFavoriteVideos($event)"
     [list]="favoriteVideosList"></app-video-list>
   </div>
 
@@ -14,7 +14,7 @@
   <app-artist-list
   class="artists"
   [list]="favoriteArtistsList"
-  (favoriteEvent)="getFavoriteArtists()"
+  (favoriteEvent)="updateFavoriteArtists($event)"
 ></app-artist-list>
 </div>
 

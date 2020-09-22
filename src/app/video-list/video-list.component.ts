@@ -9,7 +9,7 @@ import { TurnUpService } from '../turn-up.service';
 })
 export class VideoListComponent implements OnInit {
   @Input() list:any[];
-  @Output() favoriteVideoEvent = new EventEmitter<void>();
+  @Output() favoriteVideoEvent = new EventEmitter<any>();
   @Output() changeVideoEvent = new EventEmitter<void>();
   constructor(private router: Router, private turnup: TurnUpService, private route: ActivatedRoute) { }
 
@@ -27,7 +27,7 @@ export class VideoListComponent implements OnInit {
   }
 
   
-  updateFavorites = ()=>{
-    this.favoriteVideoEvent.emit();
+  updateFavorites = (video: any)=>{
+    this.favoriteVideoEvent.emit(video);
   }
 }

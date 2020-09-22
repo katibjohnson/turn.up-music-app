@@ -9,7 +9,7 @@ import { TurnUpService } from '../turn-up.service';
 export class VideoCardComponent implements OnInit {
   @Input() videoInfo: any;
   @Output() videoClicked = new EventEmitter<any>();
-  @Output() videoFavorited = new EventEmitter<void>();
+  @Output() videoFavorited = new EventEmitter<any>();
   favoritesId: number;
   constructor(private turnup: TurnUpService) { }
 
@@ -35,16 +35,7 @@ export class VideoCardComponent implements OnInit {
   }
 
   toggleFavorites = () =>{
-    if(this.favoritesId) {
-      this.turnup.deleteFromFavoriteVideos(this.favoritesId).subscribe((response)=>{
-        this.favoritesId = 0;
-      });
-    }else{
-      this.turnup.addToFavoriteVideos(this.videoInfo).subscribe((response)=>{
-        this.setInFavorites();
-      })
-    }
-    this.videoFavorited.emit();
+    this.videoFavorited.emit(this.videoInfo);
   }
 
 
