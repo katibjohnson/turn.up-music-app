@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TurnUpService } from '../turn-up.service';
 
 @Component({
@@ -10,18 +10,20 @@ import { TurnUpService } from '../turn-up.service';
 export class VideoListComponent implements OnInit {
   @Input() list:any[];
   @Output() favoriteVideoEvent = new EventEmitter<void>();
-  constructor(private router: Router, private turnup: TurnUpService) { }
+  @Output() changeVideoEvent = new EventEmitter<void>();
+  constructor(private router: Router, private turnup: TurnUpService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
   goToArtist = (videoInfo: any)=>{
+    this.changeVideoEvent.emit(videoInfo.videoId);
     this.router.navigate(['artist'], {
       queryParams:{
         name:videoInfo.artist,
         videoId: videoInfo.videoid
       }
-    })
+    });
   }
 
   

@@ -33,8 +33,12 @@ export class ArtistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getArtistInfo();
-    this.setVideo();
+    this.route.params.subscribe(response=>{
+      this.getArtistInfo();
+      this.setVideo();
+    }
+    )
+
   }
 
   sliceBio = (bio: string) => {
@@ -176,5 +180,9 @@ export class ArtistComponent implements OnInit {
   setApiKey = (form: NgForm)=>{
     console.log(form.value);
     this.youtube.setYoutubeApiKey(form.value.apiKey);
+  }
+
+  changeVideo = (videoId: string)=>{
+    this.currentVideoId = videoId;
   }
 }

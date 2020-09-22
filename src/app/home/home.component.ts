@@ -37,6 +37,16 @@ export class HomeComponent implements OnInit {
     this.getFavoriteArtists();
   }
 
+  recentFavoriteChange = ()=>{
+    this.getTopArtists();
+    this.getFavoriteArtists();
+  }
+
+  topFavoriteChange =()=>{
+    this.getRecent();
+    this.getFavoriteArtists();
+  }
+
   getRecent = (): void => {
     this.turnup.getRecent().subscribe((response) => {
       this.recentlyPlayed = response;

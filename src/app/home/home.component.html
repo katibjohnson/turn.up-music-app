@@ -8,7 +8,7 @@
     <h1 class="headline">top artists</h1>
     <app-artist-list
       class="artists"
-      (favoriteEvent)="updatePage()"
+      (favoriteEvent)="topFavoriteChange()"
       [list]="topArtists"
     ></app-artist-list>
   </div>
@@ -16,7 +16,7 @@
     <h1 class="headline">recently played</h1>
     <app-artist-list
       class="artists"
-      (favoriteEvent)="updatePage()"
+      (favoriteEvent)="recentFavoriteChange()"
       [list]="recentlyPlayed"
     ></app-artist-list>
   </div>
@@ -39,15 +39,15 @@
     FAVORITES
   </p>
   <div class="vertical favs-box">
-    <app-artist-list [list]="favoriteArtists"></app-artist-list>
+    <app-artist-list [list]="favoriteArtists" (favoriteEvent)="updatePage()"></app-artist-list>
   </div>
 
   <p class="recently label">RECENTLY VIEWED</p>
   <div class="vertical recent-box">
-    <app-artist-list [list]="recentlyPlayed"></app-artist-list>
+    <app-artist-list [list]="recentlyPlayed" (favoriteEvent)="recentFavoriteChange()"></app-artist-list>
   </div>
 
-  <app-home-top-artists (favoriteEvent)="updatePage()"
+  <app-home-top-artists (favoriteEvent)="topFavoriteChange()"
     class="top-artists-d"
     [list]="topArtists"
   ></app-home-top-artists>
