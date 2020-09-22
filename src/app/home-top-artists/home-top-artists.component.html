@@ -1,10 +1,9 @@
 <div class="large-card">
   <app-artist-card
     (artistClicked)="goToArtist($event)"
-    (favoriteEvent)= "updateFavorites()"
+    (favoriteEvent)="updateFavorites()"
     class="artist-card"
     *ngFor="let item of list.slice(0, 9)"
     [name]="item.name"
-    cdkDrag
   ></app-artist-card>
 </div>
