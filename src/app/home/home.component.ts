@@ -21,13 +21,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.searchForArtist('bladee');
-    // this.getTopArtists();
-    // this.getArtistInfo('cd689e77-dfdd-4f81-b50c-5e5a3f5e38a4');
-    // this.getVideos('bladee');
-    // this.getRecent();
-    // this.getFavoriteArtists();
-
   this.updatePage();
   }
 
@@ -50,12 +43,16 @@ export class HomeComponent implements OnInit {
   getRecent = (): void => {
     this.turnup.getRecent().subscribe((response) => {
       this.recentlyPlayed = response;
+      this.favoritesSetter(this.recentlyPlayed);
     });
   };
 
   getFavoriteArtists = (): void => {
     this.turnup.getFavoriteArtists().subscribe((response) => {
       this.favoriteArtists = response;
+      this.favoriteArtists.forEach((item)=>{
+        item.favorited = true;
+      })
     });
   };
 
@@ -63,9 +60,21 @@ export class HomeComponent implements OnInit {
     this.lastFm.getTopArtists().subscribe((response) => {
 
       this.topArtists = response.artists.artist.slice(0, 10);
-
+      this.favoritesSetter(this.topArtists);
+      
     });
   };
+
+  favoritesSetter = (artistArray: any[])=>{
+    artistArray.forEach((item)=>{
+      if(this.favoriteArtists.some(artist=>artist.name === item.name)){
+        item.favorited = true;
+      }
+      else{
+        item.favorited = false;
+      }
+    })
+  }
 
   searchForArtist = (searchTerm: string): any => {
     this.lastFm.getArtists(searchTerm).subscribe();
