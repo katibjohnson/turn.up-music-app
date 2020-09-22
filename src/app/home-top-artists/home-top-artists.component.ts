@@ -10,7 +10,20 @@ import { TurnUpService } from '../turn-up.service';
 })
 export class HomeTopArtistsComponent implements OnInit {
   @Input() list: any[];
+  @Output() favoriteEvent = new EventEmitter();
   constructor(public router: Router) {}
 
   ngOnInit(): void {}
+
+  updateFavorites = () => {
+    this.favoriteEvent.emit();
+  };
+
+  goToArtist = (artist: string) => {
+    this.router.navigate(['artist'], {
+      queryParams: {
+        name: artist,
+      },
+    });
+  };
 }
