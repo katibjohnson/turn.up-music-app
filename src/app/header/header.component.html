@@ -52,24 +52,22 @@
     <div class="not-home-search-box-d" *ngIf="router.url != '/home'">
       <app-search></app-search>
     </div>
-    <nav
-      [class.home-nav-box-d]="router.url === '/home'"
-      [class.not-home-nav-box-d]="router.url != '/home'"
-    >
-      <ul class="nav-list">
-        <li [ngClass]="{ 'home-link': router.url != '/home' }">
-          <a
-            class="home"
-            routerLink="/home"
-            routerLinkActive="hidden"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >home</a
-          >
-        </li>
-        <li class="fav-link">
-          <a routerLink="/favorites" routerLinkActive="active">favorites</a>
-        </li>
-      </ul>
+    <nav *ngIf="router.url != '/home'" class="nav-d">
+      <a
+        [ngClass]="{ 'home-link': router.url != '/home' }"
+        routerLink="/home"
+        routerLinkActive="hidden"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >home</a
+      >
+
+      <a
+        [ngClass]="{ 'home-link': router.url != '/home' }"
+        routerLink="/favorites"
+        routerLinkActive="active"
+        class="fav"
+        >favorites</a
+      >
     </nav>
   </div>
 

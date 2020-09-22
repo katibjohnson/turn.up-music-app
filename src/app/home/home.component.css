@@ -119,12 +119,9 @@ a:visited {
     left: 86vw;
     top: 55vh;
   }
-
-  .recently-viewed {
+  .label {
     font-variant: small-caps;
     position: relative;
-    left: 86vw;
-    top: 3vh;
     font-size: 1.5vw;
     width: 12vw;
     overflow-wrap: break-word;
@@ -132,11 +129,21 @@ a:visited {
     line-height: 25px;
     margin: 1vh 0;
   }
+  .recently {
+    left: 86vw;
+    bottom: 3vh;
+  }
+  .favs,
+  .favs:focus {
+    left: 86vw;
+    bottom: 48vh;
+    outline: none;
+  }
 
   .top-artists-d {
     position: relative;
     width: 80vw;
-    padding: 0 0 15vh 2vw;
+    padding: 0 0 0 2vw;
   }
 
   .footer-d {

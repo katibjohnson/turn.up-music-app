@@ -3,6 +3,8 @@
   width: 85vw;
   margin: 0;
   flex-wrap: wrap;
+  position: relative;
+  bottom: 7vh;
 }
 
 .artist-card {
@@ -49,4 +51,14 @@
   position: relative;
   bottom: 27vh;
   left: 60vw;
+}
+@media only screen and (min-width: 1400px) {
+  .large-card {
+    display: flex;
+    width: 85vw;
+    margin: 0;
+    flex-wrap: wrap;
+    position: relative;
+    bottom: 10vh;
+  }
 }

@@ -17,7 +17,6 @@ a:visited {
   display: flex;
   margin: 0;
 }
-
 .hidden {
   display: none;
 }
@@ -81,7 +80,7 @@ li {
 
   .top-header-box {
     display: flex;
-    max-width: 100vw;
+    width: 100vw;
     justify-content: space-between;
   }
   .logo {
@@ -98,29 +97,19 @@ li {
   }
   .not-home-logo-box-d {
     margin: 1vw 0;
-    /* height: 38vh; */
     flex-grow: 3;
   }
 
-  .home-nav-box-d {
-    display: flex;
-    margin: 1vw 0;
+  .nav-d {
     font-size: 2.5vw;
     font-variant: small-caps;
-  }
-  .not-home-nav-box-d {
-    display: flex;
-    justify-content: flex-end;
-    margin: 2vh 0;
-    font-size: 2.5vw;
-    font-variant: small-caps;
-    flex-grow: 3;
   }
 
   .home-link {
     height: 2vh;
     line-height: 10px;
     padding: 0 1vw;
+    display: inline-block;
   }
 
   .fav-link {
@@ -128,11 +117,6 @@ li {
     padding: 0 4vw 0 1vw;
   }
 
-  .nav-list {
-    list-style: none;
-    display: flex;
-    margin-left: 12vw;
-  }
   .home-link:not(:last-child) {
     border-right: solid 1px white;
   }
@@ -156,5 +140,20 @@ li {
     justify-content: center;
     margin: 2vh 0 0 15vw;
     flex-grow: 5;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .logo-large {
+    height: 35vh;
+    width: auto;
+  }
+  .tagline {
+    bottom: 10vh;
+  }
+  .home-search-box-d {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 3vh;
   }
 }

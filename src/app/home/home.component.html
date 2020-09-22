@@ -35,11 +35,14 @@
 </section>
 <section class="desktop-section">
   <app-header></app-header>
+  <p class="favs label" routerLink="/favorites" routerLinkActive="active">
+    FAVORITES
+  </p>
   <div class="vertical favs-box">
     <app-artist-list [list]="favoriteArtists"></app-artist-list>
   </div>
 
-  <p class="recently-viewed">RECENTLY VIEWED</p>
+  <p class="recently label">RECENTLY VIEWED</p>
   <div class="vertical recent-box">
     <app-artist-list [list]="recentlyPlayed"></app-artist-list>
   </div>
