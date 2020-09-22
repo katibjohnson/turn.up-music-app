@@ -27,7 +27,7 @@
 
 <button (click)="getArtistVideos()">contact youtube api</button>
 <button (click)="addVideoToFavorites()">favorite</button>
-<app-video-list [list]="videoArray"></app-video-list>
+<app-video-list (changeVideoEvent)="changeVideo($event)" [list]="videoArray"></app-video-list>
 <div class="artists-box">
   <h2>Similar Artists</h2>
   <app-artist-list class="artists" [list]="similar"></app-artist-list>

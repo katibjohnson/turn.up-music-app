@@ -18,7 +18,7 @@ export class YoutubeService {
 
   getVideos = (searchTerm: string): any => {
     return this.http.get(
-      `${this.baseUrl}&part=snippet&type=video&q=${searchTerm}`
+      `${this.baseUrl}&maxResults=10&part=snippet&type=video&q=${searchTerm}`
     );
   };
 
