@@ -40,7 +40,6 @@
   </p>
   <div class="vertical favs-box">
     <app-artist-list [list]="favoriteArtists" (favoriteEvent)="updateFavorites($event)"></app-artist-list>
-
   </div>
 
   <p class="recently label">RECENTLY VIEWED</p>
@@ -49,7 +48,6 @@
   </div>
 
   <app-home-top-artists (favoriteEvent)="updateFavorites($event)"
-
     class="top-artists-d"
     [list]="topArtists"
   ></app-home-top-artists>

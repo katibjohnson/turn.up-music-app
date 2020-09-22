@@ -1,49 +1,64 @@
 .large-card {
+  display: flex;
+  width: 85vw;
+  margin: 0;
+  flex-wrap: wrap;
   position: relative;
+  bottom: 7vh;
 }
 
 .artist-card {
   z-index: 1;
-  position: absolute;
 }
 
 .artist-card:nth-child(1) {
-  left: 10vw;
+  position: relative;
+  bottom: 8vh;
+  left: 12vw;
 }
 .artist-card:nth-child(2) {
-  top: 28vh;
-  left: 5vw;
+  position: relative;
+  top: 1vh;
+  right: 10vw;
 }
 .artist-card:nth-child(3) {
-  top: 22vh;
-  left: 20vw;
+  position: relative;
+  top: 20vh;
+  right: 8vw;
 }
 .artist-card:nth-child(4) {
-  top: 3vh;
-  left: 30vw;
+  position: relative;
+  top: 13vh;
+  right: 6vw;
 }
 .artist-card:nth-child(5) {
-  left: 42vw;
+  position: relative;
   top: 20vh;
 }
 .artist-card:nth-child(6) {
-  left: 55vw;
-  top: 5vh;
+  position: relative;
+  right: 16vw;
 }
 .artist-card:nth-child(7) {
-  left: 68vw;
-  top: 27vh;
+  position: relative;
+  right: 12vw;
 }
 .artist-card:nth-child(8) {
-  left: 70vw;
+  position: relative;
+  left: 65vw;
 }
-
+.artist-card:nth-child(9) {
+  position: relative;
+  bottom: 27vh;
+  left: 60vw;
+}
 @media only screen and (min-width: 1400px) {
-  /* .large-card {
+  .large-card {
     display: flex;
     width: 85vw;
     margin: 0;
     flex-wrap: wrap;
     position: relative;
-  } */
+    bottom: 10vh;
+  }
 }
