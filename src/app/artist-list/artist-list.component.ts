@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 })
 export class ArtistListComponent implements OnInit {
   @Input() list: any[];
-  @Output() favoriteEvent = new EventEmitter<void>();
+  @Output() favoriteEvent = new EventEmitter<any>();
 
   constructor(public router: Router) {}
 
@@ -32,7 +32,7 @@ export class ArtistListComponent implements OnInit {
     });
   };
 
-  updateFavorites = () => {
-    this.favoriteEvent.emit();
+  updateFavorites = (artist: any) => {
+    this.favoriteEvent.emit(artist);
   };
 }
