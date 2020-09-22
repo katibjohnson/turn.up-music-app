@@ -1,7 +1,7 @@
 <div class="large-card">
   <app-artist-card
     (artistClicked)="goToArtist($event)"
-    (favoriteEvent)="updateFavorites()"
+    (favoriteEvent)="updateFavorites($event)"
     class="artist-card"
     *ngFor="let item of list.slice(0, 8)"
     [name]="item.name"

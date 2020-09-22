@@ -7,10 +7,10 @@
       (click)="goToArtist()"
     />
     <i
-      [ngClass]="favoritesId ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
+      [ngClass]="artist.favorited ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
       (click)="toggleFavorites()"
     ></i>
   </div>
 
-  <p (click)="goToArtist()" class="artist-name">{{ name }}</p>
+  <p (click)="goToArtist()" class="artist-name">{{ artist.name }}</p>
 </div>

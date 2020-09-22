@@ -31,25 +31,25 @@ import { TurnUpService } from '../turn-up.service';
   ],
 })
 export class ArtistCardComponent implements OnInit {
-  @Input() name: string;
+  @Input() artist: any;
+  @Input() favorited: boolean;
   @Output() artistClicked = new EventEmitter<string>();
-  @Output() favoriteEvent = new EventEmitter<void>();
+  @Output() favoriteEvent = new EventEmitter<any>();
   artistInfo: any = {};
   sampleImageUrl: string;
   favoritesId: number;
   constructor(private lastFm: LastFmService, private turnup: TurnUpService) {}
 
   ngOnInit(): void {
-    this.getArtistInfo(this.name);
-    this.getSampleImage(this.name);
-    this.setInFavorites();
+    this.getSampleImage(this.artist.name);
   }
 
-  getArtistInfo = (name: string): any => {
-    this.lastFm.getArtistInfoByName(name).subscribe((response) => {
-      this.artistInfo = response.artist;
-    });
-  };
+  // getArtistInfo = (name: string): any => {
+  //   this.lastFm.getArtistInfoByName(name).subscribe((response) => {
+  //     this.artistInfo = response.artist;
+
+  //   });
+  // };
 
   getSampleImage = (name: string): any => {
     this.lastFm.getArtistTopAlbums(name).subscribe((response) => {
@@ -62,35 +62,39 @@ export class ArtistCardComponent implements OnInit {
   };
 
   goToArtist = () => {
-    this.artistClicked.emit(this.name);
+    this.artistClicked.emit(this.artist.name);
   };
 
-  setInFavorites = () => {
-    let favoriteArtists: any = [];
-    this.favoritesId = 0;
-    this.turnup.getFavoriteArtists().subscribe((response) => {
-      favoriteArtists = response;
-      favoriteArtists.forEach((item) => {
-        if (item.name === this.name) {
-          this.favoritesId = item.id;
-        }
-      });
-    });
-  };
+  toggleFavorites = ()=>{
+    this.favoriteEvent.emit(this.artist);
+  }
 
-  toggleFavorites = () => {
-    if (this.favoritesId) {
-      this.turnup
-        .deleteFromFavoriteArtists(this.favoritesId)
-        .subscribe((response) => {
-          this.favoritesId = 0;
-        });
-    } else {
-      let artistEntry = { name: this.name };
-      this.turnup.addToFavoriteArtists(artistEntry).subscribe((response) => {
-        this.setInFavorites();
-      });
-    }
-    this.favoriteEvent.emit();
-  };
+  // setInFavorites = () => {
+  //   let favoriteArtists: any = [];
+  //   this.favoritesId = 0;
+  //   this.turnup.getFavoriteArtists().subscribe((response) => {
+  //     favoriteArtists = response;
+  //     favoriteArtists.forEach((item) => {
+  //       if (item.name === this.artist.name) {
+  //         this.favoritesId = item.id;
+  //       }
+  //     });
+  //   });
+  // };
+
+  // toggleFavorites = () => {
+  //   if (this.favoritesId) {
+  //     this.turnup
+  //       .deleteFromFavoriteArtists(this.favoritesId)
+  //       .subscribe((response) => {
+  //         this.favoritesId = 0;
+  //       });
+  //   } else {
+  //     let artistEntry = { name: this.artist.name };
+  //     this.turnup.addToFavoriteArtists(artistEntry).subscribe((response) => {
+  //       this.setInFavorites();
+  //     });
+  //   }
+  //   this.favoriteEvent.emit();
+  // };
 }

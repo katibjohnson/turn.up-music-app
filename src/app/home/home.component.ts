@@ -10,9 +10,9 @@ import { fromEventPattern } from 'rxjs';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  recentlyPlayed = [];
-  favoriteArtists = [];
-  topArtists = [];
+  recentlyPlayed: any[] = [];
+  favoriteArtists: any[] = [];
+  topArtists: any[] = [];
 
   constructor(
     private lastFm: LastFmService,
@@ -21,51 +21,76 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.searchForArtist('bladee');
-    // this.getTopArtists();
-    // this.getArtistInfo('cd689e77-dfdd-4f81-b50c-5e5a3f5e38a4');
-    // this.getVideos('bladee');
-    // this.getRecent();
-    // this.getFavoriteArtists();
-
-  this.updatePage();
+    this.getLists();
   }
 
-  updatePage = ()=>{
-    this.getRecent();
-    this.getTopArtists();
-    this.getFavoriteArtists();
-  }
-
-  recentFavoriteChange = ()=>{
-    this.getTopArtists();
-    this.getFavoriteArtists();
-  }
-
-  topFavoriteChange =()=>{
-    this.getRecent();
-    this.getFavoriteArtists();
-  }
-
-  getRecent = (): void => {
-    this.turnup.getRecent().subscribe((response) => {
-      this.recentlyPlayed = response;
-    });
-  };
-
-  getFavoriteArtists = (): void => {
+  getLists = ()=>{
     this.turnup.getFavoriteArtists().subscribe((response) => {
-      this.favoriteArtists = response;
+      response.forEach((item)=>{
+        this.favoriteArtists.push({name: item.name, favorited: true});
+      })
+      console.log(this.favoriteArtists);
+      this.turnup.getRecent().subscribe((response) => {
+        response.forEach((item)=>{
+          this.recentlyPlayed.push({name: item.name});
+        })
+        this.favoritesSetter(this.recentlyPlayed);
+        console.log(this.recentlyPlayed)
+      });
+      this.lastFm.getTopArtists().subscribe((response) => {
+        response.artists.artist.slice(0, 10).forEach(artist=>{
+          this.topArtists.push({name: artist.name});  
+        })
+        this.favoritesSetter(this.topArtists);
+        console.log(this.topArtists)
+        
+      });
+      
     });
-  };
+  }
 
-  getTopArtists = (): void => {
-    this.lastFm.getTopArtists().subscribe((response) => {
+  updateFavorites = (artist: any)=>{
+    if(artist.favorited){
+      let index = this.favoriteArtists.findIndex(item=>item.name === artist.name);
+      this.turnup.getFavoriteArtists().subscribe((response)=>{
+        let idToDelete = response.find(item=>item.name===artist.name).id;
+        this.turnup.deleteFromFavoriteArtists(idToDelete).subscribe((response)=>{
+          this.favoriteArtists.splice(index, 1);
+          this.recentlyPlayed.forEach(item=>{
+            if(item.name === artist.name) item.favorited = false;
+          })
+          this.topArtists.forEach(item=>{
+            if(item.name === artist.name) item.favorited = false;
+          })
+        });
+      })
+      
+     
+    }
+    else{
+      this.turnup.addToFavoriteArtists({name: artist.name}).subscribe((response)=>{
+        this.favoriteArtists.unshift({name: artist.name, favorited: true});
+        this.recentlyPlayed.forEach(item=>{
+          if(item.name === artist.name) item.favorited = true;
+        })
+        this.topArtists.forEach(item=>{
+          if(item.name === artist.name) item.favorited = true;
+        })
+      });
+      
+    }
+  }
 
-      this.topArtists = response.artists.artist.slice(0, 10);
-
-    });
-  };
+  favoritesSetter = (artistArray: any[])=>{
+    artistArray.forEach((item)=>{
+      if(this.favoriteArtists.some(artist=>artist.name === item.name)){
+        item.favorited = true;
+      }
+      else{
+        item.favorited = false;
+      }
+    })
+  }
 
   searchForArtist = (searchTerm: string): any => {
     this.lastFm.getArtists(searchTerm).subscribe();
