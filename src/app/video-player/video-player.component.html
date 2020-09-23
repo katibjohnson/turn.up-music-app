@@ -1,9 +1,16 @@
 <div #wrapper class="demo-youtube-player">
-    <youtube-player
-      videoId="{{ currentVideoId }}"
-      [width]="videoWidth"
-      [height]="videoHeight"
-      suggestedQuality="highres"
-    ></youtube-player>
-  </div>
-  
+  <youtube-player
+    videoId="{{ currentVideoId }}"
+    [width]="videoWidth"
+    [height]="videoHeight"
+    suggestedQuality="highres"
+  ></youtube-player>
+  <!-- <i
+    [ngClass]="
+      favoritesId
+        ? 'fas fa-minus-square remove-fav'
+        : 'fas fa-plus-square add-fav'
+    "
+    (click)="toggleFavorites()"
+  ></i> -->
+</div>

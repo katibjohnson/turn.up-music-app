@@ -27,19 +27,8 @@
         ></i>
       </button>
     </div>
-    <div class="vid-box">
-      <app-video-player [currentVideoId]="currentVideoId"></app-video-player>
 
-      <!-- <button (click)="getArtistVideos()">contact youtube api</button> -->
-      <i
-        [ngClass]="
-          favoritesId
-            ? 'fas fa-minus-square remove-fav'
-            : 'fas fa-plus-square add-fav'
-        "
-        (click)="toggleFavorites()"
-      ></i>
-    </div>
+    <app-video-player [currentVideoId]="currentVideoId"></app-video-player>
   </div>
   <div class="bottom">
     <div class="bio-box" [ngClass]="{ transform: bioExpand }">

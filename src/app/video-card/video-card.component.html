@@ -2,12 +2,15 @@
   <div (click)="goToArtist()">
     <img class="video-img" src="{{ videoInfo.thumbnail }}" alt="" />
   </div>
-  
-    <i
-      [ngClass]="videoInfo.favorited ? 'fas fa-minus-square' : 'fas fa-plus-square'"
-      (click)="toggleFavorites()"
-    >
-    </i>
- 
+  <i
+    [ngClass]="
+      videoInfo.favorited
+        ? 'fas fa-minus-square remove-fav'
+        : 'fas fa-plus-square add-fav'
+    "
+    (click)="toggleFavorites()"
+  >
+  </i>
+
   <p (click)="goToArtist()" class="video-name">{{ videoInfo.title }}</p>
 </div>
