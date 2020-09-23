@@ -1,12 +1,11 @@
-.videos {
+.artists {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     grid-gap: 2vw;
-    overflow: hidden;
     
   }
 
-  .video-card {
+  .artist-card {
     margin: 2vw 1vw 0 1vw;
     display: flex;
     justify-content: center;

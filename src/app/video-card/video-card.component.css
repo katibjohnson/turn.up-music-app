@@ -57,6 +57,10 @@
 
 /* tablet view _____________________________ */
 @media only screen and (min-width: 768px) {
+  .video-name {
+    font-size: 1.8vw;
+    margin: 0.8vh 0;
+  }
 }
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {

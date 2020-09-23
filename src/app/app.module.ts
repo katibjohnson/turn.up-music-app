@@ -23,6 +23,7 @@ import { VideoCardComponent } from './video-card/video-card.component';
 import { VideoListComponent } from './video-list/video-list.component';
 import { VideoComponent } from './video/video.component';
 import { VideoGridComponent } from './video-grid/video-grid.component';
+import { ArtistGridComponent } from './artist-grid/artist-grid.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,8 @@ import { VideoGridComponent } from './video-grid/video-grid.component';
     VideoComponent,
 
     VideoGridComponent,
+
+    ArtistGridComponent,
   ],
   imports: [
     DragDropModule,
