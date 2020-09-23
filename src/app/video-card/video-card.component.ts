@@ -4,7 +4,21 @@ import { TurnUpService } from '../turn-up.service';
 @Component({
   selector: 'app-video-card',
   templateUrl: './video-card.component.html',
-  styleUrls: ['./video-card.component.css']
+  styleUrls: ['./video-card.component.css'],
+  styles:[
+    `
+    :host-context(.large) .video-card{
+      width: 15vw;
+      z-index: 1;
+    }
+
+    :host-context(.large) .video-name{
+      font-size: 1vw;
+       margin: 0.8vh 0;
+    }
+
+    `
+  ]
 })
 export class VideoCardComponent implements OnInit {
   @Input() videoInfo: any;

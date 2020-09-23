@@ -20,9 +20,22 @@
 </section>
 <section class="desktop-section">
   <div class = "artists-box">
-    <h1 class = "headline">favorite videos</h1>
-    <app-video-grid class="videos"
-    (favoriteVideoEvent)="updateFavoriteVideos($event)"
-    [list]="favoriteVideosList"></app-video-grid>
+    <h1 class = "headline">favorite artists</h1>
+    <app-artist-list
+    class="artists"
+    [list]="favoriteArtistsList"
+    (favoriteEvent)="updateFavoriteArtists($event)"
+  ></app-artist-list> 
   </div>
+  
+  <div class = "artists-box">
+    <h1 class = "headline">favorite videos</h1>
+    <div class="grid-container">
+      <app-video-grid class="videos"
+      (favoriteVideoEvent)="updateFavoriteVideos($event)"
+      [list]="favoriteVideosList"></app-video-grid>
+    </div>
+
+  </div>
+
 </section>

@@ -57,7 +57,19 @@ export class ArtistComponent implements OnInit {
         .subscribe((response) => {
           this.artistName = response.artist.name;
           this.biography = this.sliceBio(response.artist.bio.content);
-          this.similar = response.artist.similar.artist;
+          this.turnup.getFavoriteArtists().subscribe((favoriteArtists)=>{
+            response.artist.similar.artist.forEach((item)=>{
+              if(favoriteArtists.some(artist=>artist.name===item.name)){
+                this.similar.push({name:item.name, favorited: true});
+              }
+              else{
+                this.similar.push({name:item.name, favorited: false})
+              }
+              
+            })
+            
+          })
+
           this.getArtistImage();
           this.addToRecent();
           this.setInFavorites();
@@ -213,4 +225,27 @@ export class ArtistComponent implements OnInit {
       })
     }
   }
+
+  updateFavoriteArtists =(artist: any)=>{
+    if(artist.favorited){
+      this.turnup.getFavoriteArtists().subscribe((response)=>{
+        let idToDelete = response.find(item=>item.name===artist.name).id;
+        this.turnup.deleteFromFavoriteArtists(idToDelete).subscribe((response)=>{
+          this.similar.forEach((item)=>{
+            if(item.name===artist.name) item.favorited = false;
+          })
+        })
+
+      })
+    }
+    else{
+      this.turnup.addToFavoriteArtists({name: artist.name}).subscribe((response)=>{
+        this.similar.forEach((item)=>{
+          if(item.name===artist.name) item.favorited = true;
+        })
+      })
+    }
+  }
+
 }
+
