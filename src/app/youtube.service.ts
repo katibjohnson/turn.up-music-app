@@ -7,12 +7,14 @@ import { Injectable } from '@angular/core';
 export class YoutubeService {
   constructor(private http: HttpClient) {}
 
-  baseUrl: string;
-  setYoutubeApiKey = (apiKey: string)=>{
-    this.baseUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}`
+  apiKey: string =`****`;
+  baseUrl: string =`https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}`;
 
-    console.log(this.baseUrl);
-  }
+  // setYoutubeApiKey = (apiKey: string)=>{
+  //   this.baseUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}`
+
+  //   console.log(this.baseUrl);
+  // }
 
   makeUrl = () => {};
 

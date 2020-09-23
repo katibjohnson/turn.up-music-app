@@ -30,6 +30,50 @@ export class ArtistComponent implements OnInit {
       videoId: '2KkMyDSrBVI',
       favorited: false,
     },
+    {
+      title: 'bladee & ECCO2K - Obedient',
+      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
+      artist: 'Bladee',
+      videoId: '2KkMyDSrBVI',
+      favorited: false,
+    },
+    {
+      title: 'bladee & ECCO2K - Obedient',
+      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
+      artist: 'Bladee',
+      videoId: '2KkMyDSrBVI',
+      favorited: false,
+    },
+    {
+      title: 'bladee & ECCO2K - Obedient',
+      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
+      artist: 'Bladee',
+      videoId: '2KkMyDSrBVI',
+      favorited: false,
+    },
+    {
+      title: 'bladee & ECCO2K - Obedient',
+      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
+      artist: 'Bladee',
+      videoId: '2KkMyDSrBVI',
+      favorited: false,
+    },
+    {
+      title: 'bladee & ECCO2K - Obedient',
+      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
+      artist: 'Bladee',
+      videoId: '2KkMyDSrBVI',
+      favorited: false,
+    },
+    {
+      title: 'bladee & ECCO2K - Obedient',
+      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
+      artist: 'Bladee',
+      videoId: '2KkMyDSrBVI',
+      favorited: false,
+    }
+    
+    
   ];
   currentVideoIndex: number;
   currentVideoId: string;
@@ -45,7 +89,7 @@ export class ArtistComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((response) => {
       this.getArtistInfo();
-      this.setVideo();
+      
     });
   }
 
@@ -77,7 +121,7 @@ export class ArtistComponent implements OnInit {
             })
             
           })
-
+          this.getArtistVideos();
           this.getArtistImage();
           this.addToRecent();
           this.setInFavorites();
@@ -174,21 +218,25 @@ export class ArtistComponent implements OnInit {
             this.currentVideoId = this.videoArray[
               this.currentVideoIndex
             ].videoId;
+            
           });
         } else {
           this.currentVideoIndex = index;
           this.currentVideo = this.videoArray[this.currentVideoIndex];
           this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+          
         }
       } else {
         this.currentVideoIndex = 0;
         this.currentVideo = this.videoArray[this.currentVideoIndex];
         this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+        
       }
     });
   };
 
   getArtistVideos = () => {
+    this.setVideo();
     this.youtube.getVideos(this.artistName).subscribe((response) => {
       let youtubeVideos = response;
       this.videoArray = [];
@@ -208,8 +256,11 @@ export class ArtistComponent implements OnInit {
         console.log(this.videoArray);
         this.currentVideoIndex = 0;
         this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+        this.setVideo();
       });
     });
+
+
   };
 
   addVideoToFavorites = () => {
@@ -218,11 +269,11 @@ export class ArtistComponent implements OnInit {
       .subscribe();
   };
 
-  setApiKey = (form: NgForm) => {
-    console.log(form.value);
-    this.youtube.setYoutubeApiKey(form.value.apiKey);
-    this.getArtistVideos();
-  };
+  // setApiKey = (form: NgForm) => {
+  //   console.log(form.value);
+  //   this.youtube.setYoutubeApiKey(form.value.apiKey);
+  //   this.getArtistVideos();
+  // };
 
   changeVideo = (video: any) => {
     this.currentVideo = video;
