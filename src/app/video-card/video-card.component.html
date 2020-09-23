@@ -1,16 +1,21 @@
 <div class="video-card">
-  <div (click)="goToArtist()">
-    <img class="video-img" src="{{ videoInfo.thumbnail }}" alt="" />
+  <div class="img-box">
+    <img
+      (click)="goToArtist()"
+      class="video-img"
+      src="{{ videoInfo.thumbnail }}"
+      alt=""
+    />
+    <i
+      [ngClass]="
+        videoInfo.favorited
+          ? 'fas fa-minus-square remove-fav'
+          : 'fas fa-plus-square add-fav'
+      "
+      (click)="toggleFavorites()"
+    >
+    </i>
   </div>
-  <i
-    [ngClass]="
-      videoInfo.favorited
-        ? 'fas fa-minus-square remove-fav'
-        : 'fas fa-plus-square add-fav'
-    "
-    (click)="toggleFavorites()"
-  >
-  </i>
 
   <p (click)="goToArtist()" class="video-name">{{ videoInfo.title }}</p>
 </div>
