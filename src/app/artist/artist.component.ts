@@ -33,6 +33,7 @@ export class ArtistComponent implements OnInit {
   ];
   currentVideoIndex: number;
   currentVideoId: string;
+  currentVideo: any ={};
 
   constructor(
     private route: ActivatedRoute,
@@ -169,16 +170,19 @@ export class ArtistComponent implements OnInit {
               favorited: true,
             });
             this.currentVideoIndex = this.videoArray.length - 1;
+            this.currentVideo = this.videoArray[this.currentVideoIndex];
             this.currentVideoId = this.videoArray[
               this.currentVideoIndex
             ].videoId;
           });
         } else {
           this.currentVideoIndex = index;
+          this.currentVideo = this.videoArray[this.currentVideoIndex];
           this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
         }
       } else {
         this.currentVideoIndex = 0;
+        this.currentVideo = this.videoArray[this.currentVideoIndex];
         this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
       }
     });
@@ -220,8 +224,8 @@ export class ArtistComponent implements OnInit {
     this.getArtistVideos();
   };
 
-  changeVideo = (videoId: string) => {
-    this.currentVideoId = videoId;
+  changeVideo = (video: any) => {
+    this.currentVideo = video;
   };
 
   updateFavoriteVideos = (video: any) => {
