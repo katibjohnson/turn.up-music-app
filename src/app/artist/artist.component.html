@@ -35,6 +35,7 @@
     <p class="bio-p" [ngClass]="{ transform: bioExpand }">{{ biography }}</p>
   </div>
   <app-video-list
+    (favoriteVideoEvent)="updateFavoriteVideos($event)"
     (changeVideoEvent)="changeVideo($event)"
     [list]="videoArray"
   ></app-video-list>

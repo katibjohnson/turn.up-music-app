@@ -14,7 +14,6 @@ export class VideoCardComponent implements OnInit {
   constructor(private turnup: TurnUpService) { }
 
   ngOnInit(): void {
-    this.setInFavorites();
   }
 
   goToArtist = ()=>{
@@ -30,7 +29,8 @@ export class VideoCardComponent implements OnInit {
         if(item.title === this.videoInfo.title){
           this.favoritesId = item.id;
         }
-      })
+      } )
+      console.log(this.favoritesId);
     })
   }
 

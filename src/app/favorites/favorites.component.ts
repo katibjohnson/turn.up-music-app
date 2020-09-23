@@ -28,8 +28,12 @@ export class FavoritesComponent implements OnInit {
 
   getFavoriteVideos = ()=>{
     this.turnup.getFavoriteVideos().subscribe((response)=>{
-      console.log(response);
+      
       this.favoriteVideosList = response;
+      this.favoriteVideosList.forEach((item)=>{
+        item.favorited = true;
+      })
+      console.log(this.favoriteVideosList);
     })
   }
 

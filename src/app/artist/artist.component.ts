@@ -21,7 +21,7 @@ export class ArtistComponent implements OnInit {
   favoritesId: number;
   bioExpand: boolean = false;
   favoriteButtonText: string;
-  videoArray = [{title: "bladee & ECCO2K - Obedient", thumbnail: "https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg", artist:"Bladee", videoId: "2KkMyDSrBVI"}];
+  videoArray = [{title: "bladee & ECCO2K - Obedient", thumbnail: "https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg", artist:"Bladee", videoId: "2KkMyDSrBVI", favorited: false}];
   currentVideoIndex: number;
   currentVideoId: string;
 
@@ -58,7 +58,6 @@ export class ArtistComponent implements OnInit {
           this.artistName = response.artist.name;
           this.biography = this.sliceBio(response.artist.bio.content);
           this.similar = response.artist.similar.artist;
-          console.log(this.similar);
           this.getArtistImage();
           this.addToRecent();
           this.setInFavorites();
@@ -142,7 +141,7 @@ export class ArtistComponent implements OnInit {
             let video = favoriteVideos.find((item)=>{
               return item.videoid === params.get('videoId');
             })
-            this.videoArray.push({videoId: video.videoid, title: video.title, thumbnail: video.thumbnail, artist: video.artist});
+            this.videoArray.push({videoId: video.videoid, title: video.title, thumbnail: video.thumbnail, artist: video.artist, favorited: true});
             this.currentVideoIndex = this.videoArray.length-1;
             this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
           })
@@ -162,12 +161,19 @@ export class ArtistComponent implements OnInit {
 
   getArtistVideos = ()=>{
     this.youtube.getVideos(this.artistName).subscribe((response)=>{
+      let youtubeVideos = response;
       this.videoArray = [];
-      response.items.forEach((item)=>{
-        this.videoArray.push({title: item.snippet.title, artist:this.artistName, videoId: item.id.videoId, thumbnail: item.snippet.thumbnails.default.url});
-      })
-      this.currentVideoIndex = 0;
-      this.currentVideoId= this.videoArray[this.currentVideoIndex].videoId;
+      this.turnup.getFavoriteVideos().subscribe((response)=>{     
+        let favoriteVideos = response;
+        youtubeVideos.items.forEach((item)=>{
+          this.videoArray.push({title: item.snippet.title, artist:this.artistName, videoId: item.id.videoId, thumbnail: item.snippet.thumbnails.default.url, favorited: favoriteVideos.some(video=>video.title === item.snippet.title)});
+        })
+        console.log(this.videoArray);
+        this.currentVideoIndex = 0;
+        this.currentVideoId= this.videoArray[this.currentVideoIndex].videoId;
+        })
+      
+
 
     
     })
@@ -180,9 +186,31 @@ export class ArtistComponent implements OnInit {
   setApiKey = (form: NgForm)=>{
     console.log(form.value);
     this.youtube.setYoutubeApiKey(form.value.apiKey);
+    this.getArtistVideos();
   }
 
   changeVideo = (videoId: string)=>{
     this.currentVideoId = videoId;
+  }
+
+  updateFavoriteVideos = (video: any)=>{
+    if(video.favorited){
+      this.turnup.getFavoriteVideos().subscribe((response)=>{
+        let idToDelete = response.find(item=>item.title===video.title).id;
+        this.turnup.deleteFromFavoriteVideos(idToDelete).subscribe((response)=>{
+          this.videoArray.forEach(item=>{
+            if(item.title === video.title) item.favorited = false;
+          })
+        });
+
+      })
+    }
+    else{
+      this.turnup.addToFavoriteVideos({title: video.title, artist: video.artist, thumbnail: video.thumbnail, videoId: video.videoId}).subscribe((response)=>{
+        this.videoArray.forEach(item=>{
+          if(item.title === video.title) item.favorited = true;
+        })
+      })
+    }
   }
 }
