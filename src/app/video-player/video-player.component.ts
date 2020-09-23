@@ -19,8 +19,10 @@ import { YoutubeService } from '../youtube.service';
 })
 export class VideoPlayerComponent implements OnInit {
   @ViewChild('wrapper') wrapper: ElementRef<HTMLDivElement>;
-  @Input() currentVideoId: string;
+  @Input() currentVideo: any;
   @Output() updateVideosEvent = new EventEmitter<void>();
+  @Output() updateVideoFavorite = new EventEmitter<any>();
+  currentVideoId: string;
 
   // currentVideoIndex: number;
   // previousVideoIndex: number;
@@ -42,6 +44,8 @@ export class VideoPlayerComponent implements OnInit {
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
+    
+    
   }
 
   ngAfterViewInit(): void {
@@ -55,6 +59,22 @@ export class VideoPlayerComponent implements OnInit {
     this.videoHeight = this.videoWidth * 0.6;
     this._changeDetectorRef.detectChanges();
   };
+
+  toggleFavorites = ()=>{
+    if(this.currentVideo.favorited){
+      this.turnup.getFavoriteVideos().subscribe((response)=>{
+        let idToDelete = response.find(item=>item.title===this.currentVideo.title).id;
+        this.turnup.deleteFromFavoriteArtists(idToDelete).subscribe((response)=>{
+          this.updateVideoFavorite.emit(this.currentVideo);
+        })
+      })
+
+    }
+    else{
+      this.turnup.addToFavoriteVideos(this.currentVideo);
+      this.updateVideoFavorite.emit(this.currentVideo)
+    }
+  }
 
   // nextAndPrevSetter = ()=>{
   //   this.nextVideoIndex = this.currentVideoIndex;
