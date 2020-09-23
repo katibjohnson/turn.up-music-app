@@ -51,7 +51,7 @@ export class VideoPlayerComponent implements OnInit {
 
   onResize = (): void => {
     // Automatically expand the video to fit the page up to 1200px x 720px
-    this.videoWidth = Math.min(this.wrapper.nativeElement.clientWidth, 700);
+    this.videoWidth = Math.min(this.wrapper.nativeElement.clientWidth, 900);
     this.videoHeight = this.videoWidth * 0.6;
     this._changeDetectorRef.detectChanges();
   };

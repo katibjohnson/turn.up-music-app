@@ -1,4 +1,4 @@
-<main>
+<section class="mobile-section">
   <div class="top">
     <app-header></app-header>
     <div class="artist-headline">
@@ -40,7 +40,7 @@
       [list]="videoArray"
     ></app-video-list>
     <div class="artists-box">
-      <h2>Similar Artists</h2>
+      <h2 class="sim">Similar Artists</h2>
       <app-artist-list class="artists" [list]="similar"></app-artist-list>
     </div>
 
@@ -53,4 +53,46 @@
       <a routerLink="/about">About the Developers</a>
     </div>
   </div>
-</main>
+</section>
+<section class="desktop-section">
+  <app-header></app-header>
+  <div class="artist-headline">
+    <div class="img-box">
+      <img
+        class="artist-img"
+        src="{{ imgUrl }}"
+        default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png"
+      />
+
+      <i
+        [ngClass]="favoritesId ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
+        (click)="toggleFavorites()"
+      ></i>
+    </div>
+    <div class="bio-name">
+      <div class="name-box">
+        <h1 class="artist-name">{{ artistName }}</h1>
+      </div>
+      <div class="bio-box-d">
+        <p class="bio-pd">{{ biography }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <app-video-player [currentVideoId]="currentVideoId"></app-video-player>
+    <div class="menu">
+      <app-video-list
+        (favoriteVideoEvent)="updateFavoriteVideos($event)"
+        (changeVideoEvent)="changeVideo($event)"
+        [list]="videoArray"
+      ></app-video-list>
+      <div class="artists-box">
+        <h2 class="sim">Similar Artists</h2>
+        <app-artist-list class="artists" [list]="similar"></app-artist-list>
+      </div>
+    </div>
+  </div>
+  <div class="footer-m" [ngClass]="{ hidden: bioExpand }">
+    <a routerLink="/about">About the Developers</a>
+  </div>
+</section>
