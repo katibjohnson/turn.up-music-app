@@ -33,7 +33,6 @@ export class FavoritesComponent implements OnInit {
       this.favoriteVideosList.forEach((item)=>{
         item.favorited = true;
       })
-      console.log(this.favoriteVideosList);
     })
   }
 

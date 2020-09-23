@@ -44,7 +44,7 @@
   color: #00ff48;
 }
 
-.artist-name {
+.video-name {
     overflow-wrap: break-word;
     word-wrap: break-word;
     hyphens: auto;
@@ -60,4 +60,19 @@
 }
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {
+  .video-card {
+    width: 7vw;
+  }
+
+  .video-name {
+    font-size: 1vw;
+    margin: 0.8vh 0;
+  }
+
+  .fa-plus-circle,
+  .fa-minus-circle {
+    font-size: 1.5vw;
+    bottom: 1.7vh;
+    right: 0vw;
+  }
 }
