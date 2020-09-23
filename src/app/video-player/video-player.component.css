@@ -1,6 +1,24 @@
+.demo-youtube-player {
+  position: relative;
+}
+.remove-fav,
+.add-fav {
+  color: #00ff48;
+  opacity: 0.7;
+  font-size: 9vw;
+  position: absolute;
+  bottom: 0vh;
+  right: 1vw;
+}
+.remove-fav:active,
+.add-fav:active {
+  color: #05992f;
+}
+
 /* tablet view _____________________________ */
 @media only screen and (min-width: 768px) {
 }
+
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {
 }

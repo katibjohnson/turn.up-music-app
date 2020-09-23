@@ -73,11 +73,7 @@ a:visited {
   width: 100%;
   overflow: scroll;
 }
-.vid-box {
-  width: 100vw;
-  position: relative;
-  padding-bottom: 2vh;
-}
+
 .bio-close,
 .bio-expand {
   color: white;

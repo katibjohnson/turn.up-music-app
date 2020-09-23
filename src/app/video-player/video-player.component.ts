@@ -20,7 +20,8 @@ import { YoutubeService } from '../youtube.service';
 export class VideoPlayerComponent implements OnInit {
   @ViewChild('wrapper') wrapper: ElementRef<HTMLDivElement>;
   @Input() currentVideoId: string;
-  @Output() updateVideosEvent = new EventEmitter<void>() ;
+  @Output() updateVideosEvent = new EventEmitter<void>();
+
   // currentVideoIndex: number;
   // previousVideoIndex: number;
   // nextVideoIndex: number;
@@ -41,7 +42,6 @@ export class VideoPlayerComponent implements OnInit {
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
-
   }
 
   ngAfterViewInit(): void {
@@ -51,7 +51,7 @@ export class VideoPlayerComponent implements OnInit {
 
   onResize = (): void => {
     // Automatically expand the video to fit the page up to 1200px x 720px
-    this.videoWidth = Math.min(this.wrapper.nativeElement.clientWidth, 1000);
+    this.videoWidth = Math.min(this.wrapper.nativeElement.clientWidth, 700);
     this.videoHeight = this.videoWidth * 0.6;
     this._changeDetectorRef.detectChanges();
   };
@@ -73,7 +73,6 @@ export class VideoPlayerComponent implements OnInit {
   //   }
   //   this.previousVideoThumbnail = this.videoArray[this.previousVideoIndex].thumbnail;
   //   this.nextVideoThumbnail = this.videoArray[this.nextVideoIndex].thumbnail;
-
 
   // }
 
@@ -144,7 +143,6 @@ export class VideoPlayerComponent implements OnInit {
   //     this.currentVideoId= this.videoArray[this.currentVideoIndex].videoId;
   //     this.nextAndPrevSetter();
 
-    
   //   })
   // }
 
@@ -153,5 +151,4 @@ export class VideoPlayerComponent implements OnInit {
   //   this.turnup.addToFavoriteVideos(this.videoArray[this.currentVideoIndex]).subscribe();
 
   // }
-
 }
