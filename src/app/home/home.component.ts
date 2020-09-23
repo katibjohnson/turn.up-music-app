@@ -29,20 +29,19 @@ export class HomeComponent implements OnInit {
       response.forEach((item)=>{
         this.favoriteArtists.push({name: item.name, favorited: true});
       })
-      console.log(this.favoriteArtists);
       this.turnup.getRecent().subscribe((response) => {
         response.forEach((item)=>{
           this.recentlyPlayed.push({name: item.name});
         })
         this.favoritesSetter(this.recentlyPlayed);
-        console.log(this.recentlyPlayed)
       });
       this.lastFm.getTopArtists().subscribe((response) => {
-        response.artists.artist.slice(0, 10).forEach(artist=>{
+        let topArtistTemp = response.artists.artist;
+        this.shuffle(topArtistTemp);
+        topArtistTemp.slice(0, 10).forEach(artist=>{
           this.topArtists.push({name: artist.name});  
         })
         this.favoritesSetter(this.topArtists);
-        console.log(this.topArtists)
         
       });
       
@@ -92,6 +91,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  
+
   searchForArtist = (searchTerm: string): any => {
     this.lastFm.getArtists(searchTerm).subscribe();
   };
@@ -103,4 +104,15 @@ export class HomeComponent implements OnInit {
   getVideos = (searchTerm: string): any => {
     this.youtube.getVideos(searchTerm).subscribe();
   };
+
+  shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
 }

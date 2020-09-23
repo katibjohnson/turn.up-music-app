@@ -1,13 +1,16 @@
 .videos {
-    display: flex;
-    max-width: 100%;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-gap: 2vw;
+    
   }
-  
+
   .video-card {
-    margin: 3vw 2vw 0 2vw;
+    margin: 2vw 1vw 0 1vw;
+    display: flex;
+    justify-content: center;
+
   }
-  
 
 
 /* tablet view _____________________________ */
