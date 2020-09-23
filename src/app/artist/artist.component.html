@@ -28,7 +28,7 @@
       </button>
     </div>
 
-    <app-video-player [currentVideoId]="currentVideoId"></app-video-player>
+    <app-video-player (updateVideoFavorite)="updateFavoriteVideos($event)" [currentVideo]="currentVideo"></app-video-player>
   </div>
   <div class="bottom">
     <div class="bio-box" [ngClass]="{ transform: bioExpand }">
@@ -41,7 +41,7 @@
     ></app-video-list>
     <div class="artists-box">
       <h2>Similar Artists</h2>
-      <app-artist-list class="artists" [list]="similar"></app-artist-list>
+      <app-artist-list (favoriteEvent)="updateFavoriteArtists($event)" class="artists" [list]="similar"></app-artist-list>
     </div>
 
     <!-- <form #apiKeyForm="ngForm" (submit)="setApiKey(apiKeyForm)">
