@@ -7,6 +7,7 @@ import { TurnUpService } from '../turn-up.service';
 import { from } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { VideoPlayerComponent } from '../video-player/video-player.component';
+
 import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-artist',
@@ -21,7 +22,15 @@ export class ArtistComponent implements OnInit {
   favoritesId: number;
   bioExpand: boolean = false;
   favoriteButtonText: string;
-  videoArray = [{title: "bladee & ECCO2K - Obedient", thumbnail: "https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg", artist:"Bladee", videoId: "2KkMyDSrBVI", favorited: false}];
+  videoArray = [
+    {
+      title: 'bladee & ECCO2K - Obedient',
+      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
+      artist: 'Bladee',
+      videoId: '2KkMyDSrBVI',
+      favorited: false,
+    },
+  ];
   currentVideoIndex: number;
   currentVideoId: string;
 
@@ -33,12 +42,10 @@ export class ArtistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(response=>{
+    this.route.params.subscribe((response) => {
       this.getArtistInfo();
       this.setVideo();
-    }
-    )
-
+    });
   }
 
   sliceBio = (bio: string) => {
@@ -129,88 +136,107 @@ export class ArtistComponent implements OnInit {
     this.bioExpand = !this.bioExpand;
   };
 
-  setVideo = ()=>{
-    this.route.queryParamMap.subscribe((params)=>{
-      if(params.get('videoId')){
-        let index = this.videoArray.findIndex(item=>item.videoId===params.get('videoId'));
-        if(index === -1)
-        {
+  setVideo = () => {
+    this.route.queryParamMap.subscribe((params) => {
+      if (params.get('videoId')) {
+        let index = this.videoArray.findIndex(
+          (item) => item.videoId === params.get('videoId')
+        );
+        if (index === -1) {
           let favoriteVideos = [];
-          this.turnup.getFavoriteVideos().subscribe((response)=>{
+          this.turnup.getFavoriteVideos().subscribe((response) => {
             favoriteVideos = response;
-            let video = favoriteVideos.find((item)=>{
+            let video = favoriteVideos.find((item) => {
               return item.videoid === params.get('videoId');
-            })
-            this.videoArray.push({videoId: video.videoid, title: video.title, thumbnail: video.thumbnail, artist: video.artist, favorited: true});
-            this.currentVideoIndex = this.videoArray.length-1;
-            this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
-          })
-        }
-        else{
+            });
+            this.videoArray.push({
+              videoId: video.videoid,
+              title: video.title,
+              thumbnail: video.thumbnail,
+              artist: video.artist,
+              favorited: true,
+            });
+            this.currentVideoIndex = this.videoArray.length - 1;
+            this.currentVideoId = this.videoArray[
+              this.currentVideoIndex
+            ].videoId;
+          });
+        } else {
           this.currentVideoIndex = index;
           this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
         }
-      }
-      else{
+      } else {
         this.currentVideoIndex = 0;
         this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
       }
+    });
+  };
 
-    })
-  }
-
-  getArtistVideos = ()=>{
-    this.youtube.getVideos(this.artistName).subscribe((response)=>{
+  getArtistVideos = () => {
+    this.youtube.getVideos(this.artistName).subscribe((response) => {
       let youtubeVideos = response;
       this.videoArray = [];
-      this.turnup.getFavoriteVideos().subscribe((response)=>{     
+      this.turnup.getFavoriteVideos().subscribe((response) => {
         let favoriteVideos = response;
-        youtubeVideos.items.forEach((item)=>{
-          this.videoArray.push({title: item.snippet.title, artist:this.artistName, videoId: item.id.videoId, thumbnail: item.snippet.thumbnails.default.url, favorited: favoriteVideos.some(video=>video.title === item.snippet.title)});
-        })
+        youtubeVideos.items.forEach((item) => {
+          this.videoArray.push({
+            title: item.snippet.title,
+            artist: this.artistName,
+            videoId: item.id.videoId,
+            thumbnail: item.snippet.thumbnails.default.url,
+            favorited: favoriteVideos.some(
+              (video) => video.title === item.snippet.title
+            ),
+          });
+        });
         console.log(this.videoArray);
         this.currentVideoIndex = 0;
-        this.currentVideoId= this.videoArray[this.currentVideoIndex].videoId;
-        })
-      
+        this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
+      });
+    });
+  };
 
+  addVideoToFavorites = () => {
+    this.turnup
+      .addToFavoriteVideos(this.videoArray[this.currentVideoIndex])
+      .subscribe();
+  };
 
-    
-    })
-  }
-
-  addVideoToFavorites = ()=>{
-    this.turnup.addToFavoriteVideos(this.videoArray[this.currentVideoIndex]).subscribe();
-  }
-
-  setApiKey = (form: NgForm)=>{
+  setApiKey = (form: NgForm) => {
     console.log(form.value);
     this.youtube.setYoutubeApiKey(form.value.apiKey);
     this.getArtistVideos();
-  }
+  };
 
-  changeVideo = (videoId: string)=>{
+  changeVideo = (videoId: string) => {
     this.currentVideoId = videoId;
-  }
+  };
 
-  updateFavoriteVideos = (video: any)=>{
-    if(video.favorited){
-      this.turnup.getFavoriteVideos().subscribe((response)=>{
-        let idToDelete = response.find(item=>item.title===video.title).id;
-        this.turnup.deleteFromFavoriteVideos(idToDelete).subscribe((response)=>{
-          this.videoArray.forEach(item=>{
-            if(item.title === video.title) item.favorited = false;
-          })
-        });
-
-      })
-    }
-    else{
-      this.turnup.addToFavoriteVideos({title: video.title, artist: video.artist, thumbnail: video.thumbnail, videoId: video.videoId}).subscribe((response)=>{
-        this.videoArray.forEach(item=>{
-          if(item.title === video.title) item.favorited = true;
+  updateFavoriteVideos = (video: any) => {
+    if (video.favorited) {
+      this.turnup.getFavoriteVideos().subscribe((response) => {
+        let idToDelete = response.find((item) => item.title === video.title).id;
+        this.turnup
+          .deleteFromFavoriteVideos(idToDelete)
+          .subscribe((response) => {
+            this.videoArray.forEach((item) => {
+              if (item.title === video.title) item.favorited = false;
+            });
+          });
+      });
+    } else {
+      this.turnup
+        .addToFavoriteVideos({
+          title: video.title,
+          artist: video.artist,
+          thumbnail: video.thumbnail,
+          videoId: video.videoId,
         })
-      })
+        .subscribe((response) => {
+          this.videoArray.forEach((item) => {
+            if (item.title === video.title) item.favorited = true;
+          });
+        });
     }
-  }
+  };
 }
