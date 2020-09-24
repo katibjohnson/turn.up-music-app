@@ -24,7 +24,7 @@
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {
   .demo-youtube-player {
-    width: 60vw;
+    width: 70vw;
   }
 
   .remove-fav,
