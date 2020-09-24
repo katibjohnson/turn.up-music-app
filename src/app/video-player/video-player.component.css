@@ -31,7 +31,8 @@
   .add-fav {
     color: #00ff48;
     font-size: 3.5vw;
-    top: 36vw;
+    bottom: 0vw;
+    top: auto;
     right: 0vw;
   }
 }
