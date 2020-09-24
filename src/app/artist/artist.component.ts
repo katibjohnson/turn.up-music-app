@@ -22,59 +22,7 @@ export class ArtistComponent implements OnInit {
   favoritesId: number;
   bioExpand: boolean = false;
   favoriteButtonText: string;
-  videoArray = [
-    {
-      title: 'bladee & ECCO2K - Obedient',
-      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
-      artist: 'Bladee',
-      videoId: '2KkMyDSrBVI',
-      favorited: false,
-    },
-    {
-      title: 'bladee & ECCO2K - Obedient',
-      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
-      artist: 'Bladee',
-      videoId: '2KkMyDSrBVI',
-      favorited: false,
-    },
-    {
-      title: 'bladee & ECCO2K - Obedient',
-      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
-      artist: 'Bladee',
-      videoId: '2KkMyDSrBVI',
-      favorited: false,
-    },
-    {
-      title: 'bladee & ECCO2K - Obedient',
-      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
-      artist: 'Bladee',
-      videoId: '2KkMyDSrBVI',
-      favorited: false,
-    },
-    {
-      title: 'bladee & ECCO2K - Obedient',
-      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
-      artist: 'Bladee',
-      videoId: '2KkMyDSrBVI',
-      favorited: false,
-    },
-    {
-      title: 'bladee & ECCO2K - Obedient',
-      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
-      artist: 'Bladee',
-      videoId: '2KkMyDSrBVI',
-      favorited: false,
-    },
-    {
-      title: 'bladee & ECCO2K - Obedient',
-      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
-      artist: 'Bladee',
-      videoId: '2KkMyDSrBVI',
-      favorited: false,
-    }
-    
-    
-  ];
+  videoArray = [];
   currentVideoIndex: number;
   currentVideoId: string;
   currentVideo: any ={};
@@ -104,7 +52,7 @@ export class ArtistComponent implements OnInit {
 
   getArtistInfo = (): any => {
     this.route.queryParamMap.subscribe((params) => {
-      this.youtube.setYoutubeApiKey(params.get('apiKey'));
+      this.youtube.setYoutubeApiKey(params.get('apikey'));
       this.lastFm
         .getArtistInfoByName(params.get('name'))
         .subscribe((response) => {
