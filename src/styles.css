@@ -20,7 +20,7 @@ body {
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {
   body {
-    height: 100vh;
+    height: 95vh;
     overflow: hidden;
   }
 }
