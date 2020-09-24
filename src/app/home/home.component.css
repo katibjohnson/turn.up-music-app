@@ -76,8 +76,8 @@ a:visited {
 
   .vertical {
     position: fixed;
-    overflow: scroll;
-    overflow-x: hidden;
+    /* overflow: scroll;
+    overflow-x: hidden; */
     height: 43vh;
     width: 12vw;
     margin-right: 0vw;
