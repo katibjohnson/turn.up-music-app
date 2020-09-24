@@ -104,6 +104,7 @@ export class ArtistComponent implements OnInit {
 
   getArtistInfo = (): any => {
     this.route.queryParamMap.subscribe((params) => {
+      this.youtube.setYoutubeApiKey(params.get('apiKey'));
       this.lastFm
         .getArtistInfoByName(params.get('name'))
         .subscribe((response) => {
