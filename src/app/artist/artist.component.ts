@@ -22,7 +22,30 @@ export class ArtistComponent implements OnInit {
   favoritesId: number;
   bioExpand: boolean = false;
   favoriteButtonText: string;
-  videoArray = [];
+  videoArray = [
+    {
+      title: 'Cardi B - Bodak Yellow [OFFICIAL MUSIC VIDEO]',
+      thumbnail: 'https://i.ytimg.com/vi/PEGccV-NOm8/hqdefault.jpg',
+      artist: 'Cardi B',
+      videoId: 'PEGccV-NOm8I',
+      favorited: false,
+     },
+    {
+      title: 'bladee & ECCO2K - Obedient',
+      thumbnail: 'https://i.ytimg.com/vi/2KkMyDSrBVI/default.jpg',
+      artist: 'Bladee',
+      videoId: '2KkMyDSrBVI',
+      favorited: false,
+    }
+    ,
+   {
+    title: 'Post Malone - Circles',
+    thumbnail: 'https://i.ytimg.com/vi/wXhTHyIgQ_U/mqdefault.jpg',
+    artist: 'Post Malone',
+    videoId: 'wXhTHyIgQ_U',
+    favorited: false,
+   }
+  ];
   currentVideoIndex: number;
   currentVideoId: string;
   currentVideo: any = {};
@@ -88,7 +111,6 @@ export class ArtistComponent implements OnInit {
 
   addToRecent = () => {
     let artistEntry = { name: this.artistName };
-    console.log(artistEntry);
     let recent = [];
     this.turnup.getRecent().subscribe((response) => {
       recent = response;
@@ -179,7 +201,8 @@ export class ArtistComponent implements OnInit {
 
   getArtistVideos = () => {
     this.setVideo();
-    this.youtube.getVideos(this.artistName).subscribe((response) => {
+    this.youtube.getVideos(`${this.artistName} music`).subscribe((response) => {
+      console.log(response);
       let youtubeVideos = response;
       this.videoArray = [];
       this.turnup.getFavoriteVideos().subscribe((response) => {
@@ -189,13 +212,12 @@ export class ArtistComponent implements OnInit {
             title: item.snippet.title,
             artist: this.artistName,
             videoId: item.id.videoId,
-            thumbnail: item.snippet.thumbnails.default.url,
+            thumbnail: item.snippet.thumbnails.medium.url,
             favorited: favoriteVideos.some(
               (video) => video.title === item.snippet.title
             ),
           });
         });
-        console.log(this.videoArray);
         this.currentVideoIndex = 0;
         this.currentVideoId = this.videoArray[this.currentVideoIndex].videoId;
         this.setVideo();
@@ -209,11 +231,6 @@ export class ArtistComponent implements OnInit {
       .subscribe();
   };
 
-  // setApiKey = (form: NgForm) => {
-  //   console.log(form.value);
-  //   this.youtube.setYoutubeApiKey(form.value.apiKey);
-  //   this.getArtistVideos();
-  // };
 
   changeVideo = (video: any) => {
     this.currentVideo = video;
