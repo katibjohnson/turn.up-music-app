@@ -7,8 +7,10 @@ import { Injectable } from '@angular/core';
 export class YoutubeService {
   constructor(private http: HttpClient) {}
 
-  apiKey: string =`****`;
-  baseUrl: string =`https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}`;
+  apiKey: string = `AIzaSyAd_BLIxcKm3bXhSGBJ47vS-XEVUYgtrk8
+
+`;
+  baseUrl: string = `https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}`;
 
   // setYoutubeApiKey = (apiKey: string)=>{
   //   this.baseUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}`
@@ -25,8 +27,6 @@ export class YoutubeService {
   };
 
   getVideoById = (videoId: string): any => {
-    return this.http.get(
-      `${this.baseUrl}&part=snippet&id=${videoId}`
-    );
+    return this.http.get(`${this.baseUrl}&part=snippet&id=${videoId}`);
   };
 }

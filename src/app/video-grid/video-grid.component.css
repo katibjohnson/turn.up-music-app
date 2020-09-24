@@ -1,18 +1,12 @@
 .videos {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    grid-gap: 2vw;
-    overflow: hidden;
-    
-  }
+  display: flex;
+}
 
-  .video-card {
-    margin: 2vw 1vw 0 1vw;
-    display: flex;
-    justify-content: center;
-
-  }
-
+.video-card {
+  margin: 2vw 1vw 0 1vw;
+  display: flex;
+  justify-content: center;
+}
 
 /* tablet view _____________________________ */
 @media only screen and (min-width: 768px) {

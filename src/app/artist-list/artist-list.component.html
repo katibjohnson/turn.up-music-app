@@ -1,10 +1,12 @@
-<div class="artists">
+<div
+  [class.artists]="router.url != '/favorites'"
+  [class.fav-card]="router.url === '/favorites'"
+>
   <app-artist-card
-
     (artistClicked)="goToArtist($event)"
     (favoriteEvent)="updateFavorites($event)"
     class="artist-card"
-    *ngFor="let item of list | slice: 0:10"  
+    *ngFor="let item of list | slice: 0:10"
     [artist]="item"
   ></app-artist-card>
 </div>

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LastFmService } from '../last-fm.service';
 import { ImagePreloadDirective } from '../image-preload.directive';
 import { TurnUpService } from '../turn-up.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-artist-card',
@@ -25,6 +26,22 @@ import { TurnUpService } from '../turn-up.service';
         font-size: 1.5vw;
         margin: 1vh 0;
       }
+      :host-context(.fav-card) .artist-card {
+        width: 15vw;
+        z-index: 1;
+      }
+      :host-context(.fav-card) .fa-plus-circle {
+        font-size: 2vw;
+        right: 0.5vw;
+      }
+      :host-context(.fav-card) .fa-minus-circle {
+        font-size: 3vw;
+        right: 0.5vw;
+      }
+      :host-context(.fav-card) .artist-name {
+        font-size: 1.5vw;
+        margin: 1vh 0;
+      }
     `,
   ],
 })
@@ -36,7 +53,11 @@ export class ArtistCardComponent implements OnInit {
   artistInfo: any = {};
   sampleImageUrl: string;
   favoritesId: number;
-  constructor(private lastFm: LastFmService, private turnup: TurnUpService) {}
+  constructor(
+    private lastFm: LastFmService,
+    private turnup: TurnUpService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getSampleImage(this.artist.name);

@@ -1,5 +1,7 @@
 .demo-youtube-player {
   position: relative;
+  width: 100vw;
+  border: 1px solid white;
 }
 .remove-fav,
 .add-fav {
@@ -7,8 +9,8 @@
   opacity: 0.7;
   font-size: 9vw;
   position: absolute;
-  bottom: 0vh;
-  right: 1vw;
+  top: 57vw;
+  right: 2vw;
 }
 .remove-fav:active,
 .add-fav:active {
@@ -21,6 +23,19 @@
 
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {
+  .demo-youtube-player {
+    position: relative;
+    width: 70vw;
+  }
+  .remove-fav,
+  .add-fav {
+    color: #00ff48;
+    opacity: 0.7;
+    font-size: 4vw;
+    position: absolute;
+    top: 42vw;
+    right: 0vw;
+  }
 }
 
 .video-selector {

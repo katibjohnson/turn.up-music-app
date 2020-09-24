@@ -1,9 +1,13 @@
-<div class ="videos">
-    <app-video-card 
-    class ="video-card" 
-    *ngFor="let item of list" 
-    [videoInfo]= "item" 
-    (videoClicked)="goToArtist($event)" 
-    (videoFavorited)="updateFavorites($event)">
-    </app-video-card>
+<div
+  [class.videos]="router.url != '/favorites'"
+  [class.fav-card]="router.url === '/favorites'"
+>
+  <app-video-card
+    class="video-card"
+    *ngFor="let item of list"
+    [videoInfo]="item"
+    (videoClicked)="goToArtist($event)"
+    (videoFavorited)="updateFavorites($event)"
+  >
+  </app-video-card>
 </div>

@@ -7,7 +7,9 @@
       (click)="goToArtist()"
     />
     <i
-      [ngClass]="artist.favorited ? 'fas fa-minus-circle' : 'fas fa-plus-circle'"
+      [ngClass]="
+        artist.favorited ? 'fas fa-minus-circle' : 'fas fa-plus-circle'
+      "
       (click)="toggleFavorites()"
     ></i>
   </div>
