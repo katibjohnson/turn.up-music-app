@@ -66,7 +66,7 @@
 </section>
 <section class="desktop-section">
   <div class="header">
-    <app-header></app-header>
+    <app-header class="app-header"></app-header>
     <div class="artist-headline">
       <div class="img-box">
         <img
@@ -92,8 +92,9 @@
   </div>
   <div class="main">
     <app-video-player
-      class="vid-player"
+      (updateVideoFavorite)="updateFavoriteVideos($event)"
       [currentVideo]="currentVideo"
+      class="vid-player"
     ></app-video-player>
     <div class="menu">
       <div class="videos-box-d">

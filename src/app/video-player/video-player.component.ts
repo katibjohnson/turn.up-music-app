@@ -44,8 +44,6 @@ export class VideoPlayerComponent implements OnInit {
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
-    
-    
   }
 
   ngAfterViewInit(): void {
@@ -55,26 +53,28 @@ export class VideoPlayerComponent implements OnInit {
 
   onResize = (): void => {
     // Automatically expand the video to fit the page up to 1200px x 720px
-    this.videoWidth = Math.min(this.wrapper.nativeElement.clientWidth, 900);
+    this.videoWidth = Math.min(this.wrapper.nativeElement.clientWidth, 1200);
     this.videoHeight = this.videoWidth * 0.6;
     this._changeDetectorRef.detectChanges();
   };
 
-  toggleFavorites = ()=>{
-    if(this.currentVideo.favorited){
-      this.turnup.getFavoriteVideos().subscribe((response)=>{
-        let idToDelete = response.find(item=>item.title===this.currentVideo.title).id;
-        this.turnup.deleteFromFavoriteArtists(idToDelete).subscribe((response)=>{
-          this.updateVideoFavorite.emit(this.currentVideo);
-        })
-      })
-
-    }
-    else{
+  toggleFavorites = () => {
+    if (this.currentVideo.favorited) {
+      this.turnup.getFavoriteVideos().subscribe((response) => {
+        let idToDelete = response.find(
+          (item) => item.title === this.currentVideo.title
+        ).id;
+        this.turnup
+          .deleteFromFavoriteArtists(idToDelete)
+          .subscribe((response) => {
+            this.updateVideoFavorite.emit(this.currentVideo);
+          });
+      });
+    } else {
       this.turnup.addToFavoriteVideos(this.currentVideo);
-      this.updateVideoFavorite.emit(this.currentVideo)
+      this.updateVideoFavorite.emit(this.currentVideo);
     }
-  }
+  };
 
   // nextAndPrevSetter = ()=>{
   //   this.nextVideoIndex = this.currentVideoIndex;
