@@ -23,8 +23,9 @@ import { TurnUpService } from '../turn-up.service';
         right: 0.5vw;
       }
       :host-context(.large) .video-name {
-        font-size: 1.5vw;
+        font-size: 1.2vw;
         margin: 1vh 0;
+        line-height: 20px;
       }
     `,
   ],

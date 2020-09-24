@@ -1,5 +1,9 @@
 .videos {
   display: flex;
+  max-width: 100%;
+  flex-direction: row;
+  overflow: auto;
+  overflow-y: hidden;
 }
 
 .video-card {
@@ -7,7 +11,22 @@
   display: flex;
   justify-content: center;
 }
+.videos::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-radius: 10px;
+}
+.videos::-webkit-scrollbar {
+  height: 10px;
+  background-color: black;
+}
 
+.videos::-webkit-scrollbar-thumb {
+  background-color: black;
+  border: 2px solid #555555;
+  border-radius: 10px;
+}
 /* tablet view _____________________________ */
 @media only screen and (min-width: 768px) {
 }

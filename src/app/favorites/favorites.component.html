@@ -1,41 +1,48 @@
-<app-header></app-header>
 <section class="mobile-section">
-  <div class = "artists-box">
-    <h1 class = "headline">favorite videos</h1>
-    <app-video-list class="videos"
-    (favoriteVideoEvent)="updateFavoriteVideos($event)"
-    [list]="favoriteVideosList"></app-video-list>
+  <app-header></app-header>
+  <div>
+    <div class="artists-box">
+      <h1 class="headline">favorite videos</h1>
+      <app-video-list
+        class="videos"
+        (favoriteVideoEvent)="updateFavoriteVideos($event)"
+        [list]="favoriteVideosList"
+      ></app-video-list>
+    </div>
+    <div class="artists-box">
+      <h1 class="headline">favorite artists</h1>
+      <app-artist-list
+        class="artists"
+        [list]="favoriteArtistsList"
+        (favoriteEvent)="updateFavoriteArtists($event)"
+      ></app-artist-list>
+    </div>
   </div>
-<div class = "artists-box">
-  <h1 class = "headline">favorite artists</h1>
-  <app-artist-list
-  class="artists"
-  [list]="favoriteArtistsList"
-  (favoriteEvent)="updateFavoriteArtists($event)"
-></app-artist-list>
-</div>
-<div class="footer-m">
-  <a routerLink="/about">About the Developers</a>
-</div>
+  <div class="footer-m">
+    <a routerLink="/about">About the Developers</a>
+  </div>
 </section>
 <section class="desktop-section">
-  <div class = "artists-box">
-    <h1 class = "headline">favorite artists</h1>
+  <app-header class="app-hd"></app-header>
+  <div class="artists-box">
+    <h1 class="headline">favorite artists</h1>
     <app-artist-list
-    class="artists"
-    [list]="favoriteArtistsList"
-    (favoriteEvent)="updateFavoriteArtists($event)"
-  ></app-artist-list> 
+      class="artists"
+      [list]="favoriteArtistsList"
+      (favoriteEvent)="updateFavoriteArtists($event)"
+    ></app-artist-list>
   </div>
-  
-  <div class = "artists-box">
-    <h1 class = "headline">favorite videos</h1>
+  <div class="vids-box">
+    <h1 class="headline">favorite videos</h1>
     <div class="grid-container">
-      <app-video-grid class="videos"
-      (favoriteVideoEvent)="updateFavoriteVideos($event)"
-      [list]="favoriteVideosList"></app-video-grid>
+      <app-video-grid
+        class="videos"
+        (favoriteVideoEvent)="updateFavoriteVideos($event)"
+        [list]="favoriteVideosList"
+      ></app-video-grid>
     </div>
-
   </div>
-
+  <div class="footer-d">
+    <a routerLink="/about">About the Developers</a>
+  </div>
 </section>

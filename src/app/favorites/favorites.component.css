@@ -1,10 +1,13 @@
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
 .mobile-section {
   position: relative;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 a,
@@ -14,16 +17,17 @@ a:visited {
 }
 
 .artists-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3vh;
+}
 
 .artists {
-    width: 100%;
-    overflow: scroll;
-    margin-top: 4vh;
-  }
+  width: 100%;
+  overflow: scroll;
+  margin-top: 4vh;
+}
 
 .videos {
   width: 100%;
@@ -32,91 +36,91 @@ a:visited {
 }
 
 .headline {
-    font-size: 6vw;
-    font-weight: 600;
-    font-variant: small-caps;
-    position: absolute;
-  }
+  font-size: 6vw;
+  font-weight: 600;
+  font-variant: small-caps;
+  position: absolute;
+}
 
-  .footer-m {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    bottom: 1vw;
-    margin-top: 4vh;
-  }
+.footer-m {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  bottom: 1vw;
+  margin-top: 25vh;
+}
 
-  .desktop-section{
-    display: none
-  }
+.desktop-section {
+  display: none;
+}
 
 /* tablet view _____________________________ */
 @media only screen and (min-width: 768px) {
-  .headline{
+  .headline {
     font-size: 5vw;
   }
 
-  .videos{
+  .videos {
     margin-top: 7vh;
   }
 
-  .artists{
+  .artists {
     margin-top: 7vh;
   }
 }
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {
-  .mobile-section{
-    display:none;
+  .mobile-section {
+    display: none;
   }
 
-  .desktop-section{
+  .desktop-section {
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+  }
+  .app-hd {
+    height: 13vh;
   }
 
-  .videos{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    margin-top: 10vh;
-  }
-
-  .videos::-webkit-scrollbar-track{
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: white;
-    border-radius: 10px;
-  }
-  .videos::-webkit-scrollbar {
-    width: 10px;
-    background-color: black;
-  }
-
-  .videos::-webkit-scrollbar-thumb {
-    background-color: black;
-    border: 2px solid #555555;
-    border-radius: 10px;
-  }
-
-  .artists{
+  .artists,
+  .videos {
+    width: 90vw;
     display: flex;
     justify-content: center;
     overflow: visible;
-    margin-top: 10vh;
+    margin-top: 0;
   }
-
+  .vids-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+    width: 100vw;
+  }
+  .videos {
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
+    margin-top: 0;
+  }
   .headline {
     font-size: 5vw;
     font-weight: 600;
-
+    position: relative;
+    line-height: 65px;
   }
   .grid-container {
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
     display: flex;
     flex-direction: column;
-    height: 55vh;
+    /* height: 55vh; */
+  }
+  .footer-d {
+    display: flex;
+    justify-content: center;
     width: 100vw;
+    bottom: 1vw;
   }
 }
-
