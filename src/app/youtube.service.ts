@@ -11,11 +11,9 @@ export class YoutubeService {
   // apiKey: string = `****`;
   baseUrl: string = `https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}`;
 
-  // setYoutubeApiKey = (apiKey: string)=>{
-  //   this.baseUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}`
-
-  //   console.log(this.baseUrl);
-  // }
+  setYoutubeApiKey = (apiKey: string)=>{
+    this.baseUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}`
+  }
 
   makeUrl = () => {};
 
