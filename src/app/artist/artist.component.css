@@ -231,9 +231,10 @@ a:visited {
     width: 40vw;
     height: 7vw;
     overflow: auto;
-    margin: 0 0 0 4vw;
-    padding: 1vh 0;
+    margin: 2vh 0 0 4vw;
+    padding: 1.5;
     font-size: 1.7vh;
+    overflow-x: hidden;
   }
 
   .bio-box-d::-webkit-scrollbar-track {

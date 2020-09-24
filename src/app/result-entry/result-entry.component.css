@@ -1,51 +1,50 @@
 .result-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    margin: 3vw;
-    padding: 2vw;
-    width:90vw;
-    border-bottom: rgb(217, 217, 217)solid .8px;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 3vw;
+  padding: 2vw;
+  width: 90vw;
+  border-bottom: rgb(217, 217, 217) solid 0.8px;
+}
 
 .result-img {
-    border-radius: 50%;
-    -webkit-box-shadow: 0px 0px 7px 7px rgba(255, 255, 255, 0.49);
-    -moz-box-shadow: 0px 0px 7px 7px rgba(255, 255, 255, 0.49);
-    box-shadow: 0px 0px 7px 7px rgba(255, 255, 255, 0.49);
-    max-width: 29vw;
-  }
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 7px 7px rgba(255, 255, 255, 0.49);
+  -moz-box-shadow: 0px 0px 7px 7px rgba(255, 255, 255, 0.49);
+  box-shadow: 0px 0px 7px 7px rgba(255, 255, 255, 0.49);
+  max-width: 29vw;
+}
 
-  .img-box {
-    position: relative;
-  }
+.img-box {
+  position: relative;
+}
 
-    .text{
-        text-align: right;
-  }
+.text {
+  text-align: right;
+}
 
-  .artist-name {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
-    text-align: right;
-    line-height: 12px;
-    font-size: 4vw;
-    margin: 2vw 0;
-  }
+.artist-name {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-align: right;
+  line-height: 12px;
+  font-size: 4vw;
+  margin: 2vw 0;
+}
 
-  /* tablet view _____________________________ */
+/* tablet view _____________________________ */
 @media only screen and (min-width: 768px) {
-    .result-img{
-        max-width: 10vw;
-    }
+  .result-img {
+    max-width: 10vw;
+  }
 }
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {
-    .result-card{
-        width: 80vw;
-    }
-
+  .result-card {
+    width: 80vw;
+  }
 }

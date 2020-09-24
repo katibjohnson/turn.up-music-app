@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
         align-items: center;
         height: 43vh;
         width: 12vw;
+        overflow-y: auto;
       }
     `,
   ],

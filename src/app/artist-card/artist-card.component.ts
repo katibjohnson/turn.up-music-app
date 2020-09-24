@@ -25,23 +25,42 @@ import { Router } from '@angular/router';
       :host-context(.large-card) .artist-name {
         font-size: 1.5vw;
         margin: 1vh 0;
+        line-height: 25px;
       }
       :host-context(.fav-card) .artist-card {
-        width: 15vw;
+        width: 8vw;
         z-index: 1;
       }
       :host-context(.fav-card) .fa-plus-circle {
-        font-size: 2vw;
+        font-size: 1.7vw;
         right: 0.5vw;
       }
       :host-context(.fav-card) .fa-minus-circle {
-        font-size: 3vw;
+        font-size: 1.7vw;
         right: 0.5vw;
       }
       :host-context(.fav-card) .artist-name {
-        font-size: 1.5vw;
+        font-size: 1.1vw;
         margin: 1vh 0;
+        line-height: 18px;
       }
+      :host-context(.fav-card-m) .artist-card {
+        width: 29vw;
+        z-index: 1;
+      }
+      // :host-context(.fav-card-m) .fa-plus-circle {
+      //   font-size: 1.7vw;
+      //   right: 0.5vw;
+      // }
+      // :host-context(.fav-card-m) .fa-minus-circle {
+      //   font-size: 1.7vw;
+      //   right: 0.5vw;
+      // }
+      // :host-context(.fav-card-m) .artist-name {
+      //   font-size: 1.1vw;
+      //   margin: 1vh 0;
+      //   line-height: 18px;
+      // }
     `,
   ],
 })
