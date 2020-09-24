@@ -14,9 +14,9 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {}
 
   searchForArtist = (form: NgForm) => {
-    this.router.navigate(['artist'], {
+    this.router.navigate(['results'], {
       queryParams: {
-        name: form.value.artist,
+        artist: form.value.artist,
       },
     });
   };

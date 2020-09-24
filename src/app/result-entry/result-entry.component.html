@@ -1,6 +1,12 @@
-<div (click)= "goToArtist(artist)">
-    <p>{{ artist.name }}</p>
-    <p>{{ artist.listeners }}</p>
-    <img src="{{imgUrl}}" default="https://miro.medium.com/max/360/1*W35QUSvGpcLuxPo3SRTH4w.png" height ="174" width ="174" class = "img" alt="">
+<div class = "result-card" (click)= "goToArtist(artist)">
+    <div class="img-box">
+        <img class="result-img" src="{{imgUrl}}" default="assets/default.png" alt="">
+    </div>
+    <div class= "text">
+        <p class="artist-name">{{ artist.name }}</p>
+        <p>{{artist.listeners}} listeners</p>
+    </div>
+
+
 </div>
 
