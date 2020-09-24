@@ -13,14 +13,6 @@
 .fav-card {
   display: none;
 }
-/* .fav-card {
-  display: flex;
-  max-width: 100%;
-  flex-direction: row;
-  max-height: 40vw;
-  overflow-y: hidden;
-  overflow-x: scroll;
-} */
 
 .artist-card {
   margin: 3vw 2vw 0 2vw;
@@ -32,6 +24,10 @@
 
 /* tablet view _____________________________ */
 @media only screen and (min-width: 768px) {
+  .artist-card {
+    margin: 3vw 1vw 0 1vw;
+    /* width: 25vw; */
+  }
 }
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {

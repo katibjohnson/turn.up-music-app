@@ -47,9 +47,14 @@
   .artist-card {
     width: 15vw;
   }
+  .fa-plus-circle,
+  .fa-minus-circle {
+    font-size: 4vw;
+  }
 
   .artist-name {
-    font-size: 2vw;
+    font-size: 2.3vw;
+    line-height: 17px;
   }
 }
 /* desktop view _____________________________ */

@@ -157,6 +157,12 @@ a:visited {
 
 /* tablet view _____________________________ */
 @media only screen and (min-width: 768px) {
+  .bio-p {
+    font-size: 3vw;
+  }
+  .transform {
+    height: 52vh;
+  }
 }
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {
