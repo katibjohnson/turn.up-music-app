@@ -25,7 +25,7 @@ export class ArtistComponent implements OnInit {
   videoArray = [
     {
       title: 'Cardi B - Bodak Yellow [OFFICIAL MUSIC VIDEO]',
-      thumbnail: 'https://i.ytimg.com/vi/PEGccV-NOm8/hqdefault.jpg',
+      thumbnail: 'https://i.ytimg.com/vi/PEGccV-NOm8/default.jpg',
       artist: 'Cardi B',
       videoId: 'PEGccV-NOm8I',
       favorited: false,
@@ -40,7 +40,7 @@ export class ArtistComponent implements OnInit {
     ,
    {
     title: 'Post Malone - Circles',
-    thumbnail: 'https://i.ytimg.com/vi/wXhTHyIgQ_U/mqdefault.jpg',
+    thumbnail: 'https://i.ytimg.com/vi/wXhTHyIgQ_U/default.jpg',
     artist: 'Post Malone',
     videoId: 'wXhTHyIgQ_U',
     favorited: false,
@@ -74,7 +74,11 @@ export class ArtistComponent implements OnInit {
 
   getArtistInfo = (): any => {
     this.route.queryParamMap.subscribe((params) => {
-      this.youtube.setYoutubeApiKey(params.get('apikey'));
+      if(params.get('apikey')){
+        console.log(params.get('apikey'))
+        this.youtube.setYoutubeApiKey(params.get('apikey'));
+      }
+      
       this.lastFm
         .getArtistInfoByName(params.get('name'))
         .subscribe((response) => {
