@@ -1,6 +1,12 @@
-# MusicappGroupProject
+# turn.up
+
+turn.up is a music video streaming service where users can watch and listen to their favorite artists videos and performance. This project utilizes the Youtube and last.fm APIs, as well as several restful APIs [view backend rep](https://github.com/katibjohnson/turnupbackend).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
+
+## Installation
+
+After running a git clone, run `npm install` to install node modules.
 
 ## Development server
 
