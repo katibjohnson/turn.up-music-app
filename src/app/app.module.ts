@@ -24,6 +24,8 @@ import { VideoListComponent } from './video-list/video-list.component';
 import { VideoComponent } from './video/video.component';
 import { VideoGridComponent } from './video-grid/video-grid.component';
 import { ArtistGridComponent } from './artist-grid/artist-grid.component';
+import { WireframesComponent } from './wireframes/wireframes.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { ArtistGridComponent } from './artist-grid/artist-grid.component';
     VideoGridComponent,
 
     ArtistGridComponent,
+
+    WireframesComponent,
   ],
   imports: [
     DragDropModule,
@@ -60,6 +64,7 @@ import { ArtistGridComponent } from './artist-grid/artist-grid.component';
     YouTubePlayerModule,
     FormsModule,
     AppRoutingModule,
+    PdfViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

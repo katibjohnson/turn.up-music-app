@@ -2,6 +2,8 @@
 
 turn.up is a music video streaming service where users can watch and listen to their favorite artists videos and performance. This project utilizes the Youtube and last.fm APIs, as well as several restful APIs [view backend rep](https://github.com/katibjohnson/turnupbackend).
 
+A live version of the site can be seen [here](https://turnup-music.surge.sh/). The site is built responsive and can be viewed on mobile, tablet, and desktop.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
 
 ## Installation
