@@ -1,11 +1,34 @@
 div {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 a,
 a:visited {
-  /* text-decoration: none; */
   text-align: center;
   color: white;
-  font-size: 2vw;
+  font-size: 5vw;
+}
+img {
+  max-width: 85vw;
+}
+/* tablet view _____________________________ */
+@media only screen and (min-width: 768px) {
+  img {
+    max-width: 60vw;
+  }
+  a,
+  a:visited {
+    font-size: 4vw;
+  }
+}
+/* desktop view _____________________________ */
+@media only screen and (min-width: 1025px) {
+  img {
+    max-width: 40vw;
+  }
+  a,
+  a:visited {
+    font-size: 2vw;
+  }
 }

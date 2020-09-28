@@ -19,8 +19,11 @@ body {
 }
 /* desktop view _____________________________ */
 @media only screen and (min-width: 1025px) {
-  /* body {
+  body {
     height: 95vh;
     overflow: hidden;
-  } */
+  }
+  body::-webkit-scrollbar {
+    display: none;
+  }
 }
